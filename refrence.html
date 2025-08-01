@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Shoorveer Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+    }
+    h2, h3, p {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+    .hero-heading {
+      text-shadow: 0 0 10px #7f5eff, 0 0 20px #7f5eff;
+      background: linear-gradient(to right, #ffffff, #7f5eff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: sparkle 3s infinite alternate ease-in-out;
+    }
+    @keyframes sparkle {
+      0% { text-shadow: 0 0 5px #7f5eff, 0 0 10px #7f5eff; }
+      50% { text-shadow: 0 0 15px #a88fff, 0 0 30px #a88fff; }
+      100% { text-shadow: 0 0 10px #7f5eff, 0 0 25px #7f5eff; }
+    }
+       {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+    }
+    h2, h3, p {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+    .hero-heading {
+      text-shadow: 0 0 10px #7f5eff, 0 0 20px #7f5eff;
+      background: linear-gradient(to right, #ffffff, #7f5eff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: sparkle 3s infinite alternate ease-in-out;
+    }
+    @keyframes sparkle {
+      0% { text-shadow: 0 0 5px #7f5eff, 0 0 10px #7f5eff; }
+      50% { text-shadow: 0 0 15px #a88fff, 0 0 30px #a88fff; }
+      100% { text-shadow: 0 0 10px #7f5eff, 0 0 25px #7f5eff; }
+    }
+    .instructor-wrapper {
+      transition: all 0.5s ease-in-out;
+      max-width: 100%;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .instructor-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      padding: 2rem;
+      gap: 1rem;
+      transition: all 0.5s ease;
+      max-width: 300px;
+      margin: auto;
+      transform: scale(1);
+    }
+    .instructor-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    .instructor-card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 4px solid #ef4444;
+      transition: all 0.5s ease;
+    }
+    .instructor-card.expanded {
+      border-radius: 1rem;
+      flex-direction: row;
+      align-items: flex-start;
+      max-width: 100%;
+      transform: scale(1.02);
+    }
+    .instructor-card.expanded img {
+      border-radius: 0.5rem;
+      margin-right: 1.5rem;
+      width: 200px;
+      height: auto;
+    }
+    .instructor-details {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .instructor-card.expanded .instructor-details {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-6 fixed w-full z-50 bg-black bg-opacity-50">
+    <div class="font-bold text-xl text-white px-4 py-2 rounded" style="background: linear-gradient(135deg, rgba(127,94,255,0.3), rgba(0,255,255,0.2)); border: 1px solid rgba(127,94,255,0.4); backdrop-filter: blur(12px); text-shadow: 0 0 12px #7f5eff, 0 0 24px #7f5eff;">SHOORVEER ACADEMY</div>
+    <div class="space-x-8 hidden md:flex">
+      <a href="about.html" class="text-white hover:text-red-400">ABOUT</a>
+      <a href="programs.html" class="text-white hover:text-red-400">PROGRAMS</a>
+      <a href="schedule.html" class="text-white hover:text-red-400">SCHEDULE</a>
+      <a href="gallery.html" class="text-white hover:text-red-400">GALLERY</a>
+      <a href="contact.html" class="text-white hover:text-red-400">CONTACT</a>
+    </div>
+    <button class="md:hidden text-white text-2xl" id="menuToggle" onclick="toggleMobileMenu()">☰</button>
+    <a href="join.html" class="glass-button px-4 py-2 rounded glow-red hidden md:inline-block">JOIN NOW</a>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden absolute top-20 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 flex flex-col gap-4 px-8 py-6 text-center md:hidden z-40 shadow-2xl">
+    <a href="index.html" class="block text-white hover:text-red-400 nav-link">HOME</a>   
+    <a href="about.html" class="text-white hover:text-red-400 text-lg tracking-wide">ABOUT</a>
+    <a href="programs.html" class="text-white hover:text-red-400 text-lg tracking-wide">PROGRAMS</a>
+    <a href="schedule.html" class="text-white hover:text-red-400 text-lg tracking-wide">SCHEDULE</a>
+    <a href="gallery.html" class="text-white hover:text-red-400 text-lg tracking-wide">GALLERY</a>
+    <a href="contact.html" class="text-white hover:text-red-400 text-lg tracking-wide">CONTACT</a>
+    <a href="join.html" class="glass-button px-4 py-2 rounded glow-red text-lg">JOIN NOW</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="h-72 flex items-center justify-center text-center relative" style="background: url('images/about-hero.jpg') center/cover no-repeat;">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <h1 class="relative z-10 text-5xl font-bold hero-heading" data-aos="fade-down">ABOUT SHOORVEER ACADEMY</h1>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 px-6 max-w-6xl mx-auto text-center" data-aos="fade-up">
+    <h2 class="text-3xl text-blue-400 mb-6">INTRODUCTION</h2>
+    <p class="text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
+      Welcome to Shoorveer Academy! Founded on February 17, 2021, by visionary leader <strong>Mangwana Manish Kumar</strong>,
+      Shoorveer Academy is dedicated to empowering the next generation of leaders, innovators, and changemakers.  
+      Our name, derived from the Sanskrit word meaning "Extreme Warrior", embodies our mission to cultivate individuals 
+      who are <span class="text-red-400 font-bold">Unbreakable, Unbeatable, and Unstoppable</span> in their pursuit of excellence.
+      Shoorveer Academy is more than just a martial arts institution; it's a journey of self-discovery, empowerment, and transformation.
+    </p>
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
+      <div>
+        <img src="images/student.jpg" alt="Student" class="rounded shadow-lg mx-auto">
+        <p class="mt-3 text-lg text-yellow-400 font-bold">STUDENT</p>
+      </div>
+      <div>
+        <img src="images/fighter.jpg" alt="Fighter" class="rounded shadow-lg mx-auto">
+        <p class="mt-3 text-lg text-yellow-400 font-bold">FIGHTER</p>
+      </div>
+      <div>
+        <img src="images/teacher.jpg" alt="Teacher" class="rounded shadow-lg mx-auto">
+        <p class="mt-3 text-lg text-yellow-400 font-bold">TEACHER</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Academy -->
+  <section class="py-16 px-6 max-w-6xl mx-auto" data-aos="fade-up">
+    <h2 class="text-3xl text-blue-400 mb-6 text-center">ABOUT ACADEMY</h2>
+    <ul class="text-gray-300 leading-relaxed list-disc list-inside max-w-4xl mx-auto space-y-3">
+      <li><strong>Kickboxing:</strong> Master the art of striking and defense techniques in a dynamic and high-energy environment.</li>
+      <li><strong>Grappling:</strong> Learn ground fighting and submission strategies through structured training.</li>
+      <li><strong>MMA:</strong> Experience a powerful fusion of various martial arts to develop all-around fighting skills.</li>
+      <li><strong>Self-Defense:</strong> Equip yourself with practical skills to protect yourself and others in any situation.</li>
+      <li><strong>CrossFit Training:</strong> Boost strength, agility, and endurance through functional fitness training.</li>
+      <li><strong>Yoga:</strong> Find balance, flexibility, and inner peace with ancient practices for both body and soul.</li>
+    </ul>
+  </section>
+   <!-- Instructor Section -->
+  <section class="py-16 px-6 bg-gray-900 bg-opacity-40" data-aos="fade-up">
+    <h2 class="text-center text-3xl text-red-400 mb-12">MEET OUR INSTRUCTOR</h2>
+    <div class="instructor-wrapper" onclick="toggleInstructorCard()">
+      <div id="instructorCard" class="instructor-card">
+        <img src="images/instructor1.jpeg" alt="Instructor 1">
+        <div>
+          <h3 class="text-2xl text-white">Master M Manish Kumar</h3>
+          <p class="text-sm text-gray-400">Head Coach</p>
+          <div class="instructor-details">
+            <p class="text-gray-300 mt-2">
+              With over 15 years of experience, M Manish Kumar has trained many athletes and specializes in Kickboxing. His coaching focuses on discipline, realworld selfdefense, physical fitness and Healthy Mind.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Footer -->
+  <footer class="bg-black bg-opacity-60 py-8 text-center text-gray-400 text-sm">
+    <p>© 2025 Shoorveer Academy. All rights reserved.</p>
+    <div class="mt-4 space-x-4">
+      <a href="#" class="hover:text-white">Facebook</a>
+      <a href="#" class="hover:text-white">Instagram</a>
+      <a href="#" class="hover:text-white">YouTube</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+    function toggleInstructorCard() {
+      const card = document.getElementById("instructorCard");
+      const expanded = card.classList.toggle("expanded");
+      if (expanded) {
+        expandSound.play();
+      }
+    }
+
+  </script>
+</body>
+</html>
