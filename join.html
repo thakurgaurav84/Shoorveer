@@ -4,74 +4,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join Now - Get Up Kick Boxing Academy</title>
+  <title>Join Now - Shoorveer Academy</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body {
-      background-color: #0a0a0a;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-    }
-    .form-container {
-      max-width: 600px;
-      margin: auto;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(127, 94, 255, 0.5);
-      backdrop-filter: blur(10px);
-    }
-    .form-title {
-      text-shadow: 0 0 10px #7f5eff, 0 0 20px #7f5eff;
-    }
-    label {
-      font-weight: bold;
-    }
-    input, select {
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid #7f5eff;
-      color: white;
-    }
-    input option, select option {
-      background-color: #0a0a0a;
-      color: white;
-    }
-    input:focus, select:focus {
-      outline: none;
-      border-color: #ff3c3c;
-      box-shadow: 0 0 5px #ff3c3c;
-    }
-    button {
-      background-color: rgba(255, 0, 0, 0.1);
-      border: 2px solid #ff3c3c;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      color: white;
-    }
-    button:hover {
-      background-color: rgba(255, 0, 0, 0.2);
-    }
-    .error {
-      color: #ff3c3c;
-      font-size: 0.875rem;
-      display: none;
-    }
-    .back-button {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid #7f5eff;
-      padding: 0.5rem 1.25rem;
-      border-radius: 0.5rem;
-      color: white;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .back-button:hover {
-      background-color: rgba(127, 94, 255, 0.2);
-      border-color: #ff3c3c;
-      color: #ff3c3c;
-    }
-  </style>
+  body {
+    background: url('images/sun.jpeg') center/cover no-repeat fixed;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Dark overlay for text readability */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+  }
+
+  /* Glowing animation ONLY on background image */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/sun.jpeg') center/cover no-repeat fixed;
+    filter: brightness(1);
+    animation: sunGlow 5s infinite ease-in-out;
+    z-index: -2;
+  }
+
+  @keyframes sunGlow {
+    0% { filter: brightness(1) blur(0px); }
+    50% { filter: brightness(1.2) blur(3px); }
+    100% { filter: brightness(1) blur(0px); }
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(127, 94, 255, 0.5);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+  }
+
+  .form-title {
+    text-shadow: 0 0 10px #7f5eff, 0 0 20px #7f5eff;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input, select {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #7f5eff;
+    color: white;
+  }
+
+  input option, select option {
+    background-color: #0a0a0a;
+    color: white;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: #ff3c3c;
+    box-shadow: 0 0 5px #ff3c3c;
+  }
+
+  button {
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 2px solid #ff3c3c;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+  }
+
+  button:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+  }
+
+  .error {
+    color: #ff3c3c;
+    font-size: 0.875rem;
+    display: none;
+  }
+
+  .back-button {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #7f5eff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .back-button:hover {
+    background-color: rgba(127, 94, 255, 0.2);
+    border-color: #ff3c3c;
+    color: #ff3c3c;
+  }
+</style>
+
 </head>
 <body>
   <section class="py-20 px-4">
@@ -110,15 +158,14 @@
           <label for="program" class="block mb-1">Select Program</label>
           <select id="program" name="program" required class="w-full p-2 rounded text-white">
             <option value="">-- Choose a Program --</option>
-            <option value="self-defense">3-Month Self-Defense Course</option>
             <option value="kickboxing">Kickboxing</option>
-            <option value="kungfu">Kung Fu</option>
-            <option value="taekwondo">Taekwondo</option>
+            <option value="MMA">MMA</option>
+            <option value="Grappling">Grappling</option>
             <option value="personal-training">Personal Training</option>
             <option value="weight-training">Weight Training</option>
             <option value="fitness">Fitness Training</option>
-            <option value="nutrition">Diet & Nutrition</option>
-            <option value="gymnastics">Gymnastics</option>
+            
+            
           </select>
         </div>
         

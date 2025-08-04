@@ -11,30 +11,24 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0a0a0a;
-      color: white;
-    }
-    h2, h3, p {
-      font-family: 'Bebas Neue', sans-serif;
-    }
-    .hero-heading {
-      text-shadow: 0 0 10px #7f5eff, 0 0 20px #7f5eff;
-      background: linear-gradient(to right, #ffffff, #7f5eff, #ffffff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: sparkle 3s infinite alternate ease-in-out;
-    }
-    @keyframes sparkle {
-      0% { text-shadow: 0 0 5px #7f5eff, 0 0 10px #7f5eff; }
-      50% { text-shadow: 0 0 15px #a88fff, 0 0 30px #a88fff; }
-      100% { text-shadow: 0 0 10px #7f5eff, 0 0 25px #7f5eff; }
-    }
-       {
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0a0a0a;
-      color: white;
-    }
+  font-family: 'Orbitron', sans-serif;
+  background: url('images/backgroundshoorveer.jpeg') center/cover no-repeat fixed;
+  color: white;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for better text visibility */
+  z-index: -1;
+}
     h2, h3, p {
       font-family: 'Bebas Neue', sans-serif;
     }
@@ -103,14 +97,94 @@
       display: block;
       opacity: 1;
     }
+
+    /* Custom styles for student, fighter, teacher images */
+    .role-image {
+      width: 320px;
+      height: 240px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .role-image:hover {
+      transform: scale(1.05);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .role-image {
+        width: 280px;
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .role-image {
+        width: 240px;
+        height: 180px;
+      }
+    }
+
+    /* Mission and Sponsorship Image Styles */
+    .mission-image, .sponsorship-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mission-image:hover, .sponsorship-image:hover {
+      transform: scale(1.03);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .mission-image-container, .sponsorship-image-container {
+      overflow: hidden;
+      border-radius: 0.5rem;
+    }
+    .fiery-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffcc00 0%, #ff6600 50%, #cc0000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  text-shadow:
+    2px 2px 0 #d4af37,   /* metallic gold outline effect */
+    4px 4px 10px rgba(255, 140, 0, 0.7), /* glowing orange shadow */
+    /* fiery glow */
+}
+
+
+    /* Responsive adjustments for mission/sponsorship images */
+    @media (max-width: 768px) {
+      .mission-image, .sponsorship-image {
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .mission-image, .sponsorship-image {
+        height: 200px;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="flex justify-between items-center p-6 fixed w-full z-50 bg-black bg-opacity-50">
-    <div class="font-bold text-xl text-white px-4 py-2 rounded" style="background: linear-gradient(135deg, rgba(127,94,255,0.3), rgba(0,255,255,0.2)); border: 1px solid rgba(127,94,255,0.4); backdrop-filter: blur(12px); text-shadow: 0 0 12px #7f5eff, 0 0 24px #7f5eff;">SHOORVEER ACADEMY</div>
-    <div class="space-x-8 hidden md:flex">
-        <a href="index.html" class="block text-white hover:text-red-400 nav-link">HOME</a>
+ <!-- Navbar -->
+<nav class="flex justify-between items-center p-6 fixed w-full z-50 bg-black bg-opacity-50">
+  <!-- Navbar Logo Image -->
+  <div class="flex items-center">
+    <img src="images/navbar.jpeg" alt="Shoorveer Logo" class="h-20 md:h-25 object-contain">
+  </div>
+      <a href="index.html" class="block text-white hover:text-red-400 nav-link">HOME</a>
       <a href="about.html" class="text-white hover:text-red-400">ABOUT</a>
       <a href="programs.html" class="text-white hover:text-red-400">PROGRAMS</a>
       <a href="schedule.html" class="text-white hover:text-red-400">SCHEDULE</a>
@@ -132,68 +206,153 @@
     <a href="join.html" class="glass-button px-4 py-2 rounded glow-red text-lg">JOIN NOW</a>
   </div>
 
-  <!-- Hero -->
-  <section class="h-72 flex items-center justify-center text-center relative" style="background: url('images/about-hero.jpg') center/cover no-repeat;">
-    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-    <h1 class="relative z-10 text-5xl font-bold hero-heading" data-aos="fade-down">ABOUT SHOORVEER ACADEMY</h1>
-  </section>
+ <!-- Hero -->
+<section class="h-screen flex flex-col items-center justify-center text-center relative" style="background: url('images/about-hero.jpg') center/cover no-repeat;">
+  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+  <!-- Shoorveer Text Image -->
+  <div class="relative z-10 mb-6" data-aos="fade-down">
+    <img src="images/shoorveertext.jpeg" alt="Shoorveer Academy Text" class="w-full max-w-4xl mx-auto">
+  </div>
+
+  <h1 class="relative z-10 text-4xl md:text-5xl font-bold text-white" data-aos="fade-up">
+    
+  </h1>
+</section>
+
 
   <!-- About Section -->
-  <section class="py-16 px-6 max-w-6xl mx-auto text-center" data-aos="fade-up">
-    <h2 class="text-3xl text-blue-400 mb-6">INTRODUCTION</h2>
-    <p class="text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
+  <section class="py-20 px-8 max-w-7xl mx-auto text-center" data-aos="fade-up">
+    <h2 class="fiery-heading text-4xl md:text-5xl mb-10">INTRODUCTION</h2>
+
+    <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed mb-12 text-lg md:text-xl">
       Welcome to Shoorveer Academy! Founded on February 17, 2021, by visionary leader <strong>Mangwana Manish Kumar</strong>,
       Shoorveer Academy is dedicated to empowering the next generation of leaders, innovators, and changemakers.  
       Our name, derived from the Sanskrit word meaning "Extreme Warrior", embodies our mission to cultivate individuals 
       who are <span class="text-red-400 font-bold">Unbreakable, Unbeatable, and Unstoppable</span> in their pursuit of excellence.
       Shoorveer Academy is more than just a martial arts institution; it's a journey of self-discovery, empowerment, and transformation.
     </p>
-    <div class="grid md:grid-cols-3 gap-6 mt-10">
-      <div>
-        <img src="images/student.jpeg" alt="Student" class="rounded shadow-lg mx-auto">
-        <p class="mt-3 text-lg text-yellow-400 font-bold">STUDENT</p>
+    <div class="grid md:grid-cols-3 gap-8 mt-12">
+      <div class="flex flex-col items-center">
+        <img src="images/student.jpeg" alt="Student" class="role-image rounded shadow-lg">
+        <p class="mt-4 text-xl md:text-2xl text-yellow-400 font-bold">STUDENT</p>
       </div>
-      <div>
-        <img src="images/fighter.jpeg" alt="Fighter" class="rounded shadow-lg mx-auto">
-        <p class="mt-3 text-lg text-yellow-400 font-bold">FIGHTER</p>
+      <div class="flex flex-col items-center">
+        <img src="images/fighter.jpeg" alt="Fighter" class="role-image rounded shadow-lg">
+        <p class="mt-4 text-xl md:text-2xl text-yellow-400 font-bold">FIGHTER</p>
       </div>
-      <div>
-        <img src="images/teacher.jpeg" alt="Teacher" class="rounded shadow-lg mx-auto">
-        <p class="mt-3 text-lg text-yellow-400 font-bold">TEACHER</p>
+      <div class="flex flex-col items-center">
+        <img src="images/teacher.jpeg" alt="Teacher" class="role-image rounded shadow-lg">
+        <p class="mt-4 text-xl md:text-2xl text-yellow-400 font-bold">TEACHER</p>
       </div>
     </div>
   </section>
 
   <!-- About Academy -->
-  <section class="py-16 px-6 max-w-6xl mx-auto" data-aos="fade-up">
-    <h2 class="text-3xl text-blue-400 mb-6 text-center">ABOUT ACADEMY</h2>
-    <ul class="text-gray-300 leading-relaxed list-disc list-inside max-w-4xl mx-auto space-y-3">
-      <li><strong>Kickboxing:</strong> Master the art of striking and defense techniques in a dynamic and high-energy environment.</li>
-      <li><strong>Grappling:</strong> Learn ground fighting and submission strategies through structured training.</li>
-      <li><strong>MMA:</strong> Experience a powerful fusion of various martial arts to develop all-around fighting skills.</li>
-      <li><strong>Self-Defense:</strong> Equip yourself with practical skills to protect yourself and others in any situation.</li>
-      <li><strong>CrossFit Training:</strong> Boost strength, agility, and endurance through functional fitness training.</li>
-      <li><strong>Yoga:</strong> Find balance, flexibility, and inner peace with ancient practices for both body and soul.</li>
+  <section class="py-20 px-8 max-w-7xl mx-auto" data-aos="fade-up">
+    <h2 class="text-4xl md:text-5xl text-blue-400 mb-10 text-center">ABOUT ACADEMY</h2>
+    <ul class="text-gray-300 leading-relaxed list-disc list-inside max-w-5xl mx-auto space-y-4 text-lg md:text-xl">
+    <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed mb-8 text-lg md:text-xl text-center">
+    AT SHOORVEER ACADEMY, WE OFFER A COMPREHENSIVE CURRICULUM THAT ENCOMPASSES KICKBOXING, GRAPPLING, 
+    MIXED MARTIAL ARTS (MMA), SELF-DEFENSE, CROSSFIT, FITNESS TRAINING AND YOGA. 
+    WITH TOP-NOTCH FACILITIES AND DEDICATED FACULTY MEMBERS, WE PROVIDE AN ENVIRONMENT WHERE STUDENTS 
+    CAN THRIVE ACADEMICALLY, PHYSICALLY, AND PERSONALLY.
+  </p>
+      <li><strong class="text-xl md:text-2xl">Kickboxing:</strong> Master the art of striking and defense techniques in a dynamic and high-energy environment.</li>
+      <li><strong class="text-xl md:text-2xl">Grappling:</strong> Learn ground fighting and submission strategies through structured training.</li>
+      <li><strong class="text-xl md:text-2xl">MMA:</strong> Experience a powerful fusion of various martial arts to develop all-around fighting skills.</li>
+      <li><strong class="text-xl md:text-2xl">Self-Defense:</strong> Equip yourself with practical skills to protect yourself and others in any situation.</li>
+      <li><strong class="text-xl md:text-2xl">CrossFit Training:</strong> Boost strength, agility, and endurance through functional fitness training.</li>
+      <li><strong class="text-xl md:text-2xl">Yoga:</strong> Find balance, flexibility, and inner peace with ancient practices for both body and soul.</li>
     </ul>
   </section>
-   <!-- Instructor Section -->
-  <section class="py-16 px-6 bg-gray-900 bg-opacity-40" data-aos="fade-up">
-    <h2 class="text-center text-3xl text-red-400 mb-12">MEET OUR INSTRUCTOR</h2>
+
+  <!-- Mission Section -->
+  <section class="py-20 px-8 bg-gray-800 bg-opacity-30" data-aos="fade-up">
+    <h2 class="text-center text-4xl md:text-5xl text-yellow-400 mb-12">OUR MISSION</h2>
+    <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed text-center mb-16 text-lg md:text-xl">
+      Our mission is to nurture the Shoorveer spirit within each student, fostering resilience, determination, and a commitment to excellence. Through holistic education and personalized mentorship, we aim to empower our students to become leaders in their chosen fields and make a positive impact on society.
+    </p>
+    
+    <!-- Mission Gallery -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div class="mission-image-container">
+        <img src="images/mission1.jpg" alt="Training young students" class="mission-image rounded-lg shadow-lg">
+      </div>
+      <div class="mission-image-container">
+        <img src="images/mission2.jpg" alt="Competition training" class="mission-image rounded-lg shadow-lg">
+      </div>
+      <div class="mission-image-container">
+        <img src="images/mission3.jpg" alt="Group training session" class="mission-image rounded-lg shadow-lg">
+      </div>
+      <div class="mission-image-container">
+        <img src="images/mission4.jpg" alt="Medal ceremony" class="mission-image rounded-lg shadow-lg">
+      </div>
+      <div class="mission-image-container">
+        <img src="images/mission5.jpg" alt="Team photo" class="mission-image rounded-lg shadow-lg">
+      </div>
+      <div class="mission-image-container">
+        <img src="images/mission6.jpg" alt="Competition event" class="mission-image rounded-lg shadow-lg">
+      </div>
+      <div class="mission-image-container">
+        <img src="images/mission7.jpg" alt="Championship event" class="mission-image rounded-lg shadow-lg">
+      </div>
+      <div class="mission-image-container">
+        <img src="images/mission8.jpg" alt="Training session" class="mission-image rounded-lg shadow-lg">
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsorship Section -->
+  <section class="py-20 px-8 bg-gray-900 bg-opacity-50" data-aos="fade-up">
+    <h2 class="text-center text-4xl md:text-5xl text-yellow-400 mb-12">SPONSORSHIP OPPORTUNITIES</h2>
+    <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed text-center mb-16 text-lg md:text-xl">
+      Partnering with Shoorveer Academy offers unique opportunities for brands and organizations to align themselves with our mission and reach our diverse audience of students, parents, and community members. We offer various sponsorship packages tailored to meet your marketing objectives and budget.
+    </p>
+    
+    <!-- Sponsorship Gallery -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div class="sponsorship-image-container">
+        <img src="images/sponsor1.jpg" alt="Championship winners" class="sponsorship-image rounded-lg shadow-lg">
+      </div>
+      <div class="sponsorship-image-container">
+        <img src="images/sponsor2.jpg" alt="Competition event" class="sponsorship-image rounded-lg shadow-lg">
+      </div>
+      <div class="sponsorship-image-container">
+        <img src="images/sponsor3.jpg" alt="Awards ceremony" class="sponsorship-image rounded-lg shadow-lg">
+      </div>
+      <div class="sponsorship-image-container">
+        <img src="images/sponsor4.jpg" alt="Team celebration" class="sponsorship-image rounded-lg shadow-lg">
+      </div>
+      <div class="sponsorship-image-container">
+        <img src="images/sponsor5.jpg" alt="National championship" class="sponsorship-image rounded-lg shadow-lg">
+      </div>
+      <div class="sponsorship-image-container">
+        <img src="images/sponsor6.jpg" alt="Community event" class="sponsorship-image rounded-lg shadow-lg">
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor Section -->
+  <section class="py-20 px-8 bg-gray-900 bg-opacity-40" data-aos="fade-up">
+    <h2 class="text-center text-4xl md:text-5xl text-red-400 mb-16">MEET OUR INSTRUCTOR</h2>
     <div class="instructor-wrapper" onclick="toggleInstructorCard()">
       <div id="instructorCard" class="instructor-card">
         <img src="images/instructor1.jpeg" alt="Instructor 1">
         <div>
-          <h3 class="text-2xl text-white">Master M Manish Kumar</h3>
-          <p class="text-sm text-gray-400">Head Coach</p>
+          <h3 class="text-3xl md:text-4xl text-white">Master M Manish Kumar</h3>
+          <p class="text-lg md:text-xl text-gray-400">Head Coach</p>
           <div class="instructor-details">
-            <p class="text-gray-300 mt-2">
+            <p class="text-gray-300 mt-4 text-lg md:text-xl leading-relaxed">
               Founder & Technical Director – Shoorveer Cage Wars
 
-A visionary martial artist dedicated to developing Kickboxing, Grappling and MMA in Telangana. With over 15 years of experience, he leads SCW to empower local fighters with real fight platforms and professional training opportunities.  </p>
+A visionary martial artist dedicated to developing Kickboxing, Grappling and MMA in Telangana. With over 15 years of experience, he leads SCW to empower local fighters with real fight platforms and professional training opportunities.
+            </p>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-black bg-opacity-60 py-8 text-center text-gray-400 text-sm">
@@ -236,11 +395,7 @@ A visionary martial artist dedicated to developing Kickboxing, Grappling and MMA
     function toggleInstructorCard() {
       const card = document.getElementById("instructorCard");
       const expanded = card.classList.toggle("expanded");
-      if (expanded) {
-        expandSound.play();
-      }
     }
-
   </script>
 </body>
 </html>
