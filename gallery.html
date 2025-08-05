@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | Shoorveer Academy</title>
   
+  <link rel="icon" href="images/favicon.ico" type="image/ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
   <style>
     @keyframes fade-in {
       from { opacity: 0; transform: translateY(20px); }
@@ -21,159 +23,180 @@
       font-family: 'Orbitron', sans-serif;
       background-color: #0a0a0a;
       color: white;
+      padding-top: 68px; /* Add padding to account for fixed navbar */
     }
-    h1, h2, h3 {
+    h1, h2 {
       font-family: 'Bebas Neue', cursive;
     }
-    .fighter-card {
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .fighter-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-    .fighter-img {
+
+    /* Fixed image size */
+    .gallery-img {
       width: 100%;
-      max-width: 240px;
+      height: 220px;
+      object-fit: cover;
       border-radius: 0.75rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 0 12px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    .event-section {
+      margin-bottom: 4rem;
     }
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <section class="h-72 flex items-center justify-center text-center relative mt-16" style="background: url('images/gallery-hero.jpg') center/cover no-repeat;">
-    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-    <h1 class="relative z-10 text-5xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]">OUR GALLERY</h1>
-  </section>
 
-  <!-- Fighter Details Section -->
-  <section class="py-16 px-6 max-w-6xl mx-auto space-y-12 animate-fade-in">
-    <h2 class="text-4xl text-center text-red-400 mb-10">Meet Our Fighters</h2>
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+  <!-- Shoorveer Logo Image -->
+  <div class="px-3 py-1 rounded">
+    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
+  </div>
+  
+  <!-- Desktop Navigation -->
+  <div class="space-x-6 hidden md:flex">
+    <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
+    <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
+    <a href="schedule.html" class="text-white hover:text-red-400 text-sm">SCHEDULE</a>
+    <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
+    <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
+  </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+  <!-- Mobile Menu Button and Join Button Container -->
+  <div class="flex items-center space-x-4">
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
+    
+    <!-- Join Button -->
+    <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
+  </div>
+</nav>
 
-      <div class="fighter-card">
-        <img src="images/fighter01.jpeg" alt="" class="fighter-img">
-        <h3 class="text-2xl text-yellow-400 mb-2"> Laddu 🦾</h3>
-        <p class="text-sm text-gray-300 italic mb-2">Close Combat Specialist</p>
-        <p><strong>Specialty:</strong> Kickboxing, Power Strikes, Boxing</p>
-        <ul class="list-disc list-inside text-sm mt-2">
-          <li>5x Smashing Bones Award</li>
-          <li>2x International Combat Golden Medalist</li>
-          <li>Black Belt in Brutality – Level IV</li>
-          <li>Record: 21 Wins – 19 by KO | 0 Losses</li>
-          <li>3x UFC Champion</li>
-          <li>15+ year of expriences in boxing</li>
-        </ul>
-        <p class="mt-2 text-xs text-gray-400">Once broke a punching bag chain with single punch. He's a legend.</p>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 grid grid-cols-2 gap-3 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
+  <a href="about.html" class="text-white hover:text-red-400 text-base tracking-wide">ABOUT</a>
+  <a href="programs.html" class="text-white hover:text-red-400 text-base tracking-wide">PROGRAMS</a>
+  <a href="schedule.html" class="text-white hover:text-red-400 text-base tracking-wide">SCHEDULE</a>
+  <a href="gallery.html" class="text-white hover:text-red-400 text-base tracking-wide">GALLERY</a>
+  <a href="contact.html" class="text-white hover:text-red-400 text-base tracking-wide col-span-2">CONTACT</a>
+</div>
+
+<!-- Header - Placed right after navbar -->
+<header class="bg-black bg-opacity-80 py-12 text-center shadow-lg mt-16">
+    <h1 class="text-6xl md:text-8xl font-extrabold tracking-wider animate-fade-in uppercase 
+              bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400
+              drop-shadow-md [text-shadow:_0_0_8px_rgba(255,165,0,0.8),_0_0_15px_rgba(255,100,0,0.6)]
+              border-4 border-yellow-200 border-opacity-50 p-2">
+        Shoorveer Academy Gallery
+    </h1>
+</header>
+
+<!-- Main Gallery Content -->
+<main class="px-6 md:px-16 py-10">
+    <!-- MMA National in Hyderabad -->
+    <section class="event-section">
+      <h2 class="text-3xl text-center mb-6 text-yellow-400">MMA National in Hyderabad</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <a href="images/mma1.jpg" data-lightbox="mma-hyd"><img src="images/mma1.jpeg" class="gallery-img"></a>
+        <a href="images/mma2.jpg" data-lightbox="mma-hyd"><img src="images/mma2.jpeg" class="gallery-img"></a>
+        <a href="images/mma3.jpg" data-lightbox="mma-hyd"><img src="images/mma3.jpeg" class="gallery-img"></a>
+        <a href="images/mma4.jpg" data-lightbox="mma-hyd"><img src="images/mma4.jpeg" class="gallery-img"></a>
+        <a href="images/mma5.jpg" data-lightbox="mma-hyd"><img src="images/mma5.jpeg" class="gallery-img"></a>
+        <a href="images/mma6.jpg" data-lightbox="mma-hyd"><img src="images/mma6.jpeg" class="gallery-img"></a>
+        <a href="images/mma7.jpg" data-lightbox="mma-hyd"><img src="images/mma7.jpeg" class="gallery-img"></a>
       </div>
+    </section>
 
-      <div class="fighter-card">
-        <img src="images/fighter1.png" alt="" class="fighter-img">
-        <h3 class="text-2xl text-yellow-400 mb-2">abcdrf 💥</h3>
-        <p class="text-sm text-gray-300 italic mb-2">Close Combat Specialist</p>
-        <p><strong>Specialty:</strong> Kickboxing, Elbow Strikes</p>
-        <ul class="list-disc list-inside text-sm mt-2">
-          <li>Knockout King Award</li>
-          <li>Inter-City Combat Silver Medalist</li>
-        </ul>
-        <p class="mt-2 text-xs text-gray-400">Once broke a punching bag chain with an elbow. Pure power.</p>
+    <!-- Grappling Federation of India (GFI) National in Ujjain -->
+    <section class="event-section">
+      <h2 class="text-3xl text-center mb-6 text-green-400">Grappling Federation of India (GFI) National in Ujjain</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <a href="images/gfi1.jpg" data-lightbox="gfi"><img src="images/gfi1.jpeg" class="gallery-img"></a>
+        <a href="images/gfi2.jpg" data-lightbox="gfi"><img src="images/gfi2.jpeg" class="gallery-img"></a>
+        <a href="images/gfi3.jpg" data-lightbox="gfi"><img src="images/gfi3.jpeg" class="gallery-img"></a>
+        <a href="images/gfi4.jpg" data-lightbox="gfi"><img src="images/gfi4.jpeg" class="gallery-img"></a>
+        
       </div>
+    </section>
 
-
-      <div class="fighter-card">
-        <img src="images/fighter2.png" alt="" class="fighter-img">
-        <h3 class="text-2xl text-yellow-400 mb-2">abcdef 🛡</h3>
-        <p class="text-sm text-gray-300 italic mb-2">National Heavyweight Powerhouse</p>
-        <p><strong>Specialty:</strong> Boxing, Power Striking, Endurance</p>
-        <ul class="list-disc list-inside text-sm mt-2">
-          <li>2x National Heavyweight Champion</li>
-          <li>Golden Gloves Finalist</li>
-          <li>Iron Warrior & Best Chin Awards</li>
-        </ul>
-        <p class="mt-2 text-xs text-gray-400">Takes hits like steel. Inspires the gym with his intensity.</p>
+    <!-- Grappling championship -->
+    <section class="event-section">
+      <h2 class="text-3xl text-center mb-6 text-red-400">Telangana state Grappling Championship</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <a href="images/han1.jpg" data-lightbox="han"><img src="images/gc1.jpeg" class="gallery-img"></a>
+        <a href="images/han2.jpg" data-lightbox="han"><img src="images/gc2.jpeg" class="gallery-img"></a>
+        <a href="images/han3.jpg" data-lightbox="han"><img src="images/gc3.jpeg" class="gallery-img"></a>
+        <a href="images/han4.jpg" data-lightbox="han"><img src="images/gc4.jpeg" class="gallery-img"></a>
+        <a href="images/han3.jpg" data-lightbox="han"><img src="images/gc5.jpeg" class="gallery-img"></a>
+        <a href="images/han4.jpg" data-lightbox="han"><img src="images/gc6.jpeg" class="gallery-img"></a>
+  
       </div>
+    </section>
 
-       <div class="fighter-card">
-        <img src="images/fighter3.png" alt="" class="fighter-img">
-        <h3 class="text-2xl text-yellow-400 mb-2"> abcdef 🦾</h3>
-        <p class="text-sm text-gray-300 italic mb-2">Master of martial arts from a young age.</p>
-        <p><strong>Specialty:</strong> kung fu, Karate  </p>
-        <ul class="list-disc list-inside text-sm mt-2">
-          <li>3x King of Iron Fist Champion</li>
-          <li>1x Asian MMA Title Holder</li>
-          <li>Black Belt in Karate</li>
-        </ul>
-        <p class="mt-2 text-xs text-gray-400">Known for his belly knockout win – a moment of legend.</p>
+    <!-- Hanmakunda State Kickboxing Championship -->
+    <section class="event-section">
+      <h2 class="text-3xl text-center mb-6 text-red-400">Hanmakunda State Kickboxing Championship</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <a href="images/han1.jpg" data-lightbox="han"><img src="images/han1.jpeg" class="gallery-img"></a>
+        <a href="images/han2.jpg" data-lightbox="han"><img src="images/han2.jpeg" class="gallery-img"></a>
+        <a href="images/han3.jpg" data-lightbox="han"><img src="images/han3.jpeg" class="gallery-img"></a>
+        <a href="images/han4.jpg" data-lightbox="han"><img src="images/han4.jpeg" class="gallery-img"></a>
+        
+  
       </div>
+    </section>
 
-      <div class="fighter-card">
-        <img src="images/fighter4.jpg" alt="" class="fighter-img">
-        <h3 class="text-2xl text-yellow-400 mb-2">abcdef🥇</h3>
-        <p class="text-sm text-gray-300 italic mb-2">Head Trainer – Legendary Status</p>
-        <p><strong>Specialty:</strong> Muay Thai, MMA, katana, kung fu, Karata </p>
-        <ul class="list-disc list-inside text-sm mt-2">
-          <li>3x World Muay Thai Champion</li>
-          <li>2x Asian MMA Title Holder</li>
-          <li>Black Belt in BJJ & Karate</li>
-        </ul>
-        <p class="mt-2 text-xs text-gray-400">Known for his spinning elbow knockout win – a moment of legend.</p>
+    <!-- Xtreme Fight Night at Mysore -->
+    <section class="event-section">
+      <h2 class="text-3xl text-center mb-6 text-purple-400">Xtreme Fight Night at Mysore</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <a href="images/mysore1.jpg" data-lightbox="mysore"><img src="images/mysore1.jpeg" class="gallery-img"></a>
+        <a href="images/mysore2.jpg" data-lightbox="mysore"><img src="images/mysore2.jpeg" class="gallery-img"></a>
+        <a href="images/mysore3.jpg" data-lightbox="mysore"><img src="images/mysore3.jpeg" class="gallery-img"></a>
+        <a href="images/mysore4.jpg" data-lightbox="mysore"><img src="images/mysore4.jpeg" class="gallery-img"></a>
+        <a href="images/mysore5.jpg" data-lightbox="mysore"><img src="images/mysore5.jpeg" class="gallery-img"></a>
+        <a href="images/mysore6.jpg" data-lightbox="mysore"><img src="images/mysore6.jpeg" class="gallery-img"></a>
+        
       </div>
+    </section>
 
-      <div class="fighter-card">
-        <img src="images/fighter5.png" alt="" class="fighter-img">
-        <h3 class="text-2xl text-yellow-400 mb-2">abcdef 🌀</h3>
-        <p class="text-sm text-gray-300 italic mb-2">Speed & Evasion Expert</p>
-        <p><strong>Specialty:</strong> Footwork, Evasion, Karate</p>
-        <ul class="list-disc list-inside text-sm mt-2">
-          <li>National Karate Champion</li>
-          <li>Best Technical Fighter</li>
-        </ul>
-        <p class="mt-2 text-xs text-gray-400">Untouched in last 10 sparring sessions. Precision master.</p>
+    <!-- 1st Kickboxing Title Belt Event in LB Stadium, Hyderabad -->
+    <section class="event-section">
+      <h2 class="text-3xl text-center mb-6 text-blue-400">1st Kickboxing Title Belt Event 2023 - LB Stadium, Hyderabad</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <a href="images/title1.jpg" data-lightbox="title"><img src="images/title1.jpeg" class="gallery-img"></a>
+        <a href="images/title2.jpg" data-lightbox="title"><img src="images/title2.jpeg" class="gallery-img"></a>
+        <a href="images/title3.jpg" data-lightbox="title"><img src="images/title3.jpeg" class="gallery-img"></a>
+        <a href="images/title4.jpg" data-lightbox="title"><img src="images/title4.jpeg" class="gallery-img"></a>
+        <a href="images/title5.jpg" data-lightbox="title"><img src="images/title5.jpeg" class="gallery-img"></a>
+        <a href="images/title6.jpg" data-lightbox="title"><img src="images/title6.jpeg" class="gallery-img"></a>
+       
       </div>
+    </section>
 
-    </div>
-  </section>
+  </main>
+
   <!-- Footer -->
   <footer class="bg-black bg-opacity-60 py-8 text-center text-gray-400 text-sm">
     <p>© 2025 Shoorveer Academy. All rights reserved.</p>
     <div class="mt-4 space-x-4">
-      <!-- Social Media Links -->
-<div class="flex justify-center space-x-4 mt-4">
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" 
-     target="_blank" 
-     class="hover:text-white text-pink-500 text-2xl">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/share/1AwkGwLFhK/" 
-     target="_blank" 
-     class="hover:text-white text-blue-500 text-2xl">
-    <i class="fab fa-facebook"></i>
-  </a>
-
-  <!-- YouTube -->
-  <a href="https://www.youtube.com/@pooma546" 
-     target="_blank" 
-     class="hover:text-white text-red-600 text-2xl">
-    <i class="fab fa-youtube"></i>
-  </a>
-</div>
-
-      
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" target="_blank" class="hover:text-white text-pink-500 text-2xl">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1AwkGwLFhK/" target="_blank" class="hover:text-white text-blue-500 text-2xl">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.youtube.com/@pooma546" target="_blank" class="hover:text-white text-red-600 text-2xl">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
     </div>
   </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
 </html>
