@@ -122,6 +122,44 @@
 
 </head>
 <body>
+
+  <!-- Navbar -->
+<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+  <!-- Shoorveer Logo Image -->
+  <div class="px-3 py-1 rounded">
+    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
+  </div>
+  
+  <!-- Desktop Navigation -->
+  <div class="space-x-6 hidden md:flex items-center">
+    <a href="index.html" class="text-white hover:text-red-400 text-sm nav-link">HOME</a>
+    <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
+    <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
+    <a href="schedule.html" class="text-white hover:text-red-400 text-sm">SCHEDULE</a>
+    <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
+    <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
+  </div>
+
+  <!-- Mobile Menu Button and Join Button Container -->
+  <div class="flex items-center space-x-4">
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
+    
+    <!-- Join Button -->
+    <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 grid grid-cols-2 gap-3 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
+  <a href="index.html" class="text-white hover:text-red-400 text-base tracking-wide nav-link">HOME</a>
+  <a href="about.html" class="text-white hover:text-red-400 text-base tracking-wide">ABOUT</a>
+  <a href="programs.html" class="text-white hover:text-red-400 text-base tracking-wide">PROGRAMS</a>
+  <a href="schedule.html" class="text-white hover:text-red-400 text-base tracking-wide">SCHEDULE</a>
+  <a href="gallery.html" class="text-white hover:text-red-400 text-base tracking-wide">GALLERY</a>
+  <a href="contact.html" class="text-white hover:text-red-400 text-base tracking-wide col-span-2">CONTACT</a>
+</div>
+
   <section class="py-20 px-4">
     <h2 class="text-center text-4xl font-bold mb-10 form-title">Join Now</h2>
     <div class="form-container">

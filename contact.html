@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Flight Club Boxing Academy</title>
+  <title>Contact | Shoorveer Academy</title>
 
   <link rel="icon" href="images/favicon.ico" type="image/ico">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       font-family: 'Orbitron', sans-serif;
@@ -54,96 +56,220 @@
       width: 100%;
       height: 300px;
     }
+     @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 1s ease-out
+    }
+    .event-section {
+      margin-bottom: 4rem;
+    }
+     .group:hover .group-hover\:block {
+  display: block;
+}
+<!-- Required for hover dropdown to work -->
+<style>
+  .group:hover .group-hover\:block {
+    display: block;
+  }
+</style>
+
+
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="flex justify-between items-center p-6 fixed w-full z-50 bg-black bg-opacity-50">
-    <div class="font-bold text-xl text-white px-4 py-2 rounded" style="background: linear-gradient(135deg, rgba(127,94,255,0.3), rgba(0,255,255,0.2)); border: 1px solid rgba(127,94,255,0.4); backdrop-filter: blur(12px); text-shadow: 0 0 12px #7f5eff;">Fight Club</div>
-    <div class="space-x-6 hidden md:flex">
-      <a href="index.html" class="text-white hover:text-red-400 nav-link">HOME</a>
-      <a href="about.html" class="text-white hover:text-red-400 nav-link">ABOUT</a>
-      <a href="programs.html" class="text-white hover:text-red-400 nav-link">PROGRAMS</a>
-      <a href="schedule.html" class="text-white hover:text-red-400 nav-link">SCHEDULE</a>
-      <a href="gallery.html" class="text-white hover:text-red-400 nav-link">GALLERY</a>
-      <a href="contact.html" class="text-white hover:text-red-400 nav-link">CONTACT</a>
-    </div>
-    <div class="md:hidden">
-      <button onclick="toggleMobileMenu()" class="text-white focus:outline-none">☰</button>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="md:hidden hidden bg-black bg-opacity-80 p-4 space-y-4 text-center">
-    <a href="index.html" class="block text-white hover:text-red-400 nav-link">HOME</a>
-    <a href="about.html" class="block text-white hover:text-red-400 nav-link">ABOUT</a>
-    <a href="programs.html" class="block text-white hover:text-red-400 nav-link">PROGRAMS</a>
-    <a href="schedule.html" class="block text-white hover:text-red-400 nav-link">SCHEDULE</a>
-    <a href="gallery.html" class="block text-white hover:text-red-400 nav-link">GALLERY</a>
-    <a href="contact.html" class="block text-white hover:text-red-400 nav-link">CONTACT</a>
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+  <!-- Logo -->
+  <div class="px-3 py-1 rounded">
+    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
   </div>
-  <!-- Hero Section -->
-  <section class="h-72 flex items-center justify-center text-center relative" style="background: url('images/contact-hero.jpg') center/cover no-repeat;">
-    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-    <h1 class="relative z-10 text-5xl font-bold text-white" data-aos="fade-down">CONTACT US</h1>
-  </section>
 
-  <!-- Contact Form -->
-  <section class="py-16 px-6 max-w-5xl mx-auto" data-aos="fade-up">
-    <h2 class="text-3xl text-blue-400 text-center mb-8">WE'D LOVE TO HEAR FROM YOU</h2>
-    <div class="grid md:grid-cols-2 gap-10">
-      <div class="form-container">
-        <form>
-          <div class="mb-4">
-            <label class="block mb-1 text-sm">Full Name</label>
-            <input type="text" placeholder="Your name" class="w-full">
-          </div>
-          <div class="mb-4">
-            <label class="block mb-1 text-sm">Email</label>
-            <input type="email" placeholder="you@example.com" class="w-full">
-          </div>
-          <div class="mb-4">
-            <label class="block mb-1 text-sm">Message</label>
-            <textarea rows="5" placeholder="Type your message here..." class="w-full"></textarea>
-          </div>
-          <button type="submit" class="glow-button">SEND MESSAGE</button>
-        </form>
-      </div>
-      <div class="space-y-6">
-        <div>
-          <h3 class="text-xl text-red-400 mb-2">Visit Us</h3>
-          <p>Street # 07, Malik Tahir Town, Sohan, Islamabad, Pakistan.</p>
-        </div>
-        <div>
-          <h3 class="text-xl text-red-400 mb-2">Call</h3>
-          <p>+92 3198358671</p>
-        </div>
-        <div>
-          <h3 class="text-xl text-red-400 mb-2">Email</h3>
-<p><a href="mailto:fightclubboxingacademy@gmail.com" class="text-blue-400 hover:underline">fightclubboxingacademy@gmail.com</a></p>
-        </div>
-        <div>
-          <h3 class="text-xl text-red-400 mb-2">Social</h3>
-<p>
-  <a href="https://www.facebook.com" target="_blank" class="text-blue-400 hover:underline">Facebook</a> |
-  <a href="https://www.instagram.com" target="https://www.instagram.com/@ufc" class="text-pink-400 hover:underline">Instagram</a> |
-  <a href="https://www.youtube.com" target="https://www.youtube.com/@ufc" class="text-red-400 hover:underline">YouTube</a>
-</p>
-        </div>
+  <!-- Desktop Navigation -->
+  <div class="space-x-6 hidden md:flex items-center">
+    <a href="index.html" class="text-white hover:text-red-400 text-sm nav-link">HOME</a>
+    <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
+    <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
+
+    <!-- PAST-RESULTS Dropdown -->
+    <div class="relative group">
+      <button class="text-white hover:text-red-400 text-sm flex items-center gap-1">
+         <a href="past-results.html" class="text-white hover:text-red-400 text-sm flex items-center gap-1 focus:outline-none" id="pastResultsToggle">
+    PAST-RESULTS ▼
+  </a>
+      </button>
+      <div class="absolute hidden group-hover:block bg-black bg-opacity-90 text-white mt-2 rounded shadow-lg w-48 z-50">
+        <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Upcoming Events</a>
+        <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter ID</a>
+        <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
       </div>
     </div>
-  </section>
+
+    <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
+    <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
+  </div>
+
+  <!-- Mobile Menu Button + Join Button -->
+  <div class="flex items-center space-x-4">
+    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
+    <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
+  <a href="index.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">HOME</a>
+  <a href="about.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">ABOUT</a>
+  <a href="programs.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">PROGRAMS</a>
+
+  <!-- Expandable PAST-RESULTS Section -->
+  <div class="text-white text-base tracking-wide mb-2">
+    <button id="mobilePastToggle" class="w-full text-left flex justify-between items-center hover:text-red-400">
+      PAST-RESULTS
+      <span id="chevronIcon">▼</span>
+    </button>
+    <div id="mobilePastDropdown" class="hidden mt-2 ml-4 space-y-2">
+      <a href="upcoming-events.html" class="block hover:text-red-400">Upcoming Events</a>
+      <a href="fighter-id.html" class="block hover:text-red-400">Fighter ID</a>
+      <a href="results.html" class="block hover:text-red-400">Results</a>
+    </div>
+  </div>
+
+  <a href="gallery.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">GALLERY</a>
+  <a href="contact.html" class="block text-white hover:text-red-400 text-base tracking-wide">CONTACT</a>
+</div>
+
+  <!-- Heading -->
+  <header class="bg-black bg-opacity-80 py-12 text-center shadow-lg mt-16">
+    <h1 class="text-6xl md:text-8xl font-extrabold tracking-wider animate-fade-in uppercase 
+              bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400
+              drop-shadow-md [text-shadow:_0_0_8px_rgba(255,165,0,0.8),_0_0_15px_rgba(255,100,0,0.6)]
+              border-4 border-yellow-200 border-opacity-50 p-2">
+        Contact Us
+    </h1>
+</header>
+
+
+
+ <section class="bg-gradient-to-b from-black via-gray-900 to-black py-16 px-6 md:px-16 relative">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center md:text-left">
+
+    <!-- Visit Us -->
+    <div class="relative bg-gray-800 bg-opacity-90 p-6 text-center rounded-xl shadow-xl border-2 border-red-600 
+                transition transform hover:scale-105 hover:shadow-red-600/50 hover:border-red-500 group">
+      <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-600 px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+        LOCATION
+      </div>
+      <h3 class="text-2xl text-red-400 mb-3 flex items-center justify-center group-hover:text-yellow-400 transition">
+        <i class="fas fa-map-marker-alt mr-2"></i> Visit Us
+      </h3>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Shoorveer Academy,<br>
+        Bharat Commiti Hall, Gyan Bagh Colony,<br>
+        Mandir Road, Hyderabad, Telangana,<br>
+        Pin: 500012
+      </p>
+    </div>
+
+    <!-- Call -->
+    <div class="relative bg-gray-800 bg-opacity-90 p-6 text-center rounded-xl shadow-xl border-2 border-red-600 
+                transition transform hover:scale-105 hover:shadow-red-600/50 hover:border-red-500 group">
+      <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-600 px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+        CALL US
+      </div>
+      <h3 class="text-2xl text-red-400 mb-3 flex items-center justify-center group-hover:text-yellow-400 transition">
+        <i class="fas fa-phone-alt mr-2"></i> Call
+      </h3>
+      <p class="text-gray-300 text-sm">
+        <a href="tel:+919397008230" class="hover:text-red-400 transition">9397008230</a><br>
+        <a href="tel:+917680910546" class="hover:text-red-400 transition">7680910546</a>
+      </p>
+    </div>
+
+    <!-- Email -->
+    <div class="relative bg-gray-800 bg-opacity-90 p-6 text-center rounded-xl shadow-xl border-2 border-red-600 
+                transition transform hover:scale-105 hover:shadow-red-600/50 hover:border-red-500 group">
+      <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-600 px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+        EMAIL
+      </div>
+      <h3 class="text-2xl text-red-400 mb-3 flex items-center justify-center group-hover:text-yellow-400 transition">
+        <i class="fas fa-envelope mr-2"></i> Email
+      </h3>
+      <p class="text-gray-300 text-sm">
+        <a href="mailto:manish546.mm@gmail.com" class="text-blue-400 hover:underline">manish546.mm@gmail.com</a>
+      </p>
+    </div>
+
+    <!-- Social -->
+    <div class="relative bg-gray-800 bg-opacity-90 p-6 text-center rounded-xl shadow-xl border-2 border-red-600 
+                transition transform hover:scale-105 hover:shadow-red-600/50 hover:border-red-500 group">
+      <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-600 px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+        FOLLOW US
+      </div>
+      <h3 class="text-2xl text-red-400 mb-3 flex items-center justify-center group-hover:text-yellow-400 transition">
+        <i class="fas fa-share-alt mr-2"></i> Social
+      </h3>
+      <div class="flex justify-center space-x-4 text-2xl mt-2">
+        <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" target="_blank" class="text-pink-500 hover:text-pink-400 transition">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1AwkGwLFhK/" target="_blank" class="text-blue-500 hover:text-blue-400 transition">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.youtube.com/@pooma546" target="_blank" class="text-red-600 hover:text-red-500 transition">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+
+
 
   <!-- Map Embed -->
   <section class="map-section">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13253.874356006113!2d73.10231!3d33.65998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDM5JzM1LjkiTiA3M8KwMDYnMDguMyJF!5e0!3m2!1sen!2s!4v1718376400000!5m2!1sen!2s"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3445.7474022947936!2d78.4640513!3d17.3793732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb971262f490d5%3A0x63fc98b1382c2534!2sShoorveer%20Academy!5e1!3m2!1sen!2sin!4v1754474972820!5m2!1sen!2sin"
       width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </section>
   
+ <!-- Footer -->
   <footer class="bg-black bg-opacity-60 py-8 text-center text-gray-400 text-sm">
-    <p>© 2025 Flight Club Boxing Academy. All rights reserved.</p>
+    <p>© 2025 Shoorveer Academy. All rights reserved.</p>
+    <div class="mt-4 space-x-4">
+     <!-- Social Media Links -->
+<div class="flex justify-center space-x-4 mt-4">
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" 
+     target="_blank" 
+     class="hover:text-white text-pink-500 text-2xl">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/share/1AwkGwLFhK/" 
+     target="_blank" 
+     class="hover:text-white text-blue-500 text-2xl">
+    <i class="fab fa-facebook"></i>
+  </a>
+
+  <!-- YouTube -->
+  <a href="https://www.youtube.com/@pooma546" 
+     target="_blank" 
+     class="hover:text-white text-red-600 text-2xl">
+    <i class="fab fa-youtube"></i>
+  </a>
+</div>
+
+    </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -153,6 +279,23 @@
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('hidden');
   }
+</script>
+<script>
+  // Toggle mobile menu
+  document.getElementById('menuToggle').addEventListener('click', function () {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+  });
+
+  // Toggle PAST-RESULTS dropdown on mobile
+  const mobilePastToggle = document.getElementById('mobilePastToggle');
+  const mobilePastDropdown = document.getElementById('mobilePastDropdown');
+  const chevronIcon = document.getElementById('chevronIcon');
+
+  mobilePastToggle.addEventListener('click', () => {
+    mobilePastDropdown.classList.toggle('hidden');
+    chevronIcon.textContent = mobilePastDropdown.classList.contains('hidden') ? '▼' : '▲';
+  });
 </script>
 </body>
 </html>

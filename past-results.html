@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule | Shoorveer Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    html {
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+    .schedule-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .schedule-table th, .schedule-table td {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.75rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .schedule-table th {
+      background-color: rgba(127, 94, 255, 0.2);
+    }
+    .schedule-table td {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+    .tick {
+      color: #00ff99;
+      font-size: 1.5rem;
+      font-weight: bold;
+      animation: pulseTick 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes pulseTick {
+      0% { transform: scale(1); text-shadow: 0 0 5px #00ff99; }
+      100% { transform: scale(1.2); text-shadow: 0 0 12px #00ff99, 0 0 20px #00ff99; }
+    }
+    .rest-day {
+      background-color: rgba(255, 255, 255, 0.05);
+      font-style: italic;
+      color: #facc15;
+      animation: fadeRest 3s ease-in-out infinite alternate;
+    }
+    @keyframes fadeRest {
+      0% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #555, transparent);
+      margin: 3rem 0;
+    }
+    .event-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .event-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 18px rgba(127, 94, 255, 0.4);
+    }
+    .coming-soon {
+      color: #f87171;
+      animation: glowSoon 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes glowSoon {
+      0% { text-shadow: 0 0 4px #f87171; }
+      100% { text-shadow: 0 0 10px #f87171, 0 0 20px #f87171; }
+    }
+    .group:hover .group-hover\:block {
+  display: block;
+}
+<!-- Required for hover dropdown to work -->
+<style>
+  .group:hover .group-hover\:block {
+    display: block;
+  }
+</style>
+
+
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+  <!-- Logo -->
+  <div class="px-3 py-1 rounded">
+    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
+  </div>
+
+  <!-- Desktop Navigation -->
+  <div class="space-x-6 hidden md:flex items-center">
+    <a href="index.html" class="text-white hover:text-red-400 text-sm nav-link">HOME</a>
+    <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
+    <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
+
+    <!-- PAST-RESULTS Dropdown -->
+    <div class="relative group">
+      <button class="text-white hover:text-red-400 text-sm flex items-center gap-1">
+         <a href="past-results.html" class="text-white hover:text-red-400 text-sm flex items-center gap-1 focus:outline-none" id="pastResultsToggle">
+    PAST-RESULTS ▼
+  </a>
+      </button>
+      <div class="absolute hidden group-hover:block bg-black bg-opacity-90 text-white mt-2 rounded shadow-lg w-48 z-50">
+        <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Upcoming Events</a>
+        <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter ID</a>
+        <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
+      </div>
+    </div>
+
+    <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
+    <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
+  </div>
+
+  <!-- Mobile Menu Button + Join Button -->
+  <div class="flex items-center space-x-4">
+    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
+    <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
+  <a href="index.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">HOME</a>
+  <a href="about.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">ABOUT</a>
+  <a href="programs.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">PROGRAMS</a>
+
+  <!-- Expandable PAST-RESULTS Section -->
+  <div class="text-white text-base tracking-wide mb-2">
+    <button id="mobilePastToggle" class="w-full text-left flex justify-between items-center hover:text-red-400">
+      PAST-RESULTS
+      <span id="chevronIcon">▼</span>
+    </button>
+    <div id="mobilePastDropdown" class="hidden mt-2 ml-4 space-y-2">
+      <a href="upcoming-events.html" class="block hover:text-red-400">Upcoming Events</a>
+      <a href="fighter-id.html" class="block hover:text-red-400">Fighter ID</a>
+      <a href="results.html" class="block hover:text-red-400">Results</a>
+    </div>
+  </div>
+
+  <a href="gallery.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">GALLERY</a>
+  <a href="contact.html" class="block text-white hover:text-red-400 text-base tracking-wide">CONTACT</a>
+</div>
+
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</head>
+<body>
+  
+
+  <footer class="bg-black bg-opacity-60 py-8 text-center text-gray-400 text-sm">
+    <p>© 2025 Shoorveer Academy. All rights reserved.</p>
+
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+  // Toggle mobile menu
+  document.getElementById('menuToggle').addEventListener('click', function () {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+  });
+
+  // Toggle PAST-RESULTS dropdown on mobile
+  const mobilePastToggle = document.getElementById('mobilePastToggle');
+  const mobilePastDropdown = document.getElementById('mobilePastDropdown');
+  const chevronIcon = document.getElementById('chevronIcon');
+
+  mobilePastToggle.addEventListener('click', () => {
+    mobilePastDropdown.classList.toggle('hidden');
+    chevronIcon.textContent = mobilePastDropdown.classList.contains('hidden') ? '▼' : '▲';
+  });
+</script>
+</body>
+</html>
