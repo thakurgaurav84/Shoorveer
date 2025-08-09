@@ -1,221 +1,297 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join Now - Shoorveer Academy</title>
+  <title>Programs | Shoorveer Academy</title>
+
+  <link rel="icon" href="images/favicon.ico" type="image/ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
   <style>
-  body {
-    background: url('images/sun.jpeg') center/cover no-repeat fixed;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+    }
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+    .program-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 18px rgba(127, 94, 255, 0.3);
+    }
+    .program-title {
+      color: #7f5eff;
+      text-shadow: 0 0 5px #7f5eff, 0 0 15px #7f5eff;
+    }
+    .form-section {
+    background: url('images/shoorveerlogo.jpeg') no-repeat center center/cover;
     position: relative;
-    overflow-x: hidden;
+}
+
+    
+     @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 1s ease-out
+    }
+    /* Make entered text black and clearly visible */
+input, select, textarea {
+  color: black !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Placeholder text slightly gray for readability */
+::placeholder {
+  color: #555 !important;
+}
+
+    .event-section {
+      margin-bottom: 4rem;
+    } 
+    .group:hover .group-hover\:block {
+  display: block;
+}
+<!-- Required for hover dropdown to work -->
+<style>
+  .group:hover .group-hover\:block {
+    display: block;
   }
 
-  /* Dark overlay for text readability */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: -1;
-  }
-
-  /* Glowing animation ONLY on background image */
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('images/sun.jpeg') center/cover no-repeat fixed;
-    filter: brightness(1);
-    animation: sunGlow 5s infinite ease-in-out;
-    z-index: -2;
-  }
-
-  @keyframes sunGlow {
-    0% { filter: brightness(1) blur(0px); }
-    50% { filter: brightness(1.2) blur(3px); }
-    100% { filter: brightness(1) blur(0px); }
-  }
-
-  .form-container {
-    max-width: 600px;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(127, 94, 255, 0.5);
-    backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 1;
-  }
-
-  .form-title {
-    text-shadow: 0 0 10px #7f5eff, 0 0 20px #7f5eff;
-  }
-
-  label {
-    font-weight: bold;
-  }
-
-  input, select {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid #7f5eff;
-    color: white;
-  }
-
-  input option, select option {
-    background-color: #0a0a0a;
-    color: white;
-  }
-
-  input:focus, select:focus {
-    outline: none;
-    border-color: #ff3c3c;
-    box-shadow: 0 0 5px #ff3c3c;
-  }
-
-  button {
-    background-color: rgba(255, 0, 0, 0.1);
-    border: 2px solid #ff3c3c;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    color: white;
-  }
-
-  button:hover {
-    background-color: rgba(255, 0, 0, 0.2);
-  }
-
-  .error {
-    color: #ff3c3c;
-    font-size: 0.875rem;
-    display: none;
-  }
-
-  .back-button {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid #7f5eff;
-    padding: 0.5rem 1.25rem;
-    border-radius: 0.5rem;
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-
-  .back-button:hover {
-    background-color: rgba(127, 94, 255, 0.2);
-    border-color: #ff3c3c;
-    color: #ff3c3c;
-  }
 </style>
 
+
+  </style>
 </head>
 <body>
-
-  <!-- Navbar -->
+<!-- Navbar -->
 <nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
-  <!-- Shoorveer Logo Image -->
+  <!-- Logo -->
   <div class="px-3 py-1 rounded">
     <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
   </div>
-  
+
   <!-- Desktop Navigation -->
   <div class="space-x-6 hidden md:flex items-center">
     <a href="index.html" class="text-white hover:text-red-400 text-sm nav-link">HOME</a>
     <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
     <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
-    <a href="schedule.html" class="text-white hover:text-red-400 text-sm">SCHEDULE</a>
+
+    <!-- PAST-RESULTS Dropdown -->
+    <div class="relative group">
+      <button class="text-white hover:text-red-400 text-sm flex items-center gap-1">
+         <a href="past-results.html" class="text-white hover:text-red-400 text-sm flex items-center gap-1 focus:outline-none" id="pastResultsToggle">
+    PAST-RESULTS ▼
+  </a>
+      </button>
+      <div class="absolute hidden group-hover:block bg-black bg-opacity-90 text-white mt-2 rounded shadow-lg w-48 z-50">
+        <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Upcoming Events</a>
+        <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter ID</a>
+        <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
+      </div>
+    </div>
+
     <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
     <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
   </div>
 
-  <!-- Mobile Menu Button and Join Button Container -->
+  <!-- Mobile Menu Button + Join Button -->
   <div class="flex items-center space-x-4">
-    <!-- Mobile Menu Button -->
     <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
-    
-    <!-- Join Button -->
     <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
   </div>
 </nav>
 
 <!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 grid grid-cols-2 gap-3 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
-  <a href="index.html" class="text-white hover:text-red-400 text-base tracking-wide nav-link">HOME</a>
-  <a href="about.html" class="text-white hover:text-red-400 text-base tracking-wide">ABOUT</a>
-  <a href="programs.html" class="text-white hover:text-red-400 text-base tracking-wide">PROGRAMS</a>
-  <a href="schedule.html" class="text-white hover:text-red-400 text-base tracking-wide">SCHEDULE</a>
-  <a href="gallery.html" class="text-white hover:text-red-400 text-base tracking-wide">GALLERY</a>
-  <a href="contact.html" class="text-white hover:text-red-400 text-base tracking-wide col-span-2">CONTACT</a>
+<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
+  <a href="index.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">HOME</a>
+  <a href="about.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">ABOUT</a>
+  <a href="programs.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">PROGRAMS</a>
+
+  <!-- Expandable PAST-RESULTS Section -->
+  <div class="text-white text-base tracking-wide mb-2">
+    <button id="mobilePastToggle" class="w-full text-left flex justify-between items-center hover:text-red-400">
+      PAST-RESULTS
+      <span id="chevronIcon">▼</span>
+    </button>
+    <div id="mobilePastDropdown" class="hidden mt-2 ml-4 space-y-2">
+      <a href="upcoming-events.html" class="block hover:text-red-400">Upcoming Events</a>
+      <a href="fighter-id.html" class="block hover:text-red-400">Fighter ID</a>
+      <a href="results.html" class="block hover:text-red-400">Results</a>
+    </div>
+  </div>
+
+  <a href="gallery.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">GALLERY</a>
+  <a href="contact.html" class="block text-white hover:text-red-400 text-base tracking-wide">CONTACT</a>
 </div>
 
-  <section class="py-20 px-4">
-    <h2 class="text-center text-4xl font-bold mb-10 form-title">Join Now</h2>
-    <div class="form-container">
-      <form id="joinForm" action="https://formsubmit.co/akbarali14k@gmail.com" method="POST" class="space-y-6">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="box">
 
-        <div>
-          <label for="fullName" class="block mb-1">Full Name</label>
-          <input type="text" id="fullName" name="fullName" required class="w-full p-2 rounded" />
-        </div>
-        <div>
-          <label for="fatherName" class="block mb-1">Father's Full Name</label>
-          <input type="text" id="fatherName" name="fatherName" required class="w-full p-2 rounded" />
-        </div>
-        <div>
-          <label for="gender" class="block mb-1">Gender</label>
-          <select id="gender" name="gender" required class="w-full p-2 rounded text-white">
-            <option value="">-- Select Gender --</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-        <div>
-          <label for="age" class="block mb-1">Applicant Age</label>
-          <input type="number" id="age" name="age" min="7" max="60" required class="w-full p-2 rounded" />
-        </div>
-        <div>
-          <label for="contact" class="block mb-1">Contact Number</label>
-          <input type="tel" id="contact" name="contact" required class="w-full p-2 rounded" placeholder="e.g. 03001234567" />
-          <span id="contact-error" class="error">Please enter a valid contact number (10–15 digits)</span>
-        </div>
-        <div>
-          <label for="program" class="block mb-1">Select Program</label>
-          <select id="program" name="program" required class="w-full p-2 rounded text-white">
-            <option value="">-- Choose a Program --</option>
-            <option value="kickboxing">Kickboxing</option>
-            <option value="MMA">MMA</option>
-            <option value="Grappling">Grappling</option>
-            <option value="personal-training">Personal Training</option>
-            <option value="weight-training">Weight Training</option>
-            <option value="fitness">Fitness Training</option>
-            
-            
-          </select>
-        </div>
-        
-        <div class="text-center">
-          <button type="submit">Submit</button>
-        </div>
-        <div class="text-center">
-          <a href="index.html" class="back-button">&larr; Back to Home</a>
-        </div>
-      </form>
+<section 
+  class="pt-28 pb-20 px-4 bg-cover bg-center relative min-h-screen flex flex-col items-center justify-center" 
+  style="background-image: url('images/formback.jpeg');">
+  
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60"></div>
+
+  <div class="relative z-10 text-white text-center mb-8">
+    <!-- Heading directly under navbar -->
+    <h2 class="text-5xl md:text-6xl font-extrabold text-red-500 tracking-wider drop-shadow-lg mb-4"
+        style="font-family: 'Bebas Neue', sans-serif; text-shadow: 0 0 20px red;">
+      JOIN THE FIGHT
+    </h2>
+    <p class="text-lg text-gray-300 font-light max-w-xl mx-auto">
+      Step into the ring with Shoorveer Academy — Train hard. Fight harder.
+    </p>
+  </div>
+    
+  <!-- Form Container -->
+  <div class="relative z-10 max-w-lg w-full mx-auto backdrop-blur-md bg-black/40 p-8 rounded-2xl shadow-[0_0_40px_rgba(255,0,0,0.5)] border border-red-500">
+    <form 
+      id="joinForm" 
+      action="https://formsubmit.co/akbarali14k@gmail.com" 
+      method="POST" 
+      class="space-y-6 text-left">
+      
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="box">
+
+      <!-- Full Name -->
+      <div>
+        <label for="fullName" class="block mb-2 font-semibold text-yellow-400 flex items-center gap-2">
+          <i class="fas fa-user"></i> Full Name
+        </label>
+        <input type="text" id="fullName" name="fullName" required
+  class="w-full p-3 rounded-lg border border-red-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-gray-500" />
+ </div>
+
+      <!-- Father's Name -->
+      <div>
+        <label for="fatherName" class="block mb-2 font-semibold text-yellow-400 flex items-center gap-2">
+          <i class="fas fa-user-friends"></i> Father's Full Name
+        </label>
+        <input type="text" id="fatherName" name="fatherName" required 
+          class="w-full p-3 rounded-lg bg-white/10 border border-red-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-gray-400" />
+      </div>
+
+      <!-- Gender -->
+      <div>
+        <label for="gender" class="block mb-2 font-semibold text-yellow-400 flex items-center gap-2">
+          <i class="fas fa-venus-mars"></i> Gender
+        </label>
+        <select id="gender" name="gender" required 
+          class="w-full p-3 rounded-lg bg-white/10 border border-red-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-black">
+          <option value="">-- Select Gender --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <!-- Age -->
+      <div>
+        <label for="age" class="block mb-2 font-semibold text-yellow-400 flex items-center gap-2">
+          <i class="fas fa-birthday-cake"></i> Applicant Age
+        </label>
+        <input type="number" id="age" name="age" min="7" max="60" required 
+          class="w-full p-3 rounded-lg bg-white/10 border border-red-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-gray-400" />
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <label for="contact" class="block mb-2 font-semibold text-yellow-400 flex items-center gap-2">
+          <i class="fas fa-phone-alt"></i> Contact Number
+        </label>
+        <input type="tel" id="contact" name="contact" required placeholder="e.g. 03001234567"
+          class="w-full p-3 rounded-lg bg-white/10 border border-red-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-gray-400" />
+      </div>
+
+      <!-- Program -->
+      <div>
+        <label for="program" class="block mb-2 font-semibold text-yellow-400 flex items-center gap-2">
+          <i class="fas fa-dumbbell"></i> Select Program
+        </label>
+        <select id="program" name="program" required 
+          class="w-full p-3 rounded-lg bg-white/10 border border-red-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-black">
+          <option value="">-- Choose a Program --</option>
+          <option value="kickboxing">Kickboxing</option>
+          <option value="MMA">MMA</option>
+          <option value="Grappling">Grappling</option>
+          <option value="personal-training">Personal Training</option>
+          <option value="weight-training">Weight Training</option>
+          <option value="fitness">Fitness Training</option>
+        </select>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button type="submit" 
+          class="px-10 py-3 bg-gradient-to-r from-red-600 to-yellow-400 text-black font-bold rounded-full shadow-lg transition transform hover:scale-105 hover:shadow-[0_0_30px_red]">
+          🥊 Step into the Ring
+        </button>
+      </div>
+
+      <!-- Back button -->
+      <div class="text-center mt-4">
+        <a href="index.html" 
+          class="text-yellow-300 hover:underline">&larr; Back to Home</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+ <!-- Footer -->
+  <footer class="bg-black bg-opacity-60 py-8 text-center text-gray-400 text-sm">
+    <p>© 2025 Shoorveer Academy. All rights reserved.</p>
+    <div class="mt-4 space-x-4">
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" target="_blank" class="hover:text-white text-pink-500 text-2xl">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1AwkGwLFhK/" target="_blank" class="hover:text-white text-blue-500 text-2xl">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.youtube.com/@pooma546" target="_blank" class="hover:text-white text-red-600 text-2xl">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
     </div>
-  </section>
-  <script src="js/join-form.js"></script>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+  }
+</script>
+<script>
+  // Toggle mobile menu
+  document.getElementById('menuToggle').addEventListener('click', function () {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+  });
+
+  // Toggle PAST-RESULTS dropdown on mobile
+  const mobilePastToggle = document.getElementById('mobilePastToggle');
+  const mobilePastDropdown = document.getElementById('mobilePastDropdown');
+  const chevronIcon = document.getElementById('chevronIcon');
+
+  mobilePastToggle.addEventListener('click', () => {
+    mobilePastDropdown.classList.toggle('hidden');
+    chevronIcon.textContent = mobilePastDropdown.classList.contains('hidden') ? '▼' : '▲';
+  });
+</script>
 </body>
 </html>
