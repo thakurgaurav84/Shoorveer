@@ -125,7 +125,7 @@
         font-size: 2.5rem;
         margin: 0;
     }
-    .nickname {
+    .id {
         color: #FFD700;
         font-size: 1.2rem;
         margin-bottom: 15px;
@@ -262,7 +262,60 @@
     font-size: 0.85rem;
   }
 }
+/* Navbar container */
+  .navbar {
+    background-color: #222;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
 
+  /* Logo */
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  /* Menu items */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+  .nav-links li {
+    cursor: pointer;
+  }
+
+  /* Hamburger icon */
+  .hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #222;
+      flex-direction: column;
+      width: 200px;
+      padding: 10px 0;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .hamburger {
+      display: block;
+    }
+  }
 
 </style>
 
@@ -296,7 +349,19 @@
 
     <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
     <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
-  </div>
+
+
+   <!-- Desktop Search Bar -->
+    <div class="flex items-center bg-gray-800 rounded overflow-hidden border border-red-500">
+      <input id="fighterSearch" type="text" placeholder="Search Fighter..."
+        class="px-3 py-1 bg-gray-800 text-white text-sm focus:outline-none w-32 md:w-48"
+        onkeypress="if(event.key === 'Enter'){ searchFighter(); }">
+      <button onclick="searchFighter()" 
+        class="px-3 py-1 bg-red-500 text-white text-sm hover:bg-red-600 focus:outline-none">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
 
   <!-- Mobile Menu Button -->
   <div class="flex items-center space-x-4">
@@ -326,8 +391,18 @@
 
   <a href="gallery.html" class="block text-white hover:text-red-400 text-base mb-2">GALLERY</a>
   <a href="contact.html" class="block text-white hover:text-red-400 text-base">CONTACT</a>
-</div>
 
+<!-- Mobile Search Bar -->
+  <div class="flex items-center bg-gray-800 rounded overflow-hidden border border-red-500 w-full mb-4">
+    <input id="fighterSearchMobile" type="text" placeholder="Search Fighter..."
+      class="px-3 py-2 bg-gray-800 text-white text-sm focus:outline-none flex-1"
+      onkeypress="if(event.key === 'Enter'){ searchFighterMobile(); }">
+    <button onclick="searchFighterMobile()" 
+      class="px-3 py-2 bg-red-500 text-white text-sm hover:bg-red-600 focus:outline-none">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</div>
 
  <!-- Heading -->
   <header class="bg-black bg-opacity-80 py-12 text-center shadow-lg mt-16">
@@ -352,7 +427,7 @@
     <!-- Fighter Details -->
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">SAGAR BHAGAT</h1>
-      <div class="nickname">ID-SCW-25-001</div>
+      <div class="id">ID:SCW-25-001</div>
       <div class="info flex flex-wrap gap-4 mt-2">
         <div><strong>Age:</strong> 19</div>
         <div><strong>Height:</strong> 5'6"</div>
@@ -424,7 +499,7 @@
     <!-- Fighter Details -->
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">GADDAMIDI VIVEK</h1>
-      <div class="nickname">ID-SCW-25-002</div>
+      <div class="id">ID:SCW-25-002</div>
       <div class="info flex flex-wrap gap-4 mt-2">
         <div><strong>Age:</strong> 20</div>
         <div><strong>Height:</strong> 5'5"</div>
@@ -521,9 +596,10 @@
 
 
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
-  
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
 
 <script>
   // Mobile menu toggle
@@ -554,6 +630,38 @@
       mobileDrop.classList.add('hidden');
     }
   });
+
+  // Search desktop
+  function searchFighter() {
+    let query = document.getElementById('fighterSearch').value.trim().toLowerCase();
+    searchCommon(query);
+  }
+
+  // Search mobile
+  function searchFighterMobile() {
+    let query = document.getElementById('fighterSearchMobile').value.trim().toLowerCase();
+    searchCommon(query);
+  }
+
+  // Shared search logic
+  function searchCommon(query) {
+    if (!query) return;
+    let fighters = document.querySelectorAll('.fighter-section');
+    let found = false;
+    fighters.forEach(section => {
+      let name = section.querySelector('.fighter-details h1').innerText.toLowerCase();
+      let id = section.querySelector('.fighter-details .id').innerText.toLowerCase();
+      if (name.includes(query) || id.includes(query)) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        section.style.boxShadow = "0 0 15px 5px yellow";
+        setTimeout(() => section.style.boxShadow = "none", 2000);
+        found = true;
+      }
+    });
+    if (!found) alert("No fighter found with that name or ID.");
+  }
+
+
 </script>
 </body>
 </html>
