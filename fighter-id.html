@@ -1,11 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fighter Details | Shoorveer Academy</title>
+<link rel="icon" href="images/favicon.ico" type="image/ico">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    html {
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+
+    /* Hover Effects */
+    .group:hover .group-hover\:block {
+      display: block;
+    }
+
+    .tick {
+      color: #00ff99;
+      font-size: 1.5rem;
+      font-weight: bold;
+      animation: pulseTick 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes pulseTick {
+      0% { transform: scale(1); text-shadow: 0 0 5px #00ff99; }
+      100% { transform: scale(1.2); text-shadow: 0 0 12px #00ff99, 0 0 20px #00ff99; }
+    }
+    .rest-day {
+      background-color: rgba(255, 255, 255, 0.05);
+      font-style: italic;
+      color: #facc15;
+      animation: fadeRest 3s ease-in-out infinite alternate;
+    }
+    @keyframes fadeRest {
+      0% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #555, transparent);
+      margin: 3rem 0;
+    }
+    .event-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .event-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 18px rgba(127, 94, 255, 0.4);
+    }
+    .coming-soon {
+      color: #f87171;
+      animation: glowSoon 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes glowSoon {
+      0% { text-shadow: 0 0 4px #f87171; }
+      100% { text-shadow: 0 0 10px #f87171, 0 0 20px #f87171; }
+    }
+    .group:hover .group-hover\:block {
+  display: block;
+}
+<!-- Required for hover dropdown to work -->
+
+  .group:hover .group-hover\:block {
+    display: block;
+  }
+
+/* Fighter details*/
+ body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+    /* Fighter Profile Section */
+    .fighter-profile {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #1c1c1c;
+        padding: 20px;
+        max-width: 1000px;
+        margin: auto;
+        align-items: center;
+    }
+    .fighter-image {
+        flex: 1;
+        min-width: 250px;
+    }
+    .fighter-image img {
+        width: 100%;
+        border: 3px solid #333;
+    }
+    .fighter-details {
+        flex: 2;
+        padding: 20px;
+        
+    }
+    .fighter-details h1 {
+        font-size: 2.5rem;
+        margin: 0;
+    }
+    .nickname {
+        color: #FFD700;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    .info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    .info div {
+        min-width: 120px;
+    }
+    .stats {
+        display: flex;
+        gap: 50px;
+        margin-top: 20px;
+    }
+    .stats-box {
+        background-color: #222;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    .stats-box h2 {
+        margin: 0;
+        font-size: 2rem;
+    }
+    .green { color: #00ff00; }
+    .red { color: #ff0000; }
+    .sub-stats {
+        font-size: 0.9rem;
+        margin-top: 10px;
+    }
+    .highlight {
+        color: orange;
+        font-weight: bold;
+    }
+
+    /* Fight History Table */
+    .fight-history {
+        max-width: 1000px;
+        margin: 30px auto;
+        background-color: #1c1c1c;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .fight-history thead {
+        background-color: #111;
+        border-bottom: 3px solid red;
+    }
+    .fight-history th {
+        text-align: left;
+        padding: 10px;
+        font-size: 1rem;
+    }
+    .fight-history td {
+        padding: 10px;
+        border-top: 1px solid #333;
+        vertical-align: top;
+    }
+    .loss {
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 3px;
+    }
+    .win {
+        background-color: green;
+        color: white;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 3px;
+    }
+    .event-name {
+        color: orange;
+        font-weight: bold;
+    }
+    .method {
+        font-weight: bold;
+    }
+    
+/*     RESPONSIVE UPDATES   */
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Fighter profile stack */
+  .fighter-profile {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .fighter-details {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .fighter-details h1 {
+    font-size: 1.8rem;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  /* Table responsiveness */
+  .fight-history {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .fight-history th, 
+  .fight-history td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  /* Heading size adjustment */
+  header h1 {
+    font-size: 2.5rem;
+    padding: 5px;
+  }
+
+  /* Navbar adjustments */
+  nav img {
+    height: 40px;
+  }
+
+  /* Footer adjustments */
+  .footer {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}
+
+
+</style>
+
+
+  
 </head>
 <body>
-    
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+  <!-- Logo -->
+  <div class="px-3 py-1 rounded">
+    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
+  </div>
+
+  <!-- Desktop Navigation -->
+  <div class="space-x-6 hidden md:flex items-center">
+    <a href="index.html" class="text-white hover:text-red-400 text-sm">HOME</a>
+    <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
+    <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
+
+    <!-- SCW Dropdown (Desktop) -->
+    <div class="relative flex items-center">
+      <a href="SCW.html" class="text-white hover:text-red-400 text-sm">SCW</a>
+      <button class="text-white hover:text-red-400 text-sm focus:outline-none px-1" id="scwToggleDesktop">▼</button>
+      <div id="scwDropdownDesktop" class="absolute top-full left-0 hidden bg-black bg-opacity-90 text-white mt-1 rounded shadow-lg w-48 z-50">
+        <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Events</a>
+        <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter Details</a>
+        <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
+      </div>
+    </div>
+
+    <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
+    <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
+  </div>
+
+  <!-- Mobile Menu Button -->
+  <div class="flex items-center space-x-4">
+    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
+    <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
+  <a href="index.html" class="block text-white hover:text-red-400 text-base mb-2">HOME</a>
+  <a href="about.html" class="block text-white hover:text-red-400 text-base mb-2">ABOUT</a>
+  <a href="programs.html" class="block text-white hover:text-red-400 text-base mb-2">PROGRAMS</a>
+
+  <!-- SCW Dropdown (Mobile) -->
+  <div class="relative flex flex-col items-center">
+    <div class="flex items-center">
+      <a href="SCW.html" class="text-white hover:text-red-400 text-base">SCW</a>
+      <button class="text-white hover:text-red-400 text-sm focus:outline-none px-1" id="scwToggleMobile">▼</button>
+    </div>
+    <div id="scwDropdownMobile" class="hidden bg-black bg-opacity-90 text-white mt-1 rounded shadow-lg w-48 z-50">
+      <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Events</a>
+      <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter Details</a>
+      <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
+    </div>
+  </div>
+
+  <a href="gallery.html" class="block text-white hover:text-red-400 text-base mb-2">GALLERY</a>
+  <a href="contact.html" class="block text-white hover:text-red-400 text-base">CONTACT</a>
+</div>
+
+
+ <!-- Heading -->
+  <header class="bg-black bg-opacity-80 py-12 text-center shadow-lg mt-16">
+    <h1 class="text-6xl md:text-8xl font-extrabold tracking-wider animate-fade-in uppercase 
+              bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400
+              drop-shadow-md [text-shadow:_0_0_8px_rgba(255,165,0,0.8),_0_0_15px_rgba(255,100,0,0.6)]
+              border-4 border-yellow-200 border-opacity-50 p-2">
+        SCW FIGHTERS
+    </h1>
+</header>
+
+<!-- Fighter Section -----SAGAR------>
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/SAGARSCW.jpeg" alt="Sagar Bhagat" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">SAGAR BHAGAT</h1>
+      <div class="nickname">ID-SCW-25-001</div>
+      <div class="info flex flex-wrap gap-4 mt-2">
+        <div><strong>Age:</strong> 19</div>
+        <div><strong>Height:</strong> 5'6"</div>
+        <div><strong>Weight:</strong> 52.2 kg</div>
+      </div>
+      <div><strong>Rank:</strong> <span class="highlight">Rank E (level-4)</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Straw Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-4 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 1</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 1 <br>Decisions: 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-2xl font-bold border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="loss">LOSS</span></td>
+          <td class="px-3 py-2">GADDAMIDI VIVEK</td>
+          <td class="px-3 py-2">
+            <span class="event-name">Shoorveer Cage Wars (SCW) Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">Submission ()</span></td>
+          <td class="px-3 py-2">1</td>
+          <td class="px-3 py-2">0:46</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+
+<!------vivek---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/VIVEKSCW.jpeg" alt="Sagar Bhagat" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">GADDAMIDI VIVEK</h1>
+      <div class="nickname">ID-SCW-25-002</div>
+      <div class="info flex flex-wrap gap-4 mt-2">
+        <div><strong>Age:</strong> 20</div>
+        <div><strong>Height:</strong> 5'5"</div>
+        <div><strong>Weight:</strong> 52.2 kg</div>
+      </div>
+      <div><strong>Rank:</strong> <span class="highlight">Rank E (level-4)</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Straw Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-4 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 1</h2>
+          <div class="sub-stats">KO/TKO:  <br>Submissions: 1 <br>Decisions: 0</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-2xl font-bold border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="win">WIN</span></td>
+          <td class="px-3 py-2">SAGAR BHAGAT</td>
+          <td class="px-3 py-2">
+            <span class="event-name">Shoorveer Cage Wars (SCW) Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">Submission ()</span></td>
+          <td class="px-3 py-2">1</td>
+          <td class="px-3 py-2">0:46</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer text-center text-gray-400">
+  <p class="responsive-text">© 2025 Shoorveer Academy. All rights reserved.</p>
+  
+  <!-- Social Media Links -->
+  <div class="footer-social">
+    <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" 
+       target="_blank" 
+       class="hover:text-white text-pink-500 text-xl transition-colors duration-300"
+       aria-label="Follow us on Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/share/1AwkGwLFhK/" 
+       target="_blank" 
+       class="hover:text-white text-blue-500 text-xl transition-colors duration-300"
+       aria-label="Follow us on Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://www.youtube.com/@pooma546" 
+       target="_blank" 
+       class="hover:text-white text-red-600 text-xl transition-colors duration-300"
+       aria-label="Subscribe to our YouTube channel">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+</footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</head>
+<body>
+  
+
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  
+
+<script>
+  // Mobile menu toggle
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+
+  // SCW dropdown desktop
+  document.getElementById('scwToggleDesktop').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('scwDropdownDesktop').classList.toggle('hidden');
+  });
+
+  // SCW dropdown mobile
+  document.getElementById('scwToggleMobile').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('scwDropdownMobile').classList.toggle('hidden');
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    const desktopDrop = document.getElementById('scwDropdownDesktop');
+    const mobileDrop = document.getElementById('scwDropdownMobile');
+    if (!desktopDrop.contains(e.target) && !document.getElementById('scwToggleDesktop').contains(e.target)) {
+      desktopDrop.classList.add('hidden');
+    }
+    if (!mobileDrop.contains(e.target) && !document.getElementById('scwToggleMobile').contains(e.target)) {
+      mobileDrop.classList.add('hidden');
+    }
+  });
+</script>
 </body>
 </html>
