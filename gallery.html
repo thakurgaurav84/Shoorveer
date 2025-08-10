@@ -23,51 +23,232 @@
       font-family: 'Orbitron', sans-serif;
       background-color: #0a0a0a;
       color: white;
-      padding-top: 68px; /* Add padding to account for fixed navbar */
+      padding-top: 60px; /* Reduced for mobile */
     }
     h1, h2 {
       font-family: 'Bebas Neue', cursive;
     }
 
-    /* Fixed image size */
+    /* Responsive navbar height */
+    .navbar-height {
+      height: 60px;
+    }
+    
+    @media (min-width: 768px) {
+      .navbar-height {
+        height: 68px;
+      }
+      body {
+        padding-top: 68px;
+      }
+    }
+
+    /* Mobile-first gallery images */
     .gallery-img {
       width: 100%;
-      height: 220px;
+      height: 180px; /* Smaller for mobile */
       object-fit: cover;
-      border-radius: 0.75rem;
+      border-radius: 0.5rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
+    @media (min-width: 640px) {
+      .gallery-img {
+        height: 200px;
+        border-radius: 0.75rem;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .gallery-img {
+        height: 220px;
+      }
+    }
+    
     .gallery-img:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
     }
 
+    /* Mobile-optimized event sections */
     .event-section {
-      margin-bottom: 4rem;
-    } 
+      margin-bottom: 2.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .event-section {
+        margin-bottom: 4rem;
+      }
+    }
+
+    /* Mobile navigation improvements */
+    .mobile-menu-bg {
+      background: linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(20,20,20,0.95) 100%);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Logo responsive sizing */
+    .nav-logo {
+      height: 2.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .nav-logo {
+        height: 3.5rem;
+      }
+    }
+
+    /* Responsive text sizing */
+    .section-title {
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    @media (min-width: 640px) {
+      .section-title {
+        font-size: 1.875rem;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    /* Main header responsive */
+    .main-header {
+      font-size: 2rem;
+      line-height: 1.2;
+      padding: 1rem;
+    }
+    
+    @media (min-width: 640px) {
+      .main-header {
+        font-size: 3rem;
+        padding: 1.5rem;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .main-header {
+        font-size: 4rem;
+        padding: 2rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .main-header {
+        font-size: 5rem;
+      }
+    }
+
+    /* Mobile spacing adjustments */
+    .mobile-px {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    @media (min-width: 768px) {
+      .mobile-px {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .mobile-px {
+        padding-left: 4rem;
+        padding-right: 4rem;
+      }
+    }
+
+    /* Touch-friendly buttons */
+    .touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Improved dropdown */
     .group:hover .group-hover\:block {
-  display: block;
-}
-<!-- Required for hover dropdown to work -->
-<style>
-  .group:hover .group-hover\:block {
-    display: block;
-  }
-</style>
+      display: block;
+    }
 
+    /* Mobile menu animation */
+    .mobile-menu-slide {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .mobile-menu-slide.open {
+      transform: translateY(0);
+    }
 
+    /* Grid responsive adjustments */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Two-column sections responsive */
+    .two-col-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    @media (min-width: 768px) {
+      .two-col-section {
+        flex-direction: row;
+        gap: 1.5rem;
+      }
+    }
+    
+    .two-col-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+    
+    @media (min-width: 640px) {
+      .two-col-img {
+        height: 300px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .two-col-img {
+        width: 50%;
+        height: 350px;
+      }
+    }
   </style>
 </head>
 <body>
 <!-- Navbar -->
-<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+<nav class="flex justify-between items-center p-2 md:p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0 navbar-height">
   <!-- Logo -->
-  <div class="px-3 py-1 rounded">
-    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
+  <div class="px-2 py-1 rounded">
+    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="nav-logo">
   </div>
 
   <!-- Desktop Navigation -->
-  <div class="space-x-6 hidden md:flex items-center">
+  <div class="space-x-4 lg:space-x-6 hidden md:flex items-center">
     <a href="index.html" class="text-white hover:text-red-400 text-sm nav-link">HOME</a>
     <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
     <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
@@ -91,206 +272,220 @@
   </div>
 
   <!-- Mobile Menu Button + Join Button -->
-  <div class="flex items-center space-x-4">
-    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
-    <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
+  <div class="flex items-center space-x-2 md:space-x-4">
+    <button class="md:hidden text-white text-xl touch-target flex items-center justify-center" id="menuToggle">☰</button>
+    <a href="join.html" class="glass-button px-2 md:px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
   </div>
 </nav>
 
 <!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
-  <a href="index.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">HOME</a>
-  <a href="about.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">ABOUT</a>
-  <a href="programs.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">PROGRAMS</a>
+<div id="mobileMenu" class="hidden fixed top-0 left-0 w-full h-screen mobile-menu-bg px-4 py-16 text-center md:hidden z-40 mobile-menu-slide">
+  <div class="flex flex-col space-y-6 mt-8">
+    <a href="index.html" class="block text-white hover:text-red-400 text-lg tracking-wide touch-target flex items-center justify-center">HOME</a>
+    <a href="about.html" class="block text-white hover:text-red-400 text-lg tracking-wide touch-target flex items-center justify-center">ABOUT</a>
+    <a href="programs.html" class="block text-white hover:text-red-400 text-lg tracking-wide touch-target flex items-center justify-center">PROGRAMS</a>
 
-  <!-- Expandable PAST-RESULTS Section -->
-  <div class="text-white text-base tracking-wide mb-2">
-    <button id="mobilePastToggle" class="w-full text-left flex justify-between items-center hover:text-red-400">
-      PAST-RESULTS
-      <span id="chevronIcon">▼</span>
-    </button>
-    <div id="mobilePastDropdown" class="hidden mt-2 ml-4 space-y-2">
-      <a href="upcoming-events.html" class="block hover:text-red-400">Upcoming Events</a>
-      <a href="fighter-id.html" class="block hover:text-red-400">Fighter ID</a>
-      <a href="results.html" class="block hover:text-red-400">Results</a>
+    <!-- Expandable PAST-RESULTS Section -->
+    <div class="text-white text-lg tracking-wide">
+      <button id="mobilePastToggle" class="w-full text-center flex justify-center items-center hover:text-red-400 touch-target">
+        PAST-RESULTS
+        <span id="chevronIcon" class="ml-2">▼</span>
+      </button>
+      <div id="mobilePastDropdown" class="hidden mt-4 space-y-4">
+        <a href="upcoming-events.html" class="block hover:text-red-400 touch-target flex items-center justify-center">Upcoming Events</a>
+        <a href="fighter-id.html" class="block hover:text-red-400 touch-target flex items-center justify-center">Fighter ID</a>
+        <a href="results.html" class="block hover:text-red-400 touch-target flex items-center justify-center">Results</a>
+      </div>
     </div>
-  </div>
 
-  <a href="gallery.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">GALLERY</a>
-  <a href="contact.html" class="block text-white hover:text-red-400 text-base tracking-wide">CONTACT</a>
+    <a href="gallery.html" class="block text-white hover:text-red-400 text-lg tracking-wide touch-target flex items-center justify-center">GALLERY</a>
+    <a href="contact.html" class="block text-white hover:text-red-400 text-lg tracking-wide touch-target flex items-center justify-center">CONTACT</a>
+    
+    <!-- Mobile Join Button -->
+    <a href="join.html" class="glass-button px-6 py-3 rounded glow-red text-lg mt-6 inline-block">JOIN NOW</a>
+  </div>
 </div>
 
-
-<!-- Header - Placed right after navbar -->
-<header class="bg-black bg-opacity-80 py-12 text-center shadow-lg mt-16">
-    <h1 class="text-6xl md:text-8xl font-extrabold tracking-wider animate-fade-in uppercase 
+<!-- Header -->
+<header class="bg-black bg-opacity-80 py-6 md:py-12 text-center shadow-lg">
+    <h1 class="main-header font-extrabold tracking-wider animate-fade-in uppercase 
               bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400
               drop-shadow-md [text-shadow:_0_0_8px_rgba(255,165,0,0.8),_0_0_15px_rgba(255,100,0,0.6)]
-              border-4 border-yellow-200 border-opacity-50 p-2">
+              border-2 md:border-4 border-yellow-200 border-opacity-50">
         Shoorveer Academy Gallery
     </h1>
 </header>
 
 <!-- Main Gallery Content -->
-<main class="px-6 md:px-16 py-10">
+<main class="mobile-px py-6 md:py-10">
     <!-- MMA National in Hyderabad -->
     <section class="event-section">
-      <h2 class="text-3xl text-center mb-6 text-yellow-400">MMA National in Hyderabad</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        <a href="images/mma1.jpg" data-lightbox="mma-hyd"><img src="images/mma1.jpeg" class="gallery-img"></a>
-        <a href="images/mma2.jpg" data-lightbox="mma-hyd"><img src="images/mma2.jpeg" class="gallery-img"></a>
-        <a href="images/mma3.jpg" data-lightbox="mma-hyd"><img src="images/mma3.jpeg" class="gallery-img"></a>
-        <a href="images/mma4.jpg" data-lightbox="mma-hyd"><img src="images/mma4.jpeg" class="gallery-img"></a>
-        <a href="images/mma5.jpg" data-lightbox="mma-hyd"><img src="images/mma5.jpeg" class="gallery-img"></a>
-        <a href="images/mma6.jpg" data-lightbox="mma-hyd"><img src="images/mma6.jpeg" class="gallery-img"></a>
-        <a href="images/mma7.jpg" data-lightbox="mma-hyd"><img src="images/mma7.jpeg" class="gallery-img"></a>
+      <h2 class="section-title text-center mb-4 md:mb-6 text-yellow-400">MMA National in Hyderabad</h2>
+      <div class="gallery-grid">
+        <a href="images/mma1.jpg" data-lightbox="mma-hyd"><img src="images/mma1.jpeg" class="gallery-img" alt="MMA National Hyderabad 1"></a>
+        <a href="images/mma2.jpg" data-lightbox="mma-hyd"><img src="images/mma2.jpeg" class="gallery-img" alt="MMA National Hyderabad 2"></a>
+        <a href="images/mma3.jpg" data-lightbox="mma-hyd"><img src="images/mma3.jpeg" class="gallery-img" alt="MMA National Hyderabad 3"></a>
+        <a href="images/mma4.jpg" data-lightbox="mma-hyd"><img src="images/mma4.jpeg" class="gallery-img" alt="MMA National Hyderabad 4"></a>
+        <a href="images/mma5.jpg" data-lightbox="mma-hyd"><img src="images/mma5.jpeg" class="gallery-img" alt="MMA National Hyderabad 5"></a>
+        <a href="images/mma6.jpg" data-lightbox="mma-hyd"><img src="images/mma6.jpeg" class="gallery-img" alt="MMA National Hyderabad 6"></a>
+        <a href="images/mma7.jpg" data-lightbox="mma-hyd"><img src="images/mma7.jpeg" class="gallery-img" alt="MMA National Hyderabad 7"></a>
       </div>
     </section>
 
     <!-- Grappling Federation of India (GFI) National in Ujjain -->
     <section class="event-section">
-      <h2 class="text-3xl text-center mb-6 text-green-400">Grappling Federation of India (GFI) National in Ujjain</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        <a href="images/gfi1.jpg" data-lightbox="gfi"><img src="images/gfi1.jpeg" class="gallery-img"></a>
-        <a href="images/gfi2.jpg" data-lightbox="gfi"><img src="images/gfi2.jpeg" class="gallery-img"></a>
-        <a href="images/gfi3.jpg" data-lightbox="gfi"><img src="images/gfi3.jpeg" class="gallery-img"></a>
-        <a href="images/gfi4.jpg" data-lightbox="gfi"><img src="images/gfi4.jpeg" class="gallery-img"></a>
-        
+      <h2 class="section-title text-center mb-4 md:mb-6 text-green-400">Grappling Federation of India (GFI) National in Ujjain</h2>
+      <div class="gallery-grid">
+        <a href="images/gfi1.jpg" data-lightbox="gfi"><img src="images/gfi1.jpeg" class="gallery-img" alt="GFI National Ujjain 1"></a>
+        <a href="images/gfi2.jpg" data-lightbox="gfi"><img src="images/gfi2.jpeg" class="gallery-img" alt="GFI National Ujjain 2"></a>
+        <a href="images/gfi3.jpg" data-lightbox="gfi"><img src="images/gfi3.jpeg" class="gallery-img" alt="GFI National Ujjain 3"></a>
+        <a href="images/gfi4.jpg" data-lightbox="gfi"><img src="images/gfi4.jpeg" class="gallery-img" alt="GFI National Ujjain 4"></a>
       </div>
     </section>
 
     <!-- Grappling championship -->
     <section class="event-section">
-      <h2 class="text-3xl text-center mb-6 text-red-400">Telangana state Grappling Championship</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        <a href="images/han1.jpg" data-lightbox="han"><img src="images/gc1.jpeg" class="gallery-img"></a>
-        <a href="images/han2.jpg" data-lightbox="han"><img src="images/gc2.jpeg" class="gallery-img"></a>
-        <a href="images/han3.jpg" data-lightbox="han"><img src="images/gc3.jpeg" class="gallery-img"></a>
-        <a href="images/han4.jpg" data-lightbox="han"><img src="images/gc4.jpeg" class="gallery-img"></a>
-        <a href="images/han3.jpg" data-lightbox="han"><img src="images/gc5.jpeg" class="gallery-img"></a>
-        <a href="images/han4.jpg" data-lightbox="han"><img src="images/gc6.jpeg" class="gallery-img"></a>
-  
+      <h2 class="section-title text-center mb-4 md:mb-6 text-red-400">Telangana State Grappling Championship</h2>
+      <div class="gallery-grid">
+        <a href="images/gc1.jpg" data-lightbox="gc"><img src="images/gc1.jpeg" class="gallery-img" alt="Telangana Grappling 1"></a>
+        <a href="images/gc2.jpg" data-lightbox="gc"><img src="images/gc2.jpeg" class="gallery-img" alt="Telangana Grappling 2"></a>
+        <a href="images/gc3.jpg" data-lightbox="gc"><img src="images/gc3.jpeg" class="gallery-img" alt="Telangana Grappling 3"></a>
+        <a href="images/gc4.jpg" data-lightbox="gc"><img src="images/gc4.jpeg" class="gallery-img" alt="Telangana Grappling 4"></a>
+        <a href="images/gc5.jpg" data-lightbox="gc"><img src="images/gc5.jpeg" class="gallery-img" alt="Telangana Grappling 5"></a>
+        <a href="images/gc6.jpg" data-lightbox="gc"><img src="images/gc6.jpeg" class="gallery-img" alt="Telangana Grappling 6"></a>
       </div>
     </section>
 
     <!-- Hanmakunda State Kickboxing Championship -->
     <section class="event-section">
-      <h2 class="text-3xl text-center mb-6 text-red-400">Hanmakunda State Kickboxing Championship</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        <a href="images/han1.jpg" data-lightbox="han"><img src="images/han1.jpeg" class="gallery-img"></a>
-        <a href="images/han2.jpg" data-lightbox="han"><img src="images/han2.jpeg" class="gallery-img"></a>
-        <a href="images/han3.jpg" data-lightbox="han"><img src="images/han3.jpeg" class="gallery-img"></a>
-        <a href="images/han4.jpg" data-lightbox="han"><img src="images/han4.jpeg" class="gallery-img"></a>
-        
-  
+      <h2 class="section-title text-center mb-4 md:mb-6 text-red-400">Hanmakunda State Kickboxing Championship</h2>
+      <div class="gallery-grid">
+        <a href="images/han1.jpg" data-lightbox="han"><img src="images/han1.jpeg" class="gallery-img" alt="Hanmakunda Kickboxing 1"></a>
+        <a href="images/han2.jpg" data-lightbox="han"><img src="images/han2.jpeg" class="gallery-img" alt="Hanmakunda Kickboxing 2"></a>
+        <a href="images/han3.jpg" data-lightbox="han"><img src="images/han3.jpeg" class="gallery-img" alt="Hanmakunda Kickboxing 3"></a>
+        <a href="images/han4.jpg" data-lightbox="han"><img src="images/han4.jpeg" class="gallery-img" alt="Hanmakunda Kickboxing 4"></a>
       </div>
     </section>
 
     <!-- Xtreme Fight Night at Mysore -->
     <section class="event-section">
-      <h2 class="text-3xl text-center mb-6 text-purple-400">Xtreme Fight Night at Mysore</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        <a href="images/mysore1.jpg" data-lightbox="mysore"><img src="images/mysore1.jpeg" class="gallery-img"></a>
-        <a href="images/mysore2.jpg" data-lightbox="mysore"><img src="images/mysore2.jpeg" class="gallery-img"></a>
-        <a href="images/mysore3.jpg" data-lightbox="mysore"><img src="images/mysore3.jpeg" class="gallery-img"></a>
-        <a href="images/mysore4.jpg" data-lightbox="mysore"><img src="images/mysore4.jpeg" class="gallery-img"></a>
-        <a href="images/mysore5.jpg" data-lightbox="mysore"><img src="images/mysore5.jpeg" class="gallery-img"></a>
-        <a href="images/mysore6.jpg" data-lightbox="mysore"><img src="images/mysore6.jpeg" class="gallery-img"></a>
-        
+      <h2 class="section-title text-center mb-4 md:mb-6 text-purple-400">Xtreme Fight Night at Mysore</h2>
+      <div class="gallery-grid">
+        <a href="images/mysore1.jpg" data-lightbox="mysore"><img src="images/mysore1.jpeg" class="gallery-img" alt="Mysore Fight Night 1"></a>
+        <a href="images/mysore2.jpg" data-lightbox="mysore"><img src="images/mysore2.jpeg" class="gallery-img" alt="Mysore Fight Night 2"></a>
+        <a href="images/mysore3.jpg" data-lightbox="mysore"><img src="images/mysore3.jpeg" class="gallery-img" alt="Mysore Fight Night 3"></a>
+        <a href="images/mysore4.jpg" data-lightbox="mysore"><img src="images/mysore4.jpeg" class="gallery-img" alt="Mysore Fight Night 4"></a>
+        <a href="images/mysore5.jpg" data-lightbox="mysore"><img src="images/mysore5.jpeg" class="gallery-img" alt="Mysore Fight Night 5"></a>
+        <a href="images/mysore6.jpg" data-lightbox="mysore"><img src="images/mysore6.jpeg" class="gallery-img" alt="Mysore Fight Night 6"></a>
       </div>
     </section>
 
     <!-- 1st Kickboxing Title Belt Event in LB Stadium, Hyderabad -->
     <section class="event-section">
-      <h2 class="text-3xl text-center mb-6 text-blue-400">1st Kickboxing Title Belt Event 2023 - LB Stadium, Hyderabad</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        <a href="images/title1.jpg" data-lightbox="title"><img src="images/title1.jpeg" class="gallery-img"></a>
-        <a href="images/title2.jpg" data-lightbox="title"><img src="images/title2.jpeg" class="gallery-img"></a>
-        <a href="images/title3.jpg" data-lightbox="title"><img src="images/title3.jpeg" class="gallery-img"></a>
-        <a href="images/title4.jpg" data-lightbox="title"><img src="images/title4.jpeg" class="gallery-img"></a>
-        <a href="images/title5.jpg" data-lightbox="title"><img src="images/title5.jpeg" class="gallery-img"></a>
-        <a href="images/title6.jpg" data-lightbox="title"><img src="images/title6.jpeg" class="gallery-img"></a>
-       
+      <h2 class="section-title text-center mb-4 md:mb-6 text-blue-400">1st Kickboxing Title Belt Event 2023 - LB Stadium, Hyderabad</h2>
+      <div class="gallery-grid">
+        <a href="images/title1.jpg" data-lightbox="title"><img src="images/title1.jpeg" class="gallery-img" alt="Title Belt Event 1"></a>
+        <a href="images/title2.jpg" data-lightbox="title"><img src="images/title2.jpeg" class="gallery-img" alt="Title Belt Event 2"></a>
+        <a href="images/title3.jpg" data-lightbox="title"><img src="images/title3.jpeg" class="gallery-img" alt="Title Belt Event 3"></a>
+        <a href="images/title4.jpg" data-lightbox="title"><img src="images/title4.jpeg" class="gallery-img" alt="Title Belt Event 4"></a>
+        <a href="images/title5.jpg" data-lightbox="title"><img src="images/title5.jpeg" class="gallery-img" alt="Title Belt Event 5"></a>
+        <a href="images/title6.jpg" data-lightbox="title"><img src="images/title6.jpeg" class="gallery-img" alt="Title Belt Event 6"></a>
       </div>
     </section>
 
-<!-- Title Belt season 3 -->
+    <!-- Title Belt season 3 -->
     <section class="event-section">
-      <h2 class="text-3xl text-center mb-6 text-red-400">Title Belt season 3</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-        <a href="images/han1.jpg" data-lightbox="han"><img src="images/3title1.jpeg" class="gallery-img"></a>
-        <a href="images/han2.jpg" data-lightbox="han"><img src="images/3title2.jpeg" class="gallery-img"></a>
-        <a href="images/han3.jpg" data-lightbox="han"><img src="images/3title3.jpeg" class="gallery-img"></a>
-        <a href="images/han4.jpg" data-lightbox="han"><img src="images/3title4.jpeg" class="gallery-img"></a>
-        
-        <a href="images/han1.jpg" data-lightbox="han"><img src="images/3title5.jpeg" class="gallery-img"></a>
-        <a href="images/han2.jpg" data-lightbox="han"><img src="images/3title6.jpeg" class="gallery-img"></a>
-        <a href="images/han3.jpg" data-lightbox="han"><img src="images/3title7.jpeg" class="gallery-img"></a>
-        <a href="images/han4.jpg" data-lightbox="han"><img src="images/3title8.jpeg" class="gallery-img"></a>
-  
+      <h2 class="section-title text-center mb-4 md:mb-6 text-red-400">Title Belt Season 3</h2>
+      <div class="gallery-grid">
+        <a href="images/3title1.jpg" data-lightbox="title3"><img src="images/3title1.jpeg" class="gallery-img" alt="Title Belt Season 3 - 1"></a>
+        <a href="images/3title2.jpg" data-lightbox="title3"><img src="images/3title2.jpeg" class="gallery-img" alt="Title Belt Season 3 - 2"></a>
+        <a href="images/3title3.jpg" data-lightbox="title3"><img src="images/3title3.jpeg" class="gallery-img" alt="Title Belt Season 3 - 3"></a>
+        <a href="images/3title4.jpg" data-lightbox="title3"><img src="images/3title4.jpeg" class="gallery-img" alt="Title Belt Season 3 - 4"></a>
+        <a href="images/3title5.jpg" data-lightbox="title3"><img src="images/3title5.jpeg" class="gallery-img" alt="Title Belt Season 3 - 5"></a>
+        <a href="images/3title6.jpg" data-lightbox="title3"><img src="images/3title6.jpeg" class="gallery-img" alt="Title Belt Season 3 - 6"></a>
+        <a href="images/3title7.jpg" data-lightbox="title3"><img src="images/3title7.jpeg" class="gallery-img" alt="Title Belt Season 3 - 7"></a>
+        <a href="images/3title8.jpg" data-lightbox="title3"><img src="images/3title8.jpeg" class="gallery-img" alt="Title Belt Season 3 - 8"></a>
       </div>
     </section>
     
-    <!-- Section 1 -->
-  <section class="event-section">
-    <h2 class="text-3xl text-center mb-6 text-yellow-400">GFI Junior national Grappling Championship 2024</h2>
-    <div class="flex flex-col md:flex-row justify-center gap-6">
-      <img src="images/gfin1.jpeg" alt="Image 1" class="rounded-lg shadow-lg w-full md:w-1/2">
-      <img src="images/gfin2.jpeg" alt="Image 2" class="rounded-lg shadow-lg w-full md:w-1/2">
-    </div>
-  </section>
-
-  <<!-- Section 2 -->
-<section class="event-section py-10 bg-black">
-  <h2 class="text-3xl text-center mb-6 text-yellow-400">National MMA Judge & Referee</h2>
-  <div class="flex flex-col md:flex-row justify-center gap-6">
-    <img src="images/judge1.jpeg" 
-         alt="Image 3" 
-         class="rounded-lg shadow-lg w-full md:w-1/3 h-96 object-cover">
-    <img src="images/judge2.jpeg" 
-         alt="Image 4" 
-         class="rounded-lg shadow-lg w-full md:w-1/3 h-96 object-cover">
-  </div>
-</section>
-
-
-  <!-- Section 3 -->
-  <section class="event-section">
-    <h2 class="text-3xl text-center mb-6 text-yellow-400">Level up certification from FMMAI for national MMA judge & referee.</h2>
-    <div class="flex flex-col md:flex-row justify-center gap-6">
-      <img src="images/fmmai1.jpeg" alt="Image 5" class="rounded-lg shadow-lg w-full md:w-1/2">
-      <img src="images/fmmai2.jpeg" alt="Image 6" class="rounded-lg shadow-lg w-full md:w-1/2">
-    </div>
-  </section>
-
-
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-black bg-opacity-60 py-8 text-center text-gray-400 text-sm">
-    <p>© 2025 Shoorveer Academy. All rights reserved.</p>
-    <div class="mt-4 space-x-4">
-      <div class="flex justify-center space-x-4 mt-4">
-        <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" target="_blank" class="hover:text-white text-pink-500 text-2xl">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/share/1AwkGwLFhK/" target="_blank" class="hover:text-white text-blue-500 text-2xl">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://www.youtube.com/@pooma546" target="_blank" class="hover:text-white text-red-600 text-2xl">
-          <i class="fab fa-youtube"></i>
-        </a>
+    <!-- GFI Junior National -->
+    <section class="event-section">
+      <h2 class="section-title text-center mb-4 md:mb-6 text-yellow-400">GFI Junior National Grappling Championship 2024</h2>
+      <div class="two-col-section justify-center">
+        <img src="images/gfin1.jpeg" alt="GFI Junior National 1" class="two-col-img shadow-lg">
+        <img src="images/gfin2.jpeg" alt="GFI Junior National 2" class="two-col-img shadow-lg">
       </div>
-    </div>
-  </footer>
+    </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  <script>
-  // Toggle mobile menu
+    <!-- National MMA Judge & Referee -->
+    <section class="event-section">
+      <h2 class="section-title text-center mb-4 md:mb-6 text-yellow-400">National MMA Judge & Referee</h2>
+      <div class="two-col-section justify-center">
+        <img src="images/judge1.jpeg" alt="MMA Judge & Referee 1" class="two-col-img shadow-lg">
+        <img src="images/judge2.jpeg" alt="MMA Judge & Referee 2" class="two-col-img shadow-lg">
+      </div>
+    </section>
+
+    <!-- FMMAI Certification -->
+    <section class="event-section">
+      <h2 class="section-title text-center mb-4 md:mb-6 text-yellow-400">Level Up Certification from FMMAI for National MMA Judge & Referee</h2>
+      <div class="two-col-section justify-center">
+        <img src="images/fmmai1.jpeg" alt="FMMAI Certification 1" class="two-col-img shadow-lg">
+        <img src="images/fmmai2.jpeg" alt="FMMAI Certification 2" class="two-col-img shadow-lg">
+      </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-black bg-opacity-60 py-6 md:py-8 text-center text-gray-400 text-sm">
+  <p>© 2025 Shoorveer Academy. All rights reserved.</p>
+  <div class="flex justify-center space-x-6 mt-4">
+    <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" target="_blank" class="hover:text-white text-pink-500 text-2xl touch-target flex items-center justify-center">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/share/1AwkGwLFhK/" target="_blank" class="hover:text-white text-blue-500 text-2xl touch-target flex items-center justify-center">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://www.youtube.com/@pooma546" target="_blank" class="hover:text-white text-red-600 text-2xl touch-target flex items-center justify-center">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script>
+  // Toggle mobile menu with animation
   document.getElementById('menuToggle').addEventListener('click', function () {
     const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
+    const body = document.body;
+    
+    if (menu.classList.contains('hidden')) {
+      menu.classList.remove('hidden');
+      setTimeout(() => {
+        menu.classList.add('open');
+      }, 10);
+      body.style.overflow = 'hidden'; // Prevent background scrolling
+    } else {
+      menu.classList.remove('open');
+      setTimeout(() => {
+        menu.classList.add('hidden');
+        body.style.overflow = ''; // Restore scrolling
+      }, 300);
+    }
+  });
+
+  // Close mobile menu when clicking outside or on links
+  document.getElementById('mobileMenu').addEventListener('click', function(e) {
+    if (e.target === this || e.target.tagName === 'A') {
+      const menu = document.getElementById('mobileMenu');
+      const body = document.body;
+      
+      menu.classList.remove('open');
+      setTimeout(() => {
+        menu.classList.add('hidden');
+        body.style.overflow = '';
+      }, 300);
+    }
   });
 
   // Toggle PAST-RESULTS dropdown on mobile
@@ -298,9 +493,31 @@
   const mobilePastDropdown = document.getElementById('mobilePastDropdown');
   const chevronIcon = document.getElementById('chevronIcon');
 
-  mobilePastToggle.addEventListener('click', () => {
+  mobilePastToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     mobilePastDropdown.classList.toggle('hidden');
     chevronIcon.textContent = mobilePastDropdown.classList.contains('hidden') ? '▼' : '▲';
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const body = document.body;
+    
+    if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('open');
+      body.style.overflow = '';
+    }
+  });
+
+  // Lightbox configuration for mobile
+  lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true,
+    'albumLabel': 'Image %1 of %2',
+    'maxWidth': window.innerWidth - 40,
+    'maxHeight': window.innerHeight - 80
   });
 </script>
 </body>
