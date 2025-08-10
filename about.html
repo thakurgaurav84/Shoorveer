@@ -8,67 +8,114 @@
   <link rel="icon" href="images/favicon.ico" type="image/ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  
   <style>
     body {
-  font-family: 'Orbitron', sans-serif;
-  background: url('images/backgroundshoorveer.jpeg') center/cover no-repeat fixed;
-  color: white;
-  background-attachment: fixed;
-  position: relative;
-  z-index: 0;
-}
+      font-family: 'Orbitron', sans-serif;
+      background: url('images/backgroundshoorveer.jpeg') center/cover no-repeat fixed;
+      color: white;
+      background-attachment: fixed;
+      position: relative;
+      z-index: 0;
+      overflow-x: hidden;
+    }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Dark overlay for better text visibility */
-  z-index: -1;
-}
+    /* Mobile background fix */
+    @media (max-width: 768px) {
+      body {
+        background-attachment: scroll;
+      }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
     h2, h3, p {
       font-family: 'Bebas Neue', sans-serif;
     }
+
+    /* Responsive Typography */
     .hero-heading {
       text-shadow: 0 0 10px #7f5eff, 0 0 20px #7f5eff;
       background: linear-gradient(to right, #ffffff, #7f5eff, #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: sparkle 3s infinite alternate ease-in-out;
+      font-size: clamp(2.5rem, 8vw, 5rem);
     }
+
     @keyframes sparkle {
       0% { text-shadow: 0 0 5px #7f5eff, 0 0 10px #7f5eff; }
       50% { text-shadow: 0 0 15px #a88fff, 0 0 30px #a88fff; }
       100% { text-shadow: 0 0 10px #7f5eff, 0 0 25px #7f5eff; }
     }
+
+    /* Responsive Navbar */
+    .navbar {
+      padding: 0.75rem 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.5rem 0.75rem;
+      }
+    }
+
+    /* Mobile Menu Improvements */
+    #mobileMenu {
+      backdrop-filter: blur(15px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Instructor Card Responsive */
     .instructor-wrapper {
       transition: all 0.5s ease-in-out;
       max-width: 100%;
       overflow: hidden;
       cursor: pointer;
+      padding: 0 1rem;
     }
+
     .instructor-card {
       display: flex;
       flex-direction: column;
       align-items: center;
       background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 50%;
+      border-radius: 1rem;
       padding: 2rem;
       gap: 1rem;
       transition: all 0.5s ease;
-      max-width: 300px;
+      max-width: 600px;
       margin: auto;
       transform: scale(1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
+
+    @media (max-width: 768px) {
+      .instructor-card {
+        padding: 1.5rem;
+        gap: 0.75rem;
+      }
+    }
+
     .instructor-card:hover {
       transform: scale(1.03);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
+
     .instructor-card img {
       width: 150px;
       height: 150px;
@@ -77,36 +124,57 @@ body::before {
       border: 4px solid #ef4444;
       transition: all 0.5s ease;
     }
+
+    @media (max-width: 768px) {
+      .instructor-card img {
+        width: 120px;
+        height: 120px;
+        border-width: 3px;
+      }
+    }
+
     .instructor-card.expanded {
       border-radius: 1rem;
-      flex-direction: row;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       max-width: 100%;
       transform: scale(1.02);
     }
-    .instructor-card.expanded img {
-      border-radius: 0.5rem;
-      margin-right: 1.5rem;
-      width: 200px;
-      height: auto;
+
+    @media (min-width: 768px) {
+      .instructor-card.expanded {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .instructor-card.expanded img {
+        border-radius: 0.5rem;
+        margin-right: 1.5rem;
+        width: 200px;
+        height: auto;
+      }
     }
+
     .instructor-details {
       display: none;
       opacity: 0;
       transition: opacity 0.5s ease;
     }
+
     .instructor-card.expanded .instructor-details {
       display: block;
       opacity: 1;
     }
 
-    /* Custom styles for student, fighter, teacher images */
+    /* Responsive Role Images */
     .role-image {
-      width: 320px;
+      width: 100%;
+      max-width: 320px;
       height: 240px;
       object-fit: cover;
       transition: all 0.3s ease;
       border: 3px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.5rem;
     }
     
     .role-image:hover {
@@ -115,22 +183,28 @@ body::before {
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
-    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .role-image {
+        max-width: 280px;
+        height: 210px;
+      }
+    }
+
     @media (max-width: 768px) {
       .role-image {
-        width: 280px;
-        height: 220px;
+        max-width: 250px;
+        height: 180px;
       }
     }
 
     @media (max-width: 640px) {
       .role-image {
-        width: 240px;
-        height: 180px;
+        max-width: 220px;
+        height: 160px;
       }
     }
 
-    /* Mission and Sponsorship Image Styles */
+    /* Mission and Sponsorship Images */
     .mission-image, .sponsorship-image {
       width: 100%;
       height: 280px;
@@ -149,419 +223,570 @@ body::before {
       overflow: hidden;
       border-radius: 0.5rem;
     }
-    .fiery-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: linear-gradient(180deg, #ffcc00 0%, #ff6600 50%, #cc0000 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-  display: inline-block;
-  text-shadow:
-    2px 2px 0 #d4af37,   /* metallic gold outline effect */
-    4px 4px 10px rgba(255, 140, 0, 0.7), /* glowing orange shadow */
-    /* fiery glow */
-}
 
-
-    /* Responsive adjustments for mission/sponsorship images */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .mission-image, .sponsorship-image {
         height: 240px;
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .mission-image, .sponsorship-image {
         height: 200px;
       }
-    } 
-    .group:hover .group-hover\:block {
-  display: block;
-}
-<!-- Required for hover dropdown to work -->
+    }
 
-  .group:hover .group-hover\:block {
-    display: block;
-  }
-   @keyframes fade-in {
+    @media (max-width: 640px) {
+      .mission-image, .sponsorship-image {
+        height: 180px;
+      }
+    }
+
+    /* Fiery Heading Responsive */
+    .fiery-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffcc00 0%, #ff6600 50%, #cc0000 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      text-shadow: 2px 2px 0 #d4af37, 4px 4px 10px rgba(255, 140, 0, 0.7);
+      font-size: clamp(2rem, 6vw, 3.5rem);
+    }
+
+    /* PAINS Section Responsive */
+    .pains-section {
+      min-height: auto;
+      padding: 3rem 1rem;
+    }
+
+    .pains-title {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+    }
+
+    .pains-text {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      line-height: 1.2;
+    }
+
+    @media (max-width: 768px) {
+      .pains-text {
+        text-align: center;
+      }
+    }
+
+    .pains-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      border: 3px solid #f59e0b;
+    }
+
+    @media (max-width: 768px) {
+      .pains-image {
+        max-width: 300px;
+      }
+    }
+
+    /* Dropdown Menu Fixes */
+    .group:hover .group-hover\:block {
+      display: block;
+    }
+
+    @keyframes fade-in {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     .animate-fade-in {
-      animation: fade-in 1s ease-out
-    }
-    .event-section {
-      margin-bottom: 4rem;
+      animation: fade-in 1s ease-out;
     }
 
+    /* Header Responsive */
+    .main-header {
+      padding: 3rem 1rem;
+      margin-top: 4rem;
+    }
 
+    @media (max-width: 768px) {
+      .main-header {
+        padding: 2rem 1rem;
+        margin-top: 3.5rem;
+      }
+    }
+
+    .main-title {
+      font-size: clamp(3rem, 10vw, 5rem);
+      line-height: 1.1;
+    }
+
+    /* Section Padding Responsive */
+    .section-padding {
+      padding: 5rem 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 3rem 1rem;
+      }
+    }
+
+    /* Text Responsive */
+    .responsive-text {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.6;
+    }
+
+    .responsive-heading {
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    /* Grid Responsive Improvements */
+    .responsive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .responsive-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    /* Button Responsive */
+    .glass-button {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      padding: 0.5rem 1rem;
+    }
+
+    .glass-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Footer Responsive */
+    .footer {
+      padding: 2rem 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      .social-links {
+        gap: 0.75rem;
+      }
+    }
   </style>
 </head>
+
 <body>
 <!-- Navbar -->
-<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+<nav class="navbar flex justify-between items-center fixed w-full z-50 bg-black bg-opacity-50 top-0">
   <!-- Logo -->
-  <div class="px-3 py-1 rounded">
-    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
+  <div class="px-2 py-1 rounded">
+    <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-10 md:h-14 lg:h-16">
   </div>
 
   <!-- Desktop Navigation -->
-  <div class="space-x-6 hidden md:flex items-center">
-    <a href="index.html" class="text-white hover:text-red-400 text-sm nav-link">HOME</a>
-    <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
-    <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
+  <div class="space-x-4 lg:space-x-6 hidden md:flex items-center text-xs lg:text-sm">
+    <a href="index.html" class="text-white hover:text-red-400 nav-link transition-colors duration-300">HOME</a>
+    <a href="about.html" class="text-white hover:text-red-400 transition-colors duration-300">ABOUT</a>
+    <a href="programs.html" class="text-white hover:text-red-400 transition-colors duration-300">PROGRAMS</a>
 
     <!-- PAST-RESULTS Dropdown -->
     <div class="relative group">
-      <button class="text-white hover:text-red-400 text-sm flex items-center gap-1">
-         <a href="past-results.html" class="text-white hover:text-red-400 text-sm flex items-center gap-1 focus:outline-none" id="pastResultsToggle">
-    PAST-RESULTS ▼
-  </a>
-      </button>
-      <div class="absolute hidden group-hover:block bg-black bg-opacity-90 text-white mt-2 rounded shadow-lg w-48 z-50">
-        <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Upcoming Events</a>
-        <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter ID</a>
-        <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
+      <a href="past-results.html" class="text-white hover:text-red-400 flex items-center gap-1 focus:outline-none transition-colors duration-300">
+        PAST-RESULTS ▼
+      </a>
+      <div class="absolute hidden group-hover:block bg-black bg-opacity-90 text-white mt-2 rounded shadow-lg w-48 z-50 border border-gray-700">
+        <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500 transition-colors duration-300">Upcoming Events</a>
+        <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500 transition-colors duration-300">Fighter ID</a>
+        <a href="results.html" class="block px-4 py-2 hover:bg-red-500 transition-colors duration-300">Results</a>
       </div>
     </div>
 
-    <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
-    <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
+    <a href="gallery.html" class="text-white hover:text-red-400 transition-colors duration-300">GALLERY</a>
+    <a href="contact.html" class="text-white hover:text-red-400 transition-colors duration-300">CONTACT</a>
   </div>
 
   <!-- Mobile Menu Button + Join Button -->
-  <div class="flex items-center space-x-4">
-    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
-    <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
+  <div class="flex items-center space-x-3">
+    <button class="md:hidden text-white text-xl hover:text-red-400 transition-colors duration-300" id="menuToggle">☰</button>
+    <a href="join.html" class="glass-button rounded hidden md:inline-block">JOIN NOW</a>
   </div>
 </nav>
 
 <!-- Mobile Menu -->
 <div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
-  <a href="index.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">HOME</a>
-  <a href="about.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">ABOUT</a>
-  <a href="programs.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">PROGRAMS</a>
+  <a href="index.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-3 transition-colors duration-300">HOME</a>
+  <a href="about.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-3 transition-colors duration-300">ABOUT</a>
+  <a href="programs.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-3 transition-colors duration-300">PROGRAMS</a>
 
   <!-- Expandable PAST-RESULTS Section -->
-  <div class="text-white text-base tracking-wide mb-2">
-    <button id="mobilePastToggle" class="w-full text-left flex justify-between items-center hover:text-red-400">
+  <div class="text-white text-base tracking-wide mb-3">
+    <button id="mobilePastToggle" class="w-full text-left flex justify-between items-center hover:text-red-400 transition-colors duration-300">
       PAST-RESULTS
       <span id="chevronIcon">▼</span>
     </button>
     <div id="mobilePastDropdown" class="hidden mt-2 ml-4 space-y-2">
-      <a href="upcoming-events.html" class="block hover:text-red-400">Upcoming Events</a>
-      <a href="fighter-id.html" class="block hover:text-red-400">Fighter ID</a>
-      <a href="results.html" class="block hover:text-red-400">Results</a>
+      <a href="upcoming-events.html" class="block hover:text-red-400 transition-colors duration-300">Upcoming Events</a>
+      <a href="fighter-id.html" class="block hover:text-red-400 transition-colors duration-300">Fighter ID</a>
+      <a href="results.html" class="block hover:text-red-400 transition-colors duration-300">Results</a>
     </div>
   </div>
 
-  <a href="gallery.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">GALLERY</a>
-  <a href="contact.html" class="block text-white hover:text-red-400 text-base tracking-wide">CONTACT</a>
+  <a href="gallery.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-3 transition-colors duration-300">GALLERY</a>
+  <a href="contact.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-3 transition-colors duration-300">CONTACT</a>
+  
+  <!-- Mobile Join Button -->
+  <div class="mt-4">
+    <a href="join.html" class="glass-button rounded inline-block">JOIN NOW</a>
+  </div>
 </div>
 
-
-<!-- Heading -->
-  <header class="bg-black bg-opacity-80 py-12 text-center shadow-lg mt-16">
-    <h1 class="text-5xl md:text-7xl font-extrabold tracking-wider animate-fade-in uppercase 
-              bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400
-              drop-shadow-md [text-shadow:_0_0_8px_rgba(255,165,0,0.8),_0_0_15px_rgba(255,100,0,0.6)]
-              border-4 border-yellow-200 border-opacity-50 p-2">
-        ABOUT
-    </h1>
+<!-- Header -->
+<header class="main-header bg-black bg-opacity-80 text-center shadow-lg">
+  <h1 class="main-title font-extrabold tracking-wider animate-fade-in uppercase 
+            bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400
+            drop-shadow-md [text-shadow:_0_0_8px_rgba(255,165,0,0.8),_0_0_15px_rgba(255,100,0,0.6)]
+            border-4 border-yellow-200 border-opacity-50 p-4 md:p-6">
+    ABOUT
+  </h1>
 </header>
 
+<!-- About Section -->
+<section class="section-padding max-w-7xl mx-auto text-center" data-aos="fade-up">
+  <h2 class="fiery-heading mb-8 lg:mb-12">INTRODUCTION</h2>
 
+  <p class="text-gray-300 max-w-6xl mx-auto leading-relaxed mb-8 lg:mb-12 responsive-text">
+    Welcome to Shoorveer Academy! Founded on February 17, 2021, by <strong>Mangwana Manish Kumar</strong>,
+    Shoorveer Academy was born from a deep passion to create a space where discipline, resilience, and strength converge
+    to shape extraordinary individuals. Our very name, drawn from the Sanskrit word meaning "Extreme Warrior", reflects
+    our core philosophy — to forge a community of warriors who are <span class="text-red-400 font-bold">Unbreakable, Unbeatable, and Unstoppable</span> in every aspect of life.
+  </p>
 
+  <p class="text-gray-300 max-w-6xl mx-auto leading-relaxed mb-8 lg:mb-12 responsive-text">
+    At Shoorveer Academy, we believe that martial arts is not merely a sport, but a powerful tool for personal growth and 
+    transformation. Here, we blend traditional values with modern training techniques, ensuring that every student develops 
+    not only physical prowess but also mental clarity, emotional balance, and unwavering confidence.
+  </p>
 
-  <!-- About Section -->
-  <section class="py-20 px-8 max-w-7xl mx-auto text-center" data-aos="fade-up">
-    <h2 class="fiery-heading text-4xl md:text-5xl mb-10">INTRODUCTION</h2>
+  <p class="text-gray-300 max-w-6xl mx-auto leading-relaxed mb-8 lg:mb-12 responsive-text">
+    Our programs go beyond kicks, punches, and grapples — they instill the virtues of discipline, respect, perseverance,
+    and self-mastery. We prepare our students to face challenges both inside and outside the arena, empowering them to
+    become leaders, innovators, and changemakers in their communities.
+  </p>
 
-    <p class="text-gray-300 max-w-6xl mx-auto leading-relaxed mb-12 text-lg md:text-xl">
-      Welcome to Shoorveer Academy! 
- Founded on February 17, 2021, by <strong>Mangwana Manish Kumar</strong>,
- Shoorveer Academy was born from a deep passion to create a space where discipline, resilience, and strength converge
-  to shape extraordinary individuals. Our very name, drawn from the Sanskrit word meaning "Extreme Warrior", reflects
-   our core philosophy — to forge a community of warriors who are <span class="text-red-400 font-bold">Unbreakable, Unbeatable, and Unstoppable</span> in every aspect of life.
-
-At Shoorveer Academy, we believe that martial arts is not merely a sport, but a powerful tool for personal growth and 
-transformation. Here, we blend traditional values with modern training techniques, ensuring that every student develops 
-not only physical prowess but also mental clarity, emotional balance, and unwavering confidence.
-
-Our programs go beyond kicks, punches, and grapples — they instill the virtues of discipline, respect, perseverance,
- and self-mastery. We prepare our students to face challenges both inside and outside the arena, empowering them to
-  become leaders, innovators, and changemakers in their communities.
-
-Whether you step into our training hall for fitness, self-defense, competition, or personal growth, you will find 
-an environment that celebrates diversity, fosters camaraderie, and inspires you to break your limits. Here, every 
-training session is not just about skill — it’s about becoming the best version of yourself.
-
-
-    </p>
-    <div class="grid md:grid-cols-3 gap-8 mt-12">
-      <div class="flex flex-col items-center">
-        <img src="images/student.jpeg" alt="Student" class="role-image rounded shadow-lg">
-        <p class="mt-4 text-xl md:text-2xl text-yellow-400 font-bold">STUDENT</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <img src="images/fighter.jpeg" alt="Fighter" class="role-image rounded shadow-lg">
-        <p class="mt-4 text-xl md:text-2xl text-yellow-400 font-bold">FIGHTER</p>
-      </div>
-      <div class="flex flex-col items-center">
-        <img src="images/teacher.jpeg" alt="Teacher" class="role-image rounded shadow-lg">
-        <p class="mt-4 text-xl md:text-2xl text-yellow-400 font-bold">TEACHER</p>
-      </div>
+  <!-- Role Images Grid -->
+  <div class="responsive-grid mt-8 lg:mt-12">
+    <div class="flex flex-col items-center">
+      <img src="images/student.jpeg" alt="Student" class="role-image shadow-lg">
+      <p class="mt-4 text-xl lg:text-2xl text-yellow-400 font-bold">STUDENT</p>
     </div>
-  </section>
-
-  <!-- About Academy -->
-  <section class="py-20 px-8 max-w-7xl mx-auto" data-aos="fade-up">
-    <h2 class="text-4xl md:text-5xl text-blue-400 mb-10 text-center">ABOUT ACADEMY</h2>
-    <ul class="text-gray-300 leading-relaxed list-disc list-inside max-w-5xl mx-auto space-y-4 text-lg md:text-xl">
-    <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed mb-8 text-lg md:text-xl text-center">
-    At Shoorveer Academy, we pride ourselves on delivering a comprehensive and world-class curriculum that
-     blends physical mastery, mental resilience, and personal growth. Our programs span across Kickboxing, 
-     Grappling, Mixed Martial Arts (MMA), Self-Defense, CrossFit, Fitness Training, and Yoga — ensuring every
-      student develops into a well-rounded and confident individual.
-
-With state-of-the-art facilities, experienced trainers, and a supportive community, we provide an environment
- where students can push boundaries, achieve their goals, and discover their true potential. Whether you aspire 
- to compete at the highest level, improve your fitness, or gain practical self-defense skills, Shoorveer Academy
-  offers the tools, guidance, and motivation you need to excel.
-
-<h3 class="text-2xl font-semibold mb-4 text-red-300">Our Key Training Disciplines:</h3>
-<ul class="list-disc pl-6 space-y-4 text-gray-200">
-  <li><strong class="text-xl md:text-2xl text-yellow-300">Kickboxing:</strong> Master powerful strikes, defensive maneuvers, and footwork in a high-energy and motivating atmosphere. Perfect for building speed, strength, and stamina while sharpening your reflexes.</li>
-  
-  <li><strong class="text-xl md:text-2xl text-yellow-300">Grappling:</strong> Learn the science of ground control, submissions, and escapes. Our structured training equips you with effective techniques for both sport and self-defense situations.</li>
-  
-  <li><strong class="text-xl md:text-2xl text-yellow-300">Mixed Martial Arts (MMA):</strong> Experience the fusion of multiple martial arts disciplines to develop all-around combat skills. From striking to clinch work to ground fighting, our MMA training creates complete and adaptable fighters.</li>
-  
-  <li><strong class="text-xl md:text-2xl text-yellow-300">Self-Defense:</strong> Gain practical, real-world protection skills that prepare you for unexpected situations. Our self-defense program focuses on awareness, prevention, and quick, decisive action.</li>
-  
-  <li><strong class="text-xl md:text-2xl text-yellow-300">CrossFit & Functional Fitness:</strong> Build total-body strength, agility, and endurance with intense yet scalable workouts designed to push your physical limits while preventing injuries.</li>
-  
-  <li><strong class="text-xl md:text-2xl text-yellow-300">Yoga & Mindfulness:</strong> Restore balance to your body and mind through stretching, breathing techniques, and meditation. Yoga at Shoorveer Academy complements our high-intensity training by enhancing flexibility, focus, and inner peace.</li>
-</ul>
-
-<p class="mt-8 text-lg leading-relaxed text-gray-200">
-  At Shoorveer Academy, training is more than just exercise — it’s a journey of discipline, confidence, and transformation. We are committed to molding champions both inside and outside the ring, empowering every individual to live with strength, courage, and purpose.
-</p>
-
-
-  <!-- Mission Section -->
-  <section class="py-20 px-8 bg-gray-800 bg-opacity-30" data-aos="fade-up">
-    <h2 class="text-center text-4xl md:text-5xl text-yellow-400 mb-12">OUR MISSION</h2>
-    <p class="text-gray-300 max-w-6xl mx-auto leading-relaxed text-center mb-16 text-lg md:text-xl">
-      Our mission is to ignite and nurture the Shoorveer spirit within every student — a spirit rooted in courage,
-       resilience, and an unyielding drive for excellence. We believe that true strength is built not only through 
-       physical skill, but also through mental toughness, emotional balance, and moral integrity.
-
-At Shoorveer Academy, we go beyond traditional training methods, offering holistic education that addresses
- the mind, body, and spirit. Every student receives personalized mentorship, ensuring that their unique
-  strengths are recognized, developed, and sharpened to their fullest potential.
-
-We strive to shape individuals who are not just skilled martial artists, but visionary leaders,
-
-compassionate changemakers, and confident trailblazers in their chosen fields. Our approach instills
- values that extend far beyond the academy walls — encouraging our students to inspire others, embrace 
- challenges, and make a lasting positive impact on society.
-
-Through unwavering dedication, discipline, and a shared pursuit of greatness, we empower each Shoorveer 
-to rise above obstacles, lead with integrity, and create a legacy that endures. </p>
-    
-    <!-- Mission Gallery -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-      <div class="mission-image-container">
-        <img src="images/teacher.jpeg" alt="Training young students" class="mission-image rounded-lg shadow-lg">
-      </div>
-      <div class="mission-image-container">
-        <img src="images/3title3.jpeg" alt="Competition training" class="mission-image rounded-lg shadow-lg">
-      </div>
-      <div class="mission-image-container">
-        <img src="images/gc4.jpeg" alt="Group training session" class="mission-image rounded-lg shadow-lg">
-      </div>
-      <div class="mission-image-container">
-        <img src="images/gfi3.jpeg" alt="Medal ceremony" class="mission-image rounded-lg shadow-lg">
-      </div>
-      <div class="mission-image-container">
-        <img src="images/han3.jpeg" alt="Team photo" class="mission-image rounded-lg shadow-lg">
-      </div>
-      <div class="mission-image-container">
-        <img src="images/mma3.jpeg" alt="Competition event" class="mission-image rounded-lg shadow-lg">
-      </div>
-      <div class="mission-image-container">
-        <img src="images/mysore3.jpeg" alt="Championship event" class="mission-image rounded-lg shadow-lg">
-      </div>
-      <div class="mission-image-container">
-        <img src="images/fmmai2.jpeg" alt="Training session" class="mission-image rounded-lg shadow-lg">
-      </div>
+    <div class="flex flex-col items-center">
+      <img src="images/fighter.jpeg" alt="Fighter" class="role-image shadow-lg">
+      <p class="mt-4 text-xl lg:text-2xl text-yellow-400 font-bold">FIGHTER</p>
     </div>
-  </section>
-
-  <!-- Sponsorship Section -->
-  <section class="py-20 px-8 bg-gray-900 bg-opacity-50" data-aos="fade-up">
-    <h2 class="text-center text-4xl md:text-5xl text-yellow-400 mb-12">SPONSORSHIP OPPORTUNITIES</h2>
-    <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed text-center mb-16 text-lg md:text-xl">
-      Partnering with Shoorveer Academy offers unique opportunities for brands and organizations to align themselves with our mission and reach our diverse audience of students, parents, and community members. We offer various sponsorship packages tailored to meet your marketing objectives and budget.
-    </p>
-    
-    <!-- Sponsorship Gallery -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-      <div class="sponsorship-image-container">
-        <img src="images/sponsor1.jpg" alt="Championship winners" class="sponsorship-image rounded-lg shadow-lg">
-      </div>
-      <div class="sponsorship-image-container">
-        <img src="images/sponsor2.jpg" alt="Competition event" class="sponsorship-image rounded-lg shadow-lg">
-      </div>
-      <div class="sponsorship-image-container">
-        <img src="images/sponsor3.jpg" alt="Awards ceremony" class="sponsorship-image rounded-lg shadow-lg">
-      </div>
-      <div class="sponsorship-image-container">
-        <img src="images/sponsor4.jpg" alt="Team celebration" class="sponsorship-image rounded-lg shadow-lg">
-      </div>
-      <div class="sponsorship-image-container">
-        <img src="images/sponsor5.jpg" alt="National championship" class="sponsorship-image rounded-lg shadow-lg">
-      </div>
-      <div class="sponsorship-image-container">
-        <img src="images/sponsor6.jpg" alt="Community event" class="sponsorship-image rounded-lg shadow-lg">
-      </div>
+    <div class="flex flex-col items-center">
+      <img src="images/teacher.jpeg" alt="Teacher" class="role-image shadow-lg">
+      <p class="mt-4 text-xl lg:text-2xl text-yellow-400 font-bold">TEACHER</p>
     </div>
-  </section>
-
-  <!-- Instructor Section -->
-  <section class="py-20 px-8 bg-gray-900 bg-opacity-40" data-aos="fade-up">
-    <h2 class="text-center text-4xl md:text-5xl text-red-400 mb-16">MEET OUR INSTRUCTOR</h2>
-    <div class="instructor-wrapper" onclick="toggleInstructorCard()">
-      <div id="instructorCard" class="instructor-card">
-        <img src="images/instructor1.jpeg" alt="Instructor 1">
-        <div>
-          <h3 class="text-3xl md:text-4xl text-white">Mangwana Manish Kumar</h3>
-          <p class="text-lg md:text-xl text-gray-400">The Combat Trainer</p>
-          <div class="instructor-details">
-            <p class="text-gray-300 mt-4 text-lg md:text-xl leading-relaxed">
-              Founder & Technical Director – Shoorveer Cage Wars
-
-A visionary martial artist dedicated to developing Kickboxing, Grappling and MMA in Telangana. With over 15 years of experience, he leads SCW to empower local fighters with real fight platforms and professional training opportunities.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- PAINS Acronym Section -->
- <!-- Top Title -->
-      <h2 
-    class="text-5xl md:text-6xl font-extrabold text-yellow-400 uppercase mb-10 text-center tracking-wider"
-    data-aos="zoom-in"
-    data-aos-duration="1200"
-  >
-  
-  We Go Through PAINS!
-  </h2>
-<section class="min-h-screen flex items-center justify-center text-white px-6 py-12 bg-transparent">
-
-  <!-- Main Container -->
-  <div class="flex flex-col md:flex-row items-center justify-center gap-12 max-w-7xl w-full">
-
-    <!-- Image Column -->
-    <div 
-      class="flex-1 flex justify-center"
-      data-aos="fade-right"
-      data-aos-duration="1000"
-    >
-      <img 
-        src="images/painimage-Photoroom.png" 
-        alt="Shoorveer Fighters" 
-        class="w-full max-w-md md:max-w-lg object-contain rounded-lg border-4 border-orange-500 shadow-xl"
-      >
-    </div>
-
-    <!-- Text Column -->
-    <div 
-      class="flex-1 text-left"
-      data-aos="fade-left"
-      data-aos-duration="1000"
-    >
-      
-
-
-      <!-- Vertical PAINS Acronym -->
-      <div class="text-4xl md:text-6xl font-extrabold leading-relaxed tracking-wide space-y-2">
-        <p><span class="text-yellow-400">P</span> - Positive</p>
-        <p><span class="text-yellow-400">A</span> - Attitude</p>
-        <p><span class="text-yellow-400">I</span> - In</p>
-        <p><span class="text-yellow-400">N</span> - Negative</p>
-        <p><span class="text-yellow-400">S</span> - Situations</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
+<!-- About Academy -->
+<section class="section-padding max-w-7xl mx-auto" data-aos="fade-up">
+  <h2 class="responsive-heading text-blue-400 mb-8 lg:mb-12 text-center">ABOUT ACADEMY</h2>
+  
+  <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed mb-8 responsive-text text-center">
+    At Shoorveer Academy, we pride ourselves on delivering a comprehensive and world-class curriculum that
+    blends physical mastery, mental resilience, and personal growth. Our programs span across Kickboxing, 
+    Grappling, Mixed Martial Arts (MMA), Self-Defense, CrossFit, Fitness Training, and Yoga — ensuring every
+    student develops into a well-rounded and confident individual.
+  </p>
 
-<!-- AOS Animation Library -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+  <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed mb-8 responsive-text text-center">
+    With state-of-the-art facilities, experienced trainers, and a supportive community, we provide an environment
+    where students can push boundaries, achieve their goals, and discover their true potential. Whether you aspire 
+    to compete at the highest level, improve your fitness, or gain practical self-defense skills, Shoorveer Academy
+    offers the tools, guidance, and motivation you need to excel.
+  </p>
 
-
-
-  <!-- Footer -->
-  <footer class="bg-black bg-opacity-60 py-8 text-center text-gray-400 text-sm">
-    <p>© 2025 Shoorveer Academy. All rights reserved.</p>
-    <div class="mt-4 space-x-4">
-     <!-- Social Media Links -->
-<div class="flex justify-center space-x-4 mt-4">
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" 
-     target="_blank" 
-     class="hover:text-white text-pink-500 text-2xl">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/share/1AwkGwLFhK/" 
-     target="_blank" 
-     class="hover:text-white text-blue-500 text-2xl">
-    <i class="fab fa-facebook"></i>
-  </a>
-
-  <!-- YouTube -->
-  <a href="https://www.youtube.com/@pooma546" 
-     target="_blank" 
-     class="hover:text-white text-red-600 text-2xl">
-    <i class="fab fa-youtube"></i>
-  </a>
-</div>
-
+  <h3 class="text-2xl lg:text-3xl font-semibold mb-6 text-red-300 text-center">Our Key Training Disciplines:</h3>
+  
+  <div class="max-w-5xl mx-auto space-y-6">
+    <div class="bg-gray-800 bg-opacity-30 p-4 lg:p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+      <strong class="text-xl lg:text-2xl text-yellow-300 block mb-2">Kickboxing:</strong>
+      <p class="text-gray-200 responsive-text">Master powerful strikes, defensive maneuvers, and footwork in a high-energy and motivating atmosphere. Perfect for building speed, strength, and stamina while sharpening your reflexes.</p>
     </div>
-  </footer>
+    
+    <div class="bg-gray-800 bg-opacity-30 p-4 lg:p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+      <strong class="text-xl lg:text-2xl text-yellow-300 block mb-2">Grappling:</strong>
+      <p class="text-gray-200 responsive-text">Learn the science of ground control, submissions, and escapes. Our structured training equips you with effective techniques for both sport and self-defense situations.</p>
+    </div>
+    
+    <div class="bg-gray-800 bg-opacity-30 p-4 lg:p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+      <strong class="text-xl lg:text-2xl text-yellow-300 block mb-2">Mixed Martial Arts (MMA):</strong>
+      <p class="text-gray-200 responsive-text">Experience the fusion of multiple martial arts disciplines to develop all-around combat skills. From striking to clinch work to ground fighting, our MMA training creates complete and adaptable fighters.</p>
+    </div>
+    
+    <div class="bg-gray-800 bg-opacity-30 p-4 lg:p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+      <strong class="text-xl lg:text-2xl text-yellow-300 block mb-2">Self-Defense:</strong>
+      <p class="text-gray-200 responsive-text">Gain practical, real-world protection skills that prepare you for unexpected situations. Our self-defense program focuses on awareness, prevention, and quick, decisive action.</p>
+    </div>
+    
+    <div class="bg-gray-800 bg-opacity-30 p-4 lg:p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+      <strong class="text-xl lg:text-2xl text-yellow-300 block mb-2">CrossFit & Functional Fitness:</strong>
+      <p class="text-gray-200 responsive-text">Build total-body strength, agility, and endurance with intense yet scalable workouts designed to push your physical limits while preventing injuries.</p>
+    </div>
+    
+    <div class="bg-gray-800 bg-opacity-30 p-4 lg:p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+      <strong class="text-xl lg:text-2xl text-yellow-300 block mb-2">Yoga & Mindfulness:</strong>
+      <p class="text-gray-200 responsive-text">Restore balance to your body and mind through stretching, breathing techniques, and meditation. Yoga at Shoorveer Academy complements our high-intensity training by enhancing flexibility, focus, and inner peace.</p>
+    </div>
+  </div>
+
+  <p class="mt-8 responsive-text leading-relaxed text-gray-200 max-w-5xl mx-auto text-center">
+    At Shoorveer Academy, training is more than just exercise — it's a journey of discipline, confidence, and transformation. We are committed to molding champions both inside and outside the ring, empowering every individual to live with strength, courage, and purpose.
+  </p>
+</section>
+
+<!-- Mission Section -->
+<section class="section-padding bg-gray-800 bg-opacity-30" data-aos="fade-up">
+  <h2 class="text-center responsive-heading text-yellow-400 mb-8 lg:mb-12">OUR MISSION</h2>
+  
+  <p class="text-gray-300 max-w-6xl mx-auto leading-relaxed text-center mb-12 lg:mb-16 responsive-text">
+    Our mission is to ignite and nurture the Shoorveer spirit within every student — a spirit rooted in courage,
+    resilience, and an unyielding drive for excellence. We believe that true strength is built not only through 
+    physical skill, but also through mental toughness, emotional balance, and moral integrity.
+  </p>
+  
+  <p class="text-gray-300 max-w-6xl mx-auto leading-relaxed text-center mb-12 lg:mb-16 responsive-text">
+    At Shoorveer Academy, we go beyond traditional training methods, offering holistic education that addresses
+    the mind, body, and spirit. Every student receives personalized mentorship, ensuring that their unique
+    strengths are recognized, developed, and sharpened to their fullest potential.
+  </p>
+  
+  <!-- Mission Gallery -->
+  <div class="responsive-grid max-w-7xl mx-auto">
+    <div class="mission-image-container">
+      <img src="images/teacher.jpeg" alt="Training young students" class="mission-image rounded-lg shadow-lg">
+    </div>
+    <div class="mission-image-container">
+      <img src="images/3title3.jpeg" alt="Competition training" class="mission-image rounded-lg shadow-lg">
+    </div>
+    <div class="mission-image-container">
+      <img src="images/gc4.jpeg" alt="Group training session" class="mission-image rounded-lg shadow-lg">
+    </div>
+    <div class="mission-image-container">
+      <img src="images/gfi3.jpeg" alt="Medal ceremony" class="mission-image rounded-lg shadow-lg">
+    </div>
+    <div class="mission-image-container">
+      <img src="images/han3.jpeg" alt="Team photo" class="mission-image rounded-lg shadow-lg">
+    </div>
+    <div class="mission-image-container">
+      <img src="images/mma3.jpeg" alt="Competition event" class="mission-image rounded-lg shadow-lg">
+    </div>
+  </div>
+</section>
+
+<!-- Sponsorship Section -->
+<section class="section-padding bg-gray-900 bg-opacity-50" data-aos="fade-up">
+  <h2 class="text-center responsive-heading text-yellow-400 mb-8 lg:mb-12">SPONSORSHIP OPPORTUNITIES</h2>
+  
+  <p class="text-gray-300 max-w-5xl mx-auto leading-relaxed text-center mb-12 lg:mb-16 responsive-text">
+    Partnering with Shoorveer Academy offers unique opportunities for brands and organizations to align themselves with our mission and reach our diverse audience of students, parents, and community members. We offer various sponsorship packages tailored to meet your marketing objectives and budget.
+  </p>
+  
+  <!-- Sponsorship Gallery -->
+  <div class="responsive-grid max-w-7xl mx-auto">
+    <div class="sponsorship-image-container">
+      <img src="images/sponsor1.jpg" alt="Championship winners" class="sponsorship-image rounded-lg shadow-lg">
+    </div>
+    <div class="sponsorship-image-container">
+      <img src="images/sponsor2.jpg" alt="Competition event" class="sponsorship-image rounded-lg shadow-lg">
+    </div>
+    <div class="sponsorship-image-container">
+      <img src="images/sponsor3.jpg" alt="Awards ceremony" class="sponsorship-image rounded-lg shadow-lg">
+    </div>
+    <div class="sponsorship-image-container">
+      <img src="images/sponsor4.jpg" alt="Team celebration" class="sponsorship-image rounded-lg shadow-lg">
+    </div>
+    <div class="sponsorship-image-container">
+      <img src="images/sponsor5.jpg" alt="National championship" class="sponsorship-image rounded-lg shadow-lg">
+    </div>
+    <div class="sponsorship-image-container">
+      <img src="images/sponsor6.jpg" alt="Community event" class="sponsorship-image rounded-lg shadow-lg">
+    </div>
+  </div>
+</section>
+
+<!-- Instructor Section -->
+<section class="section-padding bg-gray-900 bg-opacity-40" data-aos="fade-up">
+  <h2 class="text-center responsive-heading text-red-400 mb-12 lg:mb-16">MEET OUR INSTRUCTOR</h2>
+  <div class="instructor-wrapper" onclick="toggleInstructorCard()">
+    <div id="instructorCard" class="instructor-card">
+      <img src="images/instructor1.jpeg" alt="Instructor 1">
+      <div class="text-center md:text-left">
+        <h3 class="text-2xl lg:text-4xl text-white mb-2">Mangwana Manish Kumar</h3>
+        <p class="text-lg lg:text-xl text-gray-400 mb-4">The Combat Trainer</p>
+        <div class="instructor-details">
+          <p class="text-gray-300 mt-4 responsive-text leading-relaxed">
+            Founder & Technical Director – Shoorveer Cage Wars. A visionary martial artist dedicated to developing Kickboxing, Grappling and MMA in Telangana. With over 15 years of experience, he leads SCW to empower local fighters with real fight platforms and professional training opportunities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAINS Acronym Section -->
+<section class="pains-section flex items-center justify-center text-white bg-transparent">
+  <!-- Top Title -->
+  <div class="w-full max-w-7xl mx-auto">
+    <h2 class="pains-title font-extrabold text-yellow-400 uppercase mb-8 lg:mb-12 text-center tracking-wider" 
+        data-aos="zoom-in" data-aos-duration="1200">
+      We Go Through PAINS!
+    </h2>
+
+    <!-- Main Container -->
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+      <!-- Image Column -->
+      <div class="flex-1 flex justify-center" data-aos="fade-right" data-aos-duration="1000">
+        <img src="images/painimage-Photoroom.png" alt="Shoorveer Fighters" 
+             class="pains-image max-w-md lg:max-w-lg object-contain shadow-xl">
+      </div>
+
+      <!-- Text Column -->
+      <div class="flex-1" data-aos="fade-left" data-aos-duration="1000">
+        <!-- Vertical PAINS Acronym -->
+        <div class="pains-text font-extrabold leading-relaxed tracking-wide space-y-2">
+          <p><span class="text-yellow-400">P</span> - Positive</p>
+          <p><span class="text-yellow-400">A</span> - Attitude</p>
+          <p><span class="text-yellow-400">I</span> - In</p>
+          <p><span class="text-yellow-400">N</span> - Negative</p>
+          <p><span class="text-yellow-400">S</span> - Situations</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer bg-black bg-opacity-60 text-center text-gray-400">
+  <p class="responsive-text">© 2025 Shoorveer Academy. All rights reserved.</p>
+  
+  <!-- Social Media Links -->
+  <div class="social-links">
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/shoorveer_academy?igsh=MTFkYzI5ZHdyb3E0ZQ==" 
+       target="_blank" 
+       class="hover:text-white text-pink-500 text-xl lg:text-2xl transition-colors duration-300">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/share/1AwkGwLFhK/" 
+       target="_blank" 
+       class="hover:text-white text-blue-500 text-xl lg:text-2xl transition-colors duration-300">
+      <i class="fab fa-facebook"></i>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@pooma546" 
+       target="_blank" 
+       class="hover:text-white text-red-600 text-xl lg:text-2xl transition-colors duration-300">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+</footer>
+
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
 <script>
-  function toggleMobileMenu() {
+  // Initialize AOS
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100
+  });
+
+  // Mobile Menu Toggle
+  document.getElementById('menuToggle').addEventListener('click', function() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('hidden');
+  });
+
+  // Mobile Past Results Dropdown
+  document.getElementById('mobilePastToggle').addEventListener('click', function() {
+    const dropdown = document.getElementById('mobilePastDropdown');
+    const chevron = document.getElementById('chevronIcon');
+    
+    dropdown.classList.toggle('hidden');
+    chevron.textContent = dropdown.classList.contains('hidden') ? '▼' : '▲';
+  });
+
+  // Instructor Card Toggle
+  function toggleInstructorCard() {
+    const card = document.getElementById("instructorCard");
+    card.classList.toggle("expanded");
+  }
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const menu = document.getElementById('mobileMenu');
+    const menuToggle = document.getElementById('menuToggle');
+    
+    if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Add loading animation
+  window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+  });
+
+  // Optimize images loading
+  if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+      img.src = img.dataset.src;
+    });
+  } else {
+    // Fallback for browsers that don't support lazy loading
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
   }
 </script>
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
-  <script>
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    }
-    function toggleInstructorCard() {
-      const card = document.getElementById("instructorCard");
-      const expanded = card.classList.toggle("expanded");
-    }
-  </script>
-  
+
 </body>
 </html>
