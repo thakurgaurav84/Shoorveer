@@ -68,18 +68,15 @@
 
   <!-- Desktop Navigation -->
   <div class="space-x-6 hidden md:flex items-center">
-    <a href="index.html" class="text-white hover:text-red-400 text-sm nav-link">HOME</a>
+    <a href="index.html" class="text-white hover:text-red-400 text-sm">HOME</a>
     <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
     <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
 
-    <!-- SCW Dropdown -->
-    <div class="relative group">
-      <button class="text-white hover:text-red-400 text-sm flex items-center gap-1">
-         <a href="SCW.html" class="text-white hover:text-red-400 text-sm flex items-center gap-1 focus:outline-none" id="pastResultsToggle">
-    SCW ▼
-  </a>
-      </button>
-      <div class="absolute hidden group-hover:block bg-black bg-opacity-90 text-white mt-2 rounded shadow-lg w-48 z-50">
+    <!-- SCW Dropdown (Desktop) -->
+    <div class="relative flex items-center">
+      <a href="SCW.html" class="text-white hover:text-red-400 text-sm">SCW</a>
+      <button class="text-white hover:text-red-400 text-sm focus:outline-none px-1" id="scwToggleDesktop">▼</button>
+      <div id="scwDropdownDesktop" class="absolute top-full left-0 hidden bg-black bg-opacity-90 text-white mt-1 rounded shadow-lg w-48 z-50">
         <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Events</a>
         <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter Details</a>
         <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
@@ -90,7 +87,7 @@
     <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
   </div>
 
-  <!-- Mobile Menu Button + Join Button -->
+  <!-- Mobile Menu Button -->
   <div class="flex items-center space-x-4">
     <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
     <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
@@ -98,26 +95,26 @@
 </nav>
 
 <!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 bg-opacity-95 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
-  <a href="index.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">HOME</a>
-  <a href="about.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">ABOUT</a>
-  <a href="programs.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">PROGRAMS</a>
+<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
+  <a href="index.html" class="block text-white hover:text-red-400 text-base mb-2">HOME</a>
+  <a href="about.html" class="block text-white hover:text-red-400 text-base mb-2">ABOUT</a>
+  <a href="programs.html" class="block text-white hover:text-red-400 text-base mb-2">PROGRAMS</a>
 
-  <!-- Expandable SCW Section -->
-  <div class="text-white text-base tracking-wide mb-2">
-    <button id="mobilePastToggle" class="w-full text-left flex justify-between items-center hover:text-red-400">
-      SCW
-      <span id="chevronIcon">▼</span>
-    </button>
-    <div id="mobilePastDropdown" class="hidden mt-2 ml-4 space-y-2">
-      <a href="upcoming-events.html" class="block hover:text-red-400">Events</a>
-      <a href="fighter-id.html" class="block hover:text-red-400">Fighter Details</a>
-      <a href="results.html" class="block hover:text-red-400">Results</a>
+  <!-- SCW Dropdown (Mobile) -->
+  <div class="relative flex flex-col items-center">
+    <div class="flex items-center">
+      <a href="SCW.html" class="text-white hover:text-red-400 text-base">SCW</a>
+      <button class="text-white hover:text-red-400 text-sm focus:outline-none px-1" id="scwToggleMobile">▼</button>
+    </div>
+    <div id="scwDropdownMobile" class="hidden bg-black bg-opacity-90 text-white mt-1 rounded shadow-lg w-48 z-50">
+      <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Events</a>
+      <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter Details</a>
+      <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
     </div>
   </div>
 
-  <a href="gallery.html" class="block text-white hover:text-red-400 text-base tracking-wide mb-2">GALLERY</a>
-  <a href="contact.html" class="block text-white hover:text-red-400 text-base tracking-wide">CONTACT</a>
+  <a href="gallery.html" class="block text-white hover:text-red-400 text-base mb-2">GALLERY</a>
+  <a href="contact.html" class="block text-white hover:text-red-400 text-base">CONTACT</a>
 </div>
 
   <!-- Heading -->
@@ -248,26 +245,33 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
 <script>
-  function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
-  }
-</script>
-<script>
-  // Toggle mobile menu
-  document.getElementById('menuToggle').addEventListener('click', function () {
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
+  // Mobile menu toggle
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
   });
 
-  // Toggle PAST-RESULTS dropdown on mobile
-  const mobilePastToggle = document.getElementById('mobilePastToggle');
-  const mobilePastDropdown = document.getElementById('mobilePastDropdown');
-  const chevronIcon = document.getElementById('chevronIcon');
+  // SCW dropdown desktop
+  document.getElementById('scwToggleDesktop').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('scwDropdownDesktop').classList.toggle('hidden');
+  });
 
-  mobilePastToggle.addEventListener('click', () => {
-    mobilePastDropdown.classList.toggle('hidden');
-    chevronIcon.textContent = mobilePastDropdown.classList.contains('hidden') ? '▼' : '▲';
+  // SCW dropdown mobile
+  document.getElementById('scwToggleMobile').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('scwDropdownMobile').classList.toggle('hidden');
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    const desktopDrop = document.getElementById('scwDropdownDesktop');
+    const mobileDrop = document.getElementById('scwDropdownMobile');
+    if (!desktopDrop.contains(e.target) && !document.getElementById('scwToggleDesktop').contains(e.target)) {
+      desktopDrop.classList.add('hidden');
+    }
+    if (!mobileDrop.contains(e.target) && !document.getElementById('scwToggleMobile').contains(e.target)) {
+      mobileDrop.classList.add('hidden');
+    }
   });
 </script>
 </body>
