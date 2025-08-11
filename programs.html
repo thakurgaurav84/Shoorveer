@@ -68,11 +68,12 @@
 
   <!-- Desktop Navigation -->
   <div class="space-x-6 hidden md:flex items-center">
+    <!-- Links -->
     <a href="index.html" class="text-white hover:text-red-400 text-sm">HOME</a>
     <a href="about.html" class="text-white hover:text-red-400 text-sm">ABOUT</a>
     <a href="programs.html" class="text-white hover:text-red-400 text-sm">PROGRAMS</a>
 
-    <!-- SCW Dropdown (Desktop) -->
+    <!-- SCW Dropdown -->
     <div class="relative flex items-center">
       <a href="SCW.html" class="text-white hover:text-red-400 text-sm">SCW</a>
       <button class="text-white hover:text-red-400 text-sm focus:outline-none px-1" id="scwToggleDesktop">▼</button>
@@ -85,6 +86,17 @@
 
     <a href="gallery.html" class="text-white hover:text-red-400 text-sm">GALLERY</a>
     <a href="contact.html" class="text-white hover:text-red-400 text-sm">CONTACT</a>
+
+    <!-- Desktop Search -->
+    <div class="flex items-center bg-gray-800 rounded overflow-hidden border border-red-500">
+      <input id="fighterSearch" type="text" placeholder="Search Fighter..."
+        class="px-3 py-1 bg-gray-800 text-white text-sm focus:outline-none w-32 md:w-48"
+        onkeypress="if(event.key === 'Enter'){ searchFighter(); }">
+      <button onclick="searchFighter()" 
+        class="px-3 py-1 bg-red-500 text-white text-sm hover:bg-red-600">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
   </div>
 
   <!-- Mobile Menu Button -->
@@ -96,11 +108,12 @@
 
 <!-- Mobile Menu -->
 <div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
+  <!-- Links -->
   <a href="index.html" class="block text-white hover:text-red-400 text-base mb-2">HOME</a>
   <a href="about.html" class="block text-white hover:text-red-400 text-base mb-2">ABOUT</a>
   <a href="programs.html" class="block text-white hover:text-red-400 text-base mb-2">PROGRAMS</a>
 
-  <!-- SCW Dropdown (Mobile) -->
+  <!-- SCW Dropdown -->
   <div class="relative flex flex-col items-center">
     <div class="flex items-center">
       <a href="SCW.html" class="text-white hover:text-red-400 text-base">SCW</a>
@@ -115,8 +128,18 @@
 
   <a href="gallery.html" class="block text-white hover:text-red-400 text-base mb-2">GALLERY</a>
   <a href="contact.html" class="block text-white hover:text-red-400 text-base">CONTACT</a>
-</div>
 
+  <!-- Mobile Search -->
+  <div class="flex items-center bg-gray-800 rounded overflow-hidden border border-red-500 w-full mt-4">
+    <input id="fighterSearchMobile" type="text" placeholder="Search Fighter..."
+      class="px-3 py-2 bg-gray-800 text-white text-sm focus:outline-none flex-1"
+      onkeypress="if(event.key === 'Enter'){ searchFighterMobile(); }">
+    <button onclick="searchFighterMobile()" 
+      class="px-3 py-2 bg-red-500 text-white text-sm hover:bg-red-600">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</div>
   <!-- Heading -->
   <header class="bg-black bg-opacity-80 py-12 text-center shadow-lg mt-16">
     <h1 class="text-6xl md:text-8xl font-extrabold tracking-wider animate-fade-in uppercase 
@@ -245,6 +268,21 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
 <script>
+  // Fighter database - Add your fighters here
+  const fightersDatabase = [
+    {
+      id: "SCW-25-001",
+      name: "SAGAR BHAGAT",
+      searchTerms: ["sagar", "bhagat", "sagar bhagat", "scw-25-001", "scw25001"]
+    },
+    {
+      id: "SCW-25-002", 
+      name: "GADDAMIDI VIVEK",
+      searchTerms: ["vivek", "gaddamidi", "gaddamidi vivek", "scw-25-002", "scw25002"]
+    }
+    // Add more fighters as needed
+  ];
+
   // Mobile menu toggle
   document.getElementById('menuToggle').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('hidden');
@@ -273,6 +311,39 @@
       mobileDrop.classList.add('hidden');
     }
   });
+  
+  function searchFighter() {
+    const query = document.getElementById('fighterSearch').value.trim().toLowerCase();
+    performSearch(query);
+  }
+
+  function searchFighterMobile() {
+    const query = document.getElementById('fighterSearchMobile').value.trim().toLowerCase();
+    performSearch(query);
+  }
+
+  function performSearch(query) {
+    if (!query) {
+      alert('Please enter a fighter name or ID to search');
+      return;
+    }
+
+    // Search through the fighters database
+    const foundFighter = fightersDatabase.find(fighter => 
+      fighter.searchTerms.some(term => term.includes(query)) ||
+      query.includes(fighter.name.toLowerCase()) ||
+      query.includes(fighter.id.toLowerCase())
+    );
+
+    if (foundFighter) {
+      // Redirect to fighter-id.html with the fighter ID as parameter
+      window.location.href = `fighter-id.html?search=${encodeURIComponent(foundFighter.id)}`;
+    } else {
+      // Show available fighters for reference
+      const availableFighters = fightersDatabase.map(f => `${f.name} (${f.id})`).join('\n');
+      alert(`Fighter not found!\n\nAvailable fighters:\n${availableFighters}`);
+    }
+  }
 </script>
 </body>
 </html>
