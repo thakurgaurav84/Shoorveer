@@ -101,7 +101,7 @@
         padding: 20px;
         max-width: 1000px;
         margin: auto;
-        align-items: center;
+        
     }
     .fighter-image {
         flex: 1;
@@ -125,20 +125,26 @@
         font-size: 1.2rem;
         margin-bottom: 15px;
     }
-    .info {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
+    
     .info div {
         min-width: 120px;
     }
-    .stats {
-        display: flex;
-        gap: 50px;
-        margin-top: 20px;
-    }
+    @media (max-width: 768px) {
+  /* Make fighter details align left on mobile like laptop */
+  .fighter-details {
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+
+    .info {
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+
+  .stats {
+    align-items: flex-start !important;
+  }
+}
     .stats-box {
         background-color: #222;
         padding: 10px 20px;
@@ -230,7 +236,7 @@
 
   .fighter-details {
     padding: 10px;
-    text-align: center;
+    
   }
 
   .fighter-details h1 {
@@ -452,7 +458,7 @@
           <strong class=" text-yellow-300">(Level - 4)</strong>
         </div>
       </div>
-      <div><strong>Age:</strong> <span class="highlight">19</span></div>
+      <div><strong>Age:</strong> <span class="highlight">18</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
       <div><strong>Weight:</strong> <span class="highlight">52.2 kg</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
@@ -460,7 +466,7 @@
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
       <!-- Stats -->
-      <div class="stats flex flex-col sm:flex-row gap-4 mt-4">
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
           <h2 class="green text-xl font-bold">WINS 0</h2>
           <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
@@ -482,7 +488,7 @@
           <th class="px-3 py-2">RESULT</th>
           <th class="px-3 py-2">FIGHTER</th>
           <th class="px-3 py-2">EVENT</th>
-          <th class="px-3 py-2">METHOD</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
           <th class="px-3 py-2">R</th>
           <th class="px-3 py-2">TIME</th>
         </tr>
@@ -490,18 +496,21 @@
       <tbody>
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
-          <td class="px-3 py-2">GADDAMIDI VIVEK</td>
+          <td class="px-3 py-2">RAHUL BIRADAR</td>
           <td class="px-3 py-2">
-            <span class="event-name">Shoorveer Cage Wars (SCW) Event</span><br>04 / MAY / 2025
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
           </td>
-          <td class="px-3 py-2"><span class="method">Submission ()</span></td>
-          <td class="px-3 py-2">1</td>
-          <td class="px-3 py-2">0:46</td>
+          <td class="px-3 py-2"><span class="method">Decision<br></span>
+           <span class="referee">Srikant</span><br>
+          </td>
+          <td class="px-3 py-2">3</td>
+          <td class="px-3 py-2">3:00</td>
         </tr>
       </tbody>
     </table>
   </div>
 </section>
+
 
 <!------vivek---------->
 <!-- Fighter Section -->
@@ -533,7 +542,7 @@
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
       <!-- Stats -->
-      <div class="stats flex flex-col sm:flex-row gap-4 mt-4">
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
           <h2 class="green text-xl font-bold">WINS 1</h2>
           <div class="sub-stats">KO/TKO: 0 <br>Submissions: 1 <br>Decisions: 0</div>
@@ -555,7 +564,7 @@
           <th class="px-3 py-2">RESULT</th>
           <th class="px-3 py-2">FIGHTER</th>
           <th class="px-3 py-2">EVENT</th>
-          <th class="px-3 py-2">METHOD</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
           <th class="px-3 py-2">R</th>
           <th class="px-3 py-2">TIME</th>
         </tr>
@@ -565,9 +574,11 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">SAGAR BHAGAT</td>
           <td class="px-3 py-2">
-            <span class="event-name">Shoorveer Cage Wars (SCW) Event</span><br>04 / MAY / 2025
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
           </td>
-          <td class="px-3 py-2"><span class="method">Submission ()</span></td>
+          <td class="px-3 py-2"><span class="method">Submission (RNC)<br></span>
+           <span class="referee">Srikant</span><br>
+          </td>
           <td class="px-3 py-2">1</td>
           <td class="px-3 py-2">0:46</td>
         </tr>
@@ -575,6 +586,609 @@
     </table>
   </div>
 </section>
+
+<!------chandrashekhar---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg" data-fighter-id="SCW-25-003" data-fighter-name="CHANDRASHEKHAR">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/chandrashekarscw.jpeg" alt="Chandrashekhar" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">CHANDRASHEKHAR</h1>
+      <div class="id">ID:SCW-25-003</div>
+      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
+        <div class="flex flex-col sm:items-end items-center">
+          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
+          <strong class=" text-yellow-300">(Level - 2)</strong>
+        </div>
+      </div>
+      
+      <div><strong>Age:</strong> <span class="highlight">20</span></div>
+      <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">56.7 kg</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Fly Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 1</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-3xl text-yellow-300 border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody
+        <tr>
+          <td class="px-3 py-2"><span class="loss">LOSS</span></td>
+          <td class="px-3 py-2">RAHUL BIRADAR</td>
+          <td class="px-3 py-2">
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">Decision<br></span>
+           <span class="referee">Srikant</span><br>
+          </td>
+          <td class="px-3 py-2">3</td>
+          <td class="px-3 py-2">3:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!------RAHUL BIRADAR---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg" data-fighter-id="SCW-25-004" data-fighter-name="RAHUL BIRADAR">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/rahulscw.jpeg" alt="Rahul Biradar" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">RAHUL BIRADAR</h1>
+      <div class="id">ID:SCW-25-004</div>
+      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
+        <div class="flex flex-col sm:items-end items-center">
+          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
+          <strong class=" text-yellow-300">(Level - 4)</strong>
+        </div>
+      </div>
+      
+      <div><strong>Age:</strong> <span class="highlight">20</span></div>
+      <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">56.7 kg</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Shoorveer</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Fly Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">—</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 1</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 1</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-3xl text-yellow-300 border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="win">WIN</span></td>
+          <td class="px-3 py-2">CHANDRASHEKHAR</td>
+          <td class="px-3 py-2">
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">Decision<br></span>
+           <span class="referee">Srikant</span><br>
+          </td>
+          <td class="px-3 py-2">3</td>
+          <td class="px-3 py-2">3:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!------G. NITESH RAO---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg" data-fighter-id="SCW-25-005" data-fighter-name="G. NITESH RAO">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/niteshscw.jpeg" alt="G. Nitesh Rao" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">G. NITESH RAO</h1>
+      <div class="id">ID:SCW-25-005</div>
+      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
+        <div class="flex flex-col sm:items-end items-center">
+          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
+          <strong class=" text-yellow-300">(Level - 5)</strong>
+        </div>
+      </div>
+      
+      <div><strong>Age:</strong> <span class="highlight">21</span></div>
+      <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">61.2 kg</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Shoorveer</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Bantam Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">—</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 1</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0 <br>Walkover: 1</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-3xl text-yellow-300 border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="win">WIN</span></td>
+          <td class="px-3 py-2">P. ROHITH</td>
+          <td class="px-3 py-2">
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">Walkover (Opponent Absent)<br></span>
+           <span class="referee">Krishna</span><br>
+          </td>
+          <td class="px-3 py-2">-</td>
+          <td class="px-3 py-2">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!------P. ROHITH---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg" data-fighter-id="SCW-25-006" data-fighter-name="P. ROHITH">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/rohitscw.jpeg" alt="P. Rohith" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">P. ROHITH</h1>
+      <div class="id">ID:SCW-25-006</div>
+      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
+        <div class="flex flex-col sm:items-end items-center">
+          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
+          <strong class=" text-yellow-300">(Level - 5)</strong>
+        </div>
+      </div>
+      
+      <div><strong>Age:</strong> <span class="highlight">26</span></div>
+      <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">77.1 kg</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Thunder Academy</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Welter Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">Mr. Chakravarthy</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 1</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0 <br>Absent: 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-3xl text-yellow-300 border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="loss">LOSS</span></td>
+          <td class="px-3 py-2">G. NITESH RAO</td>
+          <td class="px-3 py-2">
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">Absent<br></span>
+           <span class="referee">Krishna</span><br>
+          </td>
+          <td class="px-3 py-2">-</td>
+          <td class="px-3 py-2">-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!------UKE PAVAN---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg" data-fighter-id="SCW-25-007" data-fighter-name="UKE PAVAN">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/urkepavanscw.jpeg" alt="Uke Pavan" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">UKE PAVAN</h1>
+      <div class="id">ID:SCW-25-007</div>
+      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
+        <div class="flex flex-col sm:items-end items-center">
+          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
+          <strong class=" text-yellow-300">(Level - 7)</strong>
+        </div>
+      </div>
+      
+      <div><strong>Age:</strong> <span class="highlight">25</span></div>
+      <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">65.8 kg</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Akhada</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Feather Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">Self</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 1</h2>
+          <div class="sub-stats">KO/TKO: 1 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-3xl text-yellow-300 border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="win">WIN</span></td>
+          <td class="px-3 py-2">JANGAM JATIN RAJ</td>
+          <td class="px-3 py-2">
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">KO<br></span>
+           <span class="referee">Mahadev</span><br>
+          </td>
+          <td class="px-3 py-2">1</td>
+          <td class="px-3 py-2">1:12</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!------JANGAM JOTHI RAJ---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg" data-fighter-id="SCW-25-008" data-fighter-name="JANGAM JOTHI RAJ">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/jatinscw.jpeg" alt="Jangam Jothi Raj" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">JANGAM JATIN RAJ</h1>
+      <div class="id">ID:SCW-25-008</div>
+      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
+        <div class="flex flex-col sm:items-end items-center">
+          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
+          <strong class=" text-yellow-300">(Level - 2)</strong>
+        </div>
+      </div>
+      
+      <div><strong>Age:</strong> <span class="highlight">21</span></div>
+      <div><strong>Height:</strong> <span class="highlight">5'5"</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">65.8 kg</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Shoorveer</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Feather Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">—</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 1</h2>
+          <div class="sub-stats">KO/TKO: 1 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-3xl text-yellow-300 border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="loss">LOSS</span></td>
+          <td class="px-3 py-2">UKE PAVAN</td>
+          <td class="px-3 py-2">
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">KO<br></span>
+           <span class="referee">Mahadev</span><br>
+          </td>
+          <td class="px-3 py-2">1</td>
+          <td class="px-3 py-2">1:28</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!------VINOD POLGAL---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg" data-fighter-id="SCW-25-009" data-fighter-name="VINOD POLGAL">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/vinodscw.jpeg" alt="Vinod Polgal" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">VINOD POLGAL</h1>
+      <div class="id">ID:SCW-25-009</div>
+      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
+        <div class="flex flex-col sm:items-end items-center">
+          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
+          <strong class=" text-yellow-300">(Level - 4)</strong>
+        </div>
+      </div>
+      
+      <div><strong>Age:</strong> <span class="highlight">19</span></div>
+      <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">52.2 kg</span></div>
+      <div><strong>Club:</strong> <span class="highlight">—</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Straw Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">—</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 1</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 1</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-3xl text-yellow-300 border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="win">WIN</span></td>
+          <td class="px-3 py-2">ANIL NIRWAHAN</td>
+          <td class="px-3 py-2">
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">Decision<br></span>
+           <span class="referee">Krishna</span><br>
+          </td>
+          <td class="px-3 py-2">3</td>
+          <td class="px-3 py-2">3:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!------ANIL NIRWAHAN---------->
+<!-- Fighter Section -->
+<section class="fighter-section max-w-5xl mx-auto my-8 p-4 bg-gray-900 rounded-lg shadow-lg" data-fighter-id="SCW-25-010" data-fighter-name="ANIL NIRWAHAN">
+  
+  <!-- Fighter Profile -->
+  <div class="fighter-profile flex flex-col md:flex-row items-center md:items-start gap-6">
+    <!-- Fighter Image -->
+    <div class="fighter-image w-full md:w-1/3">
+      <img src="images/anilscw.jpeg" alt="Anil Nirwahan" class="w-full border-4 border-gray-700 rounded-lg">
+    </div>
+
+    <!-- Fighter Details -->
+    <div class="fighter-details flex-1">
+      <h1 class="text-yellow-300 text-3xl font-bold">ANIL NIRWAHAN</h1>
+      <div class="id">ID:SCW-25-010</div>
+      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
+        <div class="flex flex-col sm:items-end items-center">
+          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
+          <strong class=" text-yellow-300">(Level - 5)</strong>
+        </div>
+      </div>
+      
+      <div><strong>Age:</strong> <span class="highlight">20</span></div>
+      <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">52.2 kg</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
+      <div><strong>Class:</strong> <span class="highlight">Straw Weight</span></div>
+      <div><strong>Coach:</strong> <span class="highlight">—</span></div>
+
+      <!-- Stats -->
+      <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="green text-xl font-bold">WINS 0</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
+        </div>
+        <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
+          <h2 class="red text-xl font-bold">LOSSES 1</h2>
+          <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fight History -->
+  <div class="mt-6 overflow-x-auto">
+    <h2 class="text-3xl text-yellow-300 border-b-2 border-red-600 pb-1 mb-3">FIGHT HISTORY</h2>
+    <table class="fight-history w-full border-collapse">
+      <thead class="bg-gray-800">
+        <tr>
+          <th class="px-3 py-2">RESULT</th>
+          <th class="px-3 py-2">FIGHTER</th>
+          <th class="px-3 py-2">EVENT</th>
+          <th class="px-3 py-2">METHOD / REFEREE</th>
+          <th class="px-3 py-2">R</th>
+          <th class="px-3 py-2">TIME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-3 py-2"><span class="loss">LOSS</span></td>
+          <td class="px-3 py-2">Vinod polgar</td>
+          <td class="px-3 py-2">
+            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+          </td>
+          <td class="px-3 py-2"><span class="method">Decision<br></span>
+           <span class="referee">Krishna</span><br>
+          </td>
+          <td class="px-3 py-2">3</td>
+          <td class="px-3 py-2">3:00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
 
 <!-- Footer -->
 <footer class="footer text-center text-gray-400">
@@ -615,6 +1229,11 @@
       id: "SCW-25-002", 
       name: "GADDAMIDI VIVEK",
       searchTerms: ["vivek", "gaddamidi", "gaddamidi vivek", "scw-25-002", "scw25002"]
+    },
+    {
+      id: "SCW-25-003",
+      name: "CHANDRASHEKAR",
+      searchTerms: ["Chandra", "shekhar", "chandrashekar", "scw-25-003", "scw25003"]
     }
   ];
 
