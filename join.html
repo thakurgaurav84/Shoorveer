@@ -70,6 +70,23 @@ input, select, textarea {
     display: block;
   }
 
+.background-section {
+  background-image: url('images/formback.jpeg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}
+
+.background-section::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background: rgba(0, 0, 0, 0.4); /* Change 0.4 for more or less opacity */
+  z-index: -1;
+}
+
+
 </style>
 
 
@@ -160,9 +177,9 @@ input, select, textarea {
 
 
 <section 
-  class="pt-28 pb-20 px-4 bg-cover bg-center relative min-h-screen flex flex-col items-center justify-center" 
-  style="background-image: url('images/formback.jpeg');">
+   class="background-section pt-28 pb-20 px-4 bg-cover bg-center relative min-h-screen flex flex-col items-center justify-center">
   
+
   <!-- Dark overlay -->
   <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60"></div>
 
