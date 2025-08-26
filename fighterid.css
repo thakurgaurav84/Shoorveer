@@ -320,3 +320,27 @@ html {
       display: block;
     }
   }
+  /* Additional styles for mobile stats layout */
+    .stats {
+      display: flex;
+      flex-direction: row !important; /* Force horizontal layout on mobile */
+      gap: 1rem;
+    }
+    
+    .stats-box {
+      flex: 1; /* Equal width for both boxes */
+      min-width: 0; /* Allow boxes to shrink */
+    }
+    
+    /* On very small screens, reduce padding and font sizes */
+    @media (max-width: 480px) {
+      .stats-box {
+        padding: 0.5rem;
+      }
+      .stats-box h2 {
+        font-size: 1.5rem;
+      }
+      .sub-stats {
+        font-size: 0.8rem;
+      }
+    }
