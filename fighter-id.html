@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,10 +13,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
 
+
+
+  </style>
 </head>
 <body>
 <!-- Navbar -->
-<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 backdrop-blur-sm top-0">
+  
   <!-- Logo -->
   <div class="px-3 py-1 rounded">
     <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
@@ -58,45 +61,55 @@
 
   <!-- Mobile Menu Button -->
   <div class="flex items-center space-x-4">
-    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
+    <button class="md:hidden text-white text-2xl focus:outline-none" id="menuToggle">
+      <i class="fas fa-bars" id="menuIcon"></i>
+    </button>
     <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
-  <!-- Links -->
-  <a href="index.html" class="block text-white hover:text-red-400 text-base mb-2">HOME</a>
-  <a href="about.html" class="block text-white hover:text-red-400 text-base mb-2">ABOUT</a>
-  <a href="programs.html" class="block text-white hover:text-red-400 text-base mb-2">PROGRAMS</a>
-
-  <!-- SCW Dropdown -->
-  <div class="relative flex flex-col items-center">
-    <div class="flex items-center">
-      <a href="SCW.html" class="text-white hover:text-red-400 text-base">SCW EVENT</a>
-      <button class="text-white hover:text-red-400 text-sm focus:outline-none px-1" id="scwToggleMobile">▼</button>
-    </div>
-    <div id="scwDropdownMobile" class="hidden bg-black bg-opacity-90 text-white mt-1 rounded shadow-lg w-48 z-50">
-      <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Events</a>
-      <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter Details</a>
-      <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
-    </div>
-  </div>
-
-  <a href="gallery.html" class="block text-white hover:text-red-400 text-base mb-2">GALLERY</a>
-  <a href="contact.html" class="block text-white hover:text-red-400 text-base">CONTACT</a>
-  <a href="join.html" class="glass-button px-3 py-2 rounded glow-red block w-full text-center mt-4">JOIN NOW</a>
-
-
-  <!-- Mobile Search -->
-  <div class="flex items-center bg-gray-800 rounded overflow-hidden border border-red-500 w-full mt-4">
-    <input id="fighterSearchMobile" type="text" placeholder="Search Fighter..."
-      class="px-3 py-2 bg-gray-800 text-white text-sm focus:outline-none flex-1"
-      onkeypress="if(event.key === 'Enter'){ searchFighterMobile(); }">
-    <button onclick="searchFighterMobile()" 
-      class="px-3 py-2 bg-red-500 text-white text-sm hover:bg-red-600">
-      <i class="fas fa-search"></i>
+<!-- Mobile Menu Overlay -->
+<div id="mobileMenu" class="hidden mobile-menu-overlay md:hidden">
+  <div class="flex justify-end p-4">
+    <button class="text-white text-2xl" id="closeMenu">
+      <i class="fas fa-times"></i>
     </button>
+  </div>
+  
+  <div class="px-6 pb-6 text-center">
+    <!-- Links -->
+    <a href="index.html" class="block text-white hover:text-red-400 text-lg mb-4 py-2">HOME</a>
+    <a href="about.html" class="block text-white hover:text-red-400 text-lg mb-4 py-2">ABOUT</a>
+    <a href="programs.html" class="block text-white hover:text-red-400 text-lg mb-4 py-2">PROGRAMS</a>
+
+    <!-- SCW Dropdown -->
+    <div class="relative flex flex-col items-center mb-4">
+      <div class="flex items-center">
+        <a href="SCW.html" class="text-white hover:text-red-400 text-lg">SCW EVENT</a>
+        <button class="text-white hover:text-red-400 text-sm focus:outline-none px-2" id="scwToggleMobile">▼</button>
+      </div>
+      <div id="scwDropdownMobile" class="hidden bg-black bg-opacity-90 text-white mt-2 rounded shadow-lg w-64 z-50">
+        <a href="upcoming-events.html" class="block px-4 py-3 hover:bg-red-500 text-base">Events</a>
+        <a href="fighter-id.html" class="block px-4 py-3 hover:bg-red-500 text-base">Fighter Details</a>
+        <a href="results.html" class="block px-4 py-3 hover:bg-red-500 text-base">Results</a>
+      </div>
+    </div>
+
+    <a href="gallery.html" class="block text-white hover:text-red-400 text-lg mb-4 py-2">GALLERY</a>
+    <a href="contact.html" class="block text-white hover:text-red-400 text-lg mb-6 py-2">CONTACT</a>
+    
+    <a href="join.html" class="glass-button px-6 py-3 rounded glow-red block w-full max-w-xs mx-auto text-center mb-6 text-base font-semibold">JOIN NOW</a>
+
+    <!-- Mobile Search -->
+    <div class="flex items-center bg-gray-800 rounded overflow-hidden border border-red-500 w-full max-w-xs mx-auto">
+      <input id="fighterSearchMobile" type="text" placeholder="Search Fighter..."
+        class="px-3 py-3 bg-gray-800 text-white text-base focus:outline-none flex-1"
+        onkeypress="if(event.key === 'Enter'){ searchFighterMobile(); }">
+      <button onclick="searchFighterMobile()" 
+        class="px-4 py-3 bg-red-500 text-white text-base hover:bg-red-600">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -137,9 +150,8 @@
             <div class="space-y-2 flex-1 min-w-0">
       <div><strong>Age:</strong> <span class="highlight">18</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">52.2 kg</span></div>
+      <div><strong>Weight:</strong> <span class="highlight">52.2 kg (Strawweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Straw Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
             </div>
@@ -184,7 +196,7 @@
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Gaddamidi Vivek </td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">MMA SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Submission (RNC)<br></span>
            <span class="referee">Srikant</span><br>
@@ -196,7 +208,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">SYED OSAMA </td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>17 / AUG / 2025
+            <span class="event-name">MMA SCW Event</span><br>17 / AUG / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Mallesh</span><br>
@@ -230,9 +242,8 @@
             <div class="space-y-2 flex-1 min-w-0">
               <div><strong>Age:</strong> <span class="highlight">20</span></div>
               <div><strong>Height:</strong> <span class="highlight">5'5"</span></div>
-              <div><strong>Weight:</strong> <span class="highlight">52.2 kg</span></div>
+              <div><strong>Weight:</strong> <span class="highlight">52.2 kg (Strawweight)</span></div>
               <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-              <div><strong>Class:</strong> <span class="highlight">Straw Weight</span></div>
               <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
             </div>
             
@@ -277,7 +288,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">SAGAR BHAGAT</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">MMA SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Submission (RNC)<br></span>
            <span class="referee">Srikant</span><br>
@@ -289,7 +300,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">ARUSH KOTA</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>17 / AUG / 2025
+            <span class="event-name">MMA SCW MAIN Event</span><br>17 / AUG / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Walkover<br></span>
            <span class="referee">Mallesh</span><br>
@@ -318,19 +329,22 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">CHANDRASHEKHAR</h1>
       <div class="id">ID:SCW-25-003</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 2)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">20</span></div>
-      <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">56.7 kg</span></div>
-      <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Fly Weight</span></div>
-      <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2">
+            <div class="space-y-2 flex-1 min-w-0">
+              <div><strong>Age:</strong> <span class="highlight">20</span></div>
+              <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
+              <div><strong>Weight:</strong> <span class="highlight">56.2 kg (Flyweight)</span></div>
+              <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
+              <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 2)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -365,7 +379,7 @@
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">RAHUL BIRADAR</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Srikant</span><br>
@@ -393,19 +407,22 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">RAHUL BIRADAR</h1>
       <div class="id">ID:SCW-25-004</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">20</span></div>
-      <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">56.7 kg</span></div>
-      <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Fly Weight</span></div>
-      <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2">
+            <div class="space-y-2 flex-1 min-w-0">
+              <div><strong>Age:</strong> <span class="highlight">20</span></div>
+              <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
+              <div><strong>Weight:</strong> <span class="highlight">56.7 kg (Flyweight)</span></div>
+              <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
+              <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -440,7 +457,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">CHANDRASHEKHAR</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Srikant</span><br>
@@ -452,7 +469,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Chandrasena Goud</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Main Event</span><br>17 / AUG / 2025
+            <span class="event-name">MMA SCW Main Event</span><br>17 / AUG / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Mallesh</span><br>
@@ -480,19 +497,22 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">G. NITESH RAO</h1>
       <div class="id">ID:SCW-25-005</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">21</span></div>
-      <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">61.2 kg</span></div>
-      <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Bantam Weight</span></div>
-      <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-6  gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+              <div><strong>Age:</strong> <span class="highlight">21</span></div>
+              <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
+              <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">61.2 kg (Bantamweight)</span></div>
+              <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
+              <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -527,7 +547,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">P. ROHITH</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name"> MMA SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Walkover (Opponent Absent)<br></span>
            <span class="referee">Krishna</span><br>
@@ -539,7 +559,7 @@
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Mohammad Zubair</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Main Event</span><br>17 / AUG / 2025
+            <span class="event-name"> MMA SCW Main Event</span><br>17 / AUG / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Mallesh</span><br>
@@ -567,19 +587,22 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">P. ROHITH</h1>
       <div class="id">ID:SCW-25-006</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">26</span></div>
-      <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">77.1 kg</span></div>
-      <div><strong>Club:</strong> <span class="highlight">Thunder Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Welter Weight</span></div>
-      <div><strong>Coach:</strong> <span class="highlight">Mr. Chakravarthy</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+              <div><strong>Age:</strong> <span class="highlight">26</span></div>
+              <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
+              <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">77.1 kg (Welterweight)</span></div>
+              <div><strong>Club:</strong> <span class="highlight">Thunder Academy</span></div>
+              <div><strong>Coach:</strong> <span class="highlight">MR. Chakravarthy</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -614,7 +637,7 @@
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">G. NITESH RAO</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">MMA SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Absent<br></span>
            <span class="referee">Krishna</span><br>
@@ -642,20 +665,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">URKE PAVAN</h1>
       <div class="id">ID:SCW-25-007</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 7)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">25</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+            
+            <div><strong>Age:</strong> <span class="highlight">25</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">65.8 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">65.8 kg (Feather Weight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Akhada</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Feather Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Self</span></div>
-
+          </div>
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 7)</div>
+            </div>
+          </div>
+      
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -689,7 +716,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">JANGAM JATIN RAJ</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">KO<br></span>
            <span class="referee">Mahadev</span><br>
@@ -717,20 +744,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">JANGAM JATIN RAJ</h1>
       <div class="id">ID:SCW-25-008</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 2)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">21</span></div>
+     
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+              <div><strong>Age:</strong> <span class="highlight">21</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'5"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">65.8 kg</span></div>
+      <div class="whitespace-nowrap" ><strong>Weight:</strong> <span class="highlight">65.8 kg (FeatherWeight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Feather Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
+      
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -764,7 +797,7 @@
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">UKE PAVAN</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">KO<br></span>
            <span class="referee">Mahadev</span><br>
@@ -792,20 +825,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">VINOD POLGAL</h1>
       <div class="id">ID:SCW-25-009</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">19</span></div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+<div><strong>Age:</strong> <span class="highlight">19</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">52.2 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">52.2 kg (StrawWeight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Straw Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
+      
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -839,7 +878,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">ANIL NIRWAHAN</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Krishna</span><br>
@@ -867,20 +906,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">ANIL NIRWAHAN</h1>
       <div class="id">ID:SCW-25-010</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">20</span></div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+ <div><strong>Age:</strong> <span class="highlight">20</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">52.2 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">52.2 kg (StrawWeight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Straw Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
+      
+     
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -914,7 +959,7 @@
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Vinod polgar</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Krishna</span><br>
@@ -942,20 +987,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">P. ARJUN KOTESHWAR RAO</h1>
       <div class="id">ID:SCW-25-011</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">—</span></div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+<div><strong>Age:</strong> <span class="highlight">—</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">83.9 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">83.9 kg (Middleweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Elevate Kickboxing Studio</span></div>
-      <div><strong>Class:</strong> <span class="highlight">K1 Middleweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Mr. Anand</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
+      
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -989,7 +1040,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">CHILUKURI SRIPADHA VALLABH</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">TKO<br></span>
            <span class="referee">Mahadev</span><br>
@@ -1017,20 +1068,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">CHILUKURI SRIPADHA VALLABH</h1>
       <div class="id">ID:SCW-25-012</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 3)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">20</span></div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+ <div><strong>Age:</strong> <span class="highlight">20</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">83.9 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">83.9 kg (Middleweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Battle Zone</span></div>
-      <div><strong>Class:</strong> <span class="highlight">K1 Middleweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Mr. Mahadev</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 3)</div>
+            </div>
+          </div>
+      
+     
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -1064,7 +1121,7 @@
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">P. ARJUN KOTESHWAR RAO</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">TKO<br></span>
            <span class="referee">Mahadev</span><br>
@@ -1092,20 +1149,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">Y. ABHISHEK</h1>
       <div class="id">ID:SCW-25-013</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 3)</strong>
-        </div>
-      </div>
-      
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+
       <div><strong>Age:</strong> <span class="highlight">21</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">93.0 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">93.0 kg (Heavyweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Elevate</span></div>
-      <div><strong>Class:</strong> <span class="highlight">K1 Heavyweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Mr. Anand</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 3)</div>
+            </div>
+          </div>
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -1139,7 +1202,7 @@
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">RAVITEJA CHIRIGURA</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Krishna</span><br>
@@ -1167,20 +1230,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">RAVITEJA CHIRIGURA</h1>
       <div class="id">ID:SCW-25-014</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">28</span></div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ <div><strong>Age:</strong> <span class="highlight">28</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">93.0 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">93.0 kg (Heavyweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Raw Combat</span></div>
-      <div><strong>Class:</strong> <span class="highlight">K1 Heavyweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Self</span></div>
 
+
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
+      
+     
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -1214,7 +1283,7 @@
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Y. ABHISHEK</td>
           <td class="px-3 py-2">
-            <span class="event-name">SCW Event</span><br>04 / MAY / 2025
+            <span class="event-name">K1 SCW Event</span><br>04 / MAY / 2025
           </td>
           <td class="px-3 py-2"><span class="method">Decision<br></span>
            <span class="referee">Krishna</span><br>
@@ -1241,19 +1310,25 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">ARUSH KOTA</h1>
       <div class="id">ID: SCW-25-016</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
-      <div><strong>Age:</strong> <span class="highlight">21</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+<div><strong>Age:</strong> <span class="highlight">21</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'10"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">70 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">70 kg (Welterweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Welterweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -1286,7 +1361,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">GADDAMIDI VIVEK</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Main Event</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">MMA SCW Main Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2">
             <span class="method">Decision(Walkover)</span><br>
             <span class="referee"></span>
@@ -1314,20 +1389,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">CHANDRA SENA GOUD</h1>
       <div class="id">ID:SCW-25-017</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">19</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+ <div><strong>Age:</strong> <span class="highlight">19</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'5"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">56.7 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">56.7 kg (FlyWeight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Battle Zone</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Bantam Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">-</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
+      
+     
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -1360,7 +1441,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Rahul Biradar</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Main Event</span><br></td>
+          <td class="px-3 py-2"><span class="event-name">MMA SCW Main Event</span><br></td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">3</td>
           <td class="px-3 py-2">3:00</td>
@@ -1387,19 +1468,25 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">PRAVEEN NAYAK</h1>
       <div class="id">ID:SCW-25-018</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - D</span>
-          <strong class=" text-yellow-300">(Level - 17)</strong>
-        </div>
-      </div>
-      
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+
       <div><strong>Age:</strong> <span class="highlight">23</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'9"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">77.1 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">77.1 kg (Welterweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">SHOORVEER ACADEMY</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Welterweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - D</div>
+              <div class="text-sm text-white-300">(Level - 17)</div>
+            </div>
+          </div>
+      
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -1433,7 +1520,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Sukka Akash</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Main Event</span><br></td>
+          <td class="px-3 py-2"><span class="event-name">MMA SCW Main Event</span><br></td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">3</td>
           <td class="px-3 py-2">3:00</td>
@@ -1458,20 +1545,27 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">SUKKA AKASH</h1>
       <div class="id">ID:SCW-25-019</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 6)</strong>
-        </div>
-      </div>
       
-      <div><strong>Age:</strong> <span class="highlight">21</span></div>
+        <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+<div><strong>Age:</strong> <span class="highlight">21</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'10"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">77.1 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">77.1 kg (Welter Weight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Warriors Combat Sports</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Welter Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Rakesh</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 6)</div>
+            </div>
+          </div>
+      
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -1504,7 +1598,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Praveen Nayak</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Main Event</span></td>
+          <td class="px-3 py-2"><span class="event-name">MMA SCW Main Event</span></td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">3</td>
           <td class="px-3 py-2">3:00</td>
@@ -1529,19 +1623,26 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">P. NARASIMHA YADAV</h1>
       <div class="id">ID:SCW-25-020</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 6)</strong>
-        </div>
-      </div>
-      
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+   
+
       <div><strong>Age:</strong> <span class="highlight">21</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">72.2 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">72.2 kg (Lightweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Thunder Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Lightweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Chakrapathy</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 6)</div>
+            </div>
+          </div>
+      
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -1575,7 +1676,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Suyash Singh</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Main Event</span><br>17 / AUG / 2025
+          <td class="px-3 py-2"><span class="event-name">MMA SCW Main Event</span><br>17 / AUG / 2025
           </td><br></td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">4</td>
@@ -1601,19 +1702,25 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">SUYASH SINGH</h1>
       <div class="id">ID:SCW-25-021</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class=" text-yellow-300">(Level - 6)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">18</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+<div><strong>Age:</strong> <span class="highlight">18</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'9"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">72.2 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">72.2 kg (Light Weight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Light Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 6)</div>
+            </div>
+          </div>
+      
+      
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -1622,8 +1729,8 @@
           <div class="sub-stats">KO/TKO: 0 <br>Submissions: 0 <br>Decisions: 0</div>
         </div>
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
-          <h2 class="red text-xl font-bold">LOSSES 2</h2>
-          <div class="sub-stats">KO/TKO: 1  <br>Submissions: 0 <br>Decisions: 1</div>
+          <h2 class="red text-xl font-bold">LOSSES 1</h2>
+          <div class="sub-stats">KO/TKO: 0  <br>Submissions: 0 <br>Decisions: 1</div>
         </div>
       </div>
     </div>
@@ -1647,21 +1754,13 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Narasimha Yadav</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Main Event</span><br>17 / AUG / 2025
+          <td class="px-3 py-2"><span class="event-name">MMA SCW Main Event</span><br>17 / AUG / 2025
           </td><br></td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">3</td>
           <td class="px-3 py-2">3:00</td>
         </tr>
-        <tr>
-          <td class="px-3 py-2"><span class="loss">LOSS</span></td>
-          <td class="px-3 py-2">K.Siddu</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night </span><br>17 / AUG / 2025
-          </td><br></td>
-          <td class="px-3 py-2"><span class="method">KO/TKO</span><br><span class="referee">Prashanth</span></td>
-          <td class="px-3 py-2">1</td>
-          <td class="px-3 py-2">0:09</td>
-        </tr>
+       
       </tbody>
     </table>
   </div>
@@ -1683,19 +1782,25 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">MOHAMMAD ZUBAIR</h1>
       <div class="id">ID:SCW-25-022</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - D</span>
-          <strong class=" text-yellow-300">(Level - 16)</strong>
-        </div>
-      </div>
-      
-      <div><strong>Age:</strong> <span class="highlight">27</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ 
+ <div><strong>Age:</strong> <span class="highlight">27</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">61.2 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">61.2 kg (Bantam Weight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Panther Club</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Bantam Weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Self</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - D</div>
+              <div class="text-sm text-white-300">(Level - 16)</div>
+            </div>
+          </div>
+      
+     
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -1729,7 +1834,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">G Nitesh Rao</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Main Event</span><br>17 / AUG / 2025
+          <td class="px-3 py-2"><span class="event-name">MMA SCW Main Event</span><br>17 / AUG / 2025
           </td><br></td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">3</td>
@@ -1757,18 +1862,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">RAJEEV NAKKA</h1>
       <div class="id">ID:SCW-25-023</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
-      <div><strong>Age:</strong> <span class="highlight">22</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+<div><strong>Age:</strong> <span class="highlight">22</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">65 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">65 kg (Lightweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Warrior’s Combat Sports</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Lightweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Laxman</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
+      
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -1802,7 +1913,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">ABDUL RAHMAN</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Event</span><br>17 / AUG / 2025
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025
           </td></td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee"></span></td>
           
@@ -1825,18 +1936,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">ABDUR RAHMAN</h1>
       <div class="id">ID: SCW-25-024</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
-      <div><strong>Age:</strong> <span class="highlight">18</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
+<div><strong>Age:</strong> <span class="highlight">18</span></div>
       <div><strong>Height:</strong> <span class="highlight">6'0"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">65 kg</span></div>
-      <div><strong>Club:</strong> <span class="highlight">Panther Club</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Featherweight</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">65 kg (Featherweight)</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Panther Club</span></div> 
       <div><strong>Coach:</strong> <span class="highlight">Mohammad Zubair</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
+      
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
           <h2 class="green text-xl font-bold">WINS 0</h2>
@@ -1866,7 +1983,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">RAJEEV NAKKA</td>
-           <td class="px-3 py-2"><span class="event-name">SCW Fight Night</span><br>17 / AUG / 2025
+           <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025
           </td></td>
           <td class="px-3 py-2">Decision</td>
           <td class="px-3 py-2">3</td>
@@ -1891,19 +2008,25 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">CH. SETHU VARDHAN</h1>
       <div class="id">ID: SCW-25-025</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
-      <div><strong>Age:</strong> <span class="highlight">21</span></div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ 
+<div><strong>Age:</strong> <span class="highlight">21</span></div>
       <div><strong>Height:</strong> <span class="highlight">—</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">52 kg</span></div>
-      <div><strong>Club:</strong> <span class="highlight">Universal Fitness Martial Art</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Strawweight</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">52 kg (Strawweight)</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Universal Fitness Martial Art</span></div> 
       <div><strong>Coach:</strong> <span class="highlight">Prashanth</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -1936,7 +2059,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Srikant Gayakwad</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night</span><br>17 / AUG / 2025
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025
           </td></td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">2</td>
@@ -1961,18 +2084,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">SRIKANTH GAYAKWAD</h1>
       <div class="id">ID: SCW-25-026</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ 
+
       <div><strong>Age:</strong> <span class="highlight">24</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">52 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">52 kg (Strawweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Lidaas Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Strawweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Sujith Rai</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -2006,7 +2135,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Sethu Vardhan</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">2</td>
           <td class="px-3 py-2">3:00</td>
@@ -2030,18 +2159,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">SYED OSAMA</h1>
       <div class="id">ID: SCW-25-027</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+  
+
       <div><strong>Age:</strong> <span class="highlight">18</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">56 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">56 kg (Featherweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">RAW COMBAT</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Featherweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Atique</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -2075,7 +2210,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Sagar Bhagat</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event/span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">2</td>
           <td class="px-3 py-2">3:00</td>
@@ -2099,19 +2234,25 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">VIVEK KUMAR</h1>
       <div class="id">ID: SCW-25-028</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
-      <div><strong>Age:</strong> <span class="highlight">31</span></div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ 
+<div><strong>Age:</strong> <span class="highlight">31</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">62 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">62 kg (Featherweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Lidaas Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Featherweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Sujith Rai</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
+      
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -2144,7 +2285,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Ankit Pasvan</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">2</td>
           <td class="px-3 py-2">3:00</td>
@@ -2168,18 +2309,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">ANKIT PASVAN</h1>
       <div class="id">ID: SCW-25-029</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ 
+
       <div><strong>Age:</strong> <span class="highlight">20</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'9"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">61 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">61 kg (Featherweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Featherweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -2213,7 +2360,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Vivek Kumar</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">1</td>
           <td class="px-3 py-2">1:48</td>
@@ -2237,19 +2384,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">MIRZA YAQUB NAWAAZ</h1>
       <div class="id">ID: SCW-25-030</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0"> 
+
       <div><strong>Age:</strong> <span class="highlight">17</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">65 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">65 kg (featherweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Global MMA Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">featherweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Zubair</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -2282,7 +2434,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Parvat Singh</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night Event</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">3</td>
           <td class="px-3 py-2">3:00</td>
@@ -2306,19 +2458,25 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">PARVAT SINGH</h1>
       <div class="id">ID: SCW-25-031</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ 
+
       <div><strong>Age:</strong> <span class="highlight">17</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'6"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">65 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">65 kg (Featherweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Featherweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -2351,7 +2509,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Mirza Yaqub Nawaaz</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night Event</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">3</td>
           <td class="px-3 py-2">3:00</td>
@@ -2375,18 +2533,23 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">K. SIDDU</h1>
       <div class="id">ID: SCW-25-032</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 6)</strong>
-        </div>
-      </div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
       <div><strong>Age:</strong> <span class="highlight">34</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'9"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">65 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">65 kg (Feather weight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">UNIVERSAL FITNESS</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Feather weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Prashanth</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 6)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -2420,7 +2583,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Suyash Singh</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night Event</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">KO/TKO</span><br><span class="referee">Prashanth</span></td>
           <td class="px-3 py-2">1</td>
           <td class="px-3 py-2">0:09</td>
@@ -2444,19 +2607,25 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">MD SULAIMAN</h1>
       <div class="id">ID: SCW-25-033</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl sm:text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 4)</strong>
-        </div>
-      </div>
+      <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ 
+
       <div><strong>Age:</strong> <span class="highlight">18</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'7"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">83 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">83 kg (Middle weight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Sumsphot Martial Arts Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Middle weight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Ganesh</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 4)</div>
+            </div>
+          </div>
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -2490,7 +2659,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Sai Krishna</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event/span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee"></span></td>
           <td class="px-3 py-2">2</td>
           <td class="px-3 py-2">3:00</td>
@@ -2514,19 +2683,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">L. SAI KRISHNA</h1>
       <div class="id">ID: SCW-25-034</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+
       <div><strong>Age:</strong> <span class="highlight">19</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'8"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">83.9 kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">83.9 kg (Middleweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Universal Fitness Martial Arts Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight">Middleweight</span></div>
       <div><strong>Coach:</strong> <span class="highlight">Prashanth</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -2559,7 +2733,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Md Sulaiman</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night</span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee"></span></td>
           <td class="px-3 py-2">2</td>
           <td class="px-3 py-2">3:00</td>
@@ -2583,18 +2757,23 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">SAI ANISH</h1>
       <div class="id">ID: SCW-25-035</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 5)</strong>
-        </div>
-      </div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0">
+ 
       <div><strong>Age:</strong> <span class="highlight">21</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'9"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">93.0+ kg</span></div>
-      <div><strong>Club:</strong> <span class="highlight">Thunder Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight"></span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">93.0+ kg (Heavyweight)</span></div>
+      <div><strong>Club:</strong> <span class="highlight">Thunder Academy</span></div> 
       <div><strong>Coach:</strong> <span class="highlight">P. Chakravarthy</span></div>
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 5)</div>
+            </div>
+          </div>
 
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
@@ -2628,7 +2807,7 @@
         <tr>
           <td class="px-3 py-2"><span class="loss">LOSS</span></td>
           <td class="px-3 py-2">Rohit Manga</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night </span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event</span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">2</td>
           <td class="px-3 py-2">2:00</td>
@@ -2652,19 +2831,24 @@
     <div class="fighter-details flex-1">
       <h1 class="text-yellow-300 text-3xl font-bold">ROHIT MANGA</h1>
       <div class="id">ID: SCW-25-036</div>
-      <div class="info flex flex-wrap gap-4 mt-2 sm:justify-end sm:text-right justify-center text-center w-full">
-        <div class="flex flex-col sm:items-end items-center">
-          <span class="text-3xl font-bold text-yellow-300">Rank - E</span>
-          <strong class="text-yellow-300">(Level - 6)</strong>
-        </div>
-      </div>
+     <!-- Fighter Info with Rank on the right -->
+          <div class="flex justify-between items-start mb-4 gap-2 flex-wrap">
+            <div class="space-y-2 flex-1 min-w-0"> 
+
       <div><strong>Age:</strong> <span class="highlight">21</span></div>
       <div><strong>Height:</strong> <span class="highlight">5'9"</span></div>
-      <div><strong>Weight:</strong> <span class="highlight">93.0+ kg</span></div>
+      <div class="whitespace-nowrap"><strong>Weight:</strong> <span class="highlight">93.0+ kg (Heavyweight)</span></div>
       <div><strong>Club:</strong> <span class="highlight">Shoorveer Academy</span></div>
-      <div><strong>Class:</strong> <span class="highlight"></span></div>
       <div><strong>Coach:</strong> <span class="highlight">M Manish Kumar</span></div>
 
+            </div>
+            
+            <!-- Rank and Level - Compact on the right -->
+            <div class="text-right flex-shrink-0">
+              <div class="text-lg md:text-2xl font-bold text-yellow-300">Rank - E</div>
+              <div class="text-sm text-white-300">(Level - 6)</div>
+            </div>
+          </div>
       <!-- Stats -->
       <div class="stats flex flex-col sm:flex-row gap-8 mt-4">
         <div class="stats-box bg-gray-800 px-4 py-2 rounded-lg">
@@ -2697,7 +2881,7 @@
         <tr>
           <td class="px-3 py-2"><span class="win">WIN</span></td>
           <td class="px-3 py-2">Sai Anish</td>
-          <td class="px-3 py-2"><span class="event-name">SCW Fight Night </span><br>17 / AUG / 2025</td>
+          <td class="px-3 py-2"><span class="event-name">K1 SCW Event </span><br>17 / AUG / 2025</td>
           <td class="px-3 py-2"><span class="method">Decision</span><br><span class="referee">Mallesh</span></td>
           <td class="px-3 py-2">2</td>
           <td class="px-3 py-2">2:00</td>
@@ -2825,7 +3009,7 @@
 {
   id: "SCW-25-018", 
   name: "PRAVEEN NAYAK",
-  searchTerms: ["praveen", "nayak", "praveen nayak", "scw-25-018", "scw25018"]
+  searchTerms: ["praveen", "nayak", "praveen nayak", "LADDU", "scw25018"]
 },
 {
   id: "SCW-25-019", 
@@ -2921,9 +3105,29 @@
 
   ];
 
-  // Toggle mobile menu
-  document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('hidden');
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const menuIcon = document.getElementById('menuIcon');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = document.getElementById('closeMenu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    // Switch between bars and times icon
+    if (mobileMenu.classList.contains('hidden')) {
+      menuIcon.classList.remove('fa-times');
+      menuIcon.classList.add('fa-bars');
+    } else {
+      menuIcon.classList.remove('fa-bars');
+      menuIcon.classList.add('fa-times');
+    }
+  });
+
+  // Close button inside mobile menu
+  closeMenu.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    menuIcon.classList.remove('fa-times');
+    menuIcon.classList.add('fa-bars');
   });
 
   // SCW dropdown desktop
@@ -2938,17 +3142,20 @@
     document.getElementById('scwDropdownMobile').classList.toggle('hidden');
   });
 
-  // Search desktop
-  function searchFighter() {
-    let query = document.getElementById('fighterSearch').value.trim().toLowerCase();
-    performSearch(query);
-  }
+  // Close dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    const desktopDrop = document.getElementById('scwDropdownDesktop');
+    const mobileDrop = document.getElementById('scwDropdownMobile');
+    const desktopToggle = document.getElementById('scwToggleDesktop');
+    const mobileToggle = document.getElementById('scwToggleMobile');
 
-  // Search mobile
-  function searchFighterMobile() {
-    let query = document.getElementById('fighterSearchMobile').value.trim().toLowerCase();
-    performSearch(query);
-  }
+    if (!desktopDrop.contains(e.target) && !desktopToggle.contains(e.target)) {
+      desktopDrop.classList.add('hidden');
+    }
+    if (!mobileDrop.contains(e.target) && !mobileToggle.contains(e.target)) {
+      mobileDrop.classList.add('hidden');
+    }
+  });
 
   // Shared search logic for searching within the current page
   function performSearch(query) {

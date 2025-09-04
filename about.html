@@ -388,13 +388,46 @@
       .social-links {
         gap: 0.75rem;
       }
+    } /* Mobile menu improvements */
+#mobileMenu {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Mobile menu overlay adjustments */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 60px; /* Push below navbar */
+  left: 0;
+  width: 100%;
+  max-height: 80vh; /* Instead of full screen */
+  background: rgba(0, 0, 0, 0.7); /* Transparent look */
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 20px 0;
+  border-radius: 0 0 12px 12px; /* Rounded bottom for nicer look */
+}
+
+    
+    /* Navigation button improvements for mobile */
+    @media (max-width: 640px) {
+      .nav-buttons-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .nav-button {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto 16px auto;
+      }
     }
   </style>
 </head>
-
 <body>
 <!-- Navbar -->
-<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 top-0">
+<nav class="flex justify-between items-center p-3 fixed w-full z-50 bg-black bg-opacity-50 backdrop-blur-sm top-0">
+  
   <!-- Logo -->
   <div class="px-3 py-1 rounded">
     <img src="images/navbar.jpeg" alt="Shoorveer Academy Logo" class="h-12 md:h-16">
@@ -435,46 +468,55 @@
 
   <!-- Mobile Menu Button -->
   <div class="flex items-center space-x-4">
-    <button class="md:hidden text-white text-xl" id="menuToggle">☰</button>
+    <button class="md:hidden text-white text-2xl focus:outline-none" id="menuToggle">
+      <i class="fas fa-bars" id="menuIcon"></i>
+    </button>
     <a href="join.html" class="glass-button px-3 py-1 rounded glow-red hidden md:inline-block text-sm">JOIN NOW</a>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden absolute top-16 left-0 w-full bg-gradient-to-b from-black to-gray-900 px-6 py-4 text-center md:hidden z-40 shadow-2xl">
-  <!-- Links -->
-  <a href="index.html" class="block text-white hover:text-red-400 text-base mb-2">HOME</a>
-  <a href="about.html" class="block text-white hover:text-red-400 text-base mb-2">ABOUT</a>
-  <a href="programs.html" class="block text-white hover:text-red-400 text-base mb-2">PROGRAMS</a>
-
-  <!-- SCW Dropdown -->
-  <div class="relative flex flex-col items-center">
-    <div class="flex items-center">
-      <a href="SCW.html" class="text-white hover:text-red-400 text-base">SCW EVENT</a>
-      <button class="text-white hover:text-red-400 text-sm focus:outline-none px-1" id="scwToggleMobile">▼</button>
-    </div>
-    <div id="scwDropdownMobile" class="hidden bg-black bg-opacity-90 text-white mt-1 rounded shadow-lg w-48 z-50">
-      <a href="upcoming-events.html" class="block px-4 py-2 hover:bg-red-500">Events</a>
-      <a href="fighter-id.html" class="block px-4 py-2 hover:bg-red-500">Fighter Details</a>
-      <a href="results.html" class="block px-4 py-2 hover:bg-red-500">Results</a>
-    </div>
-  </div>
-
-  <a href="gallery.html" class="block text-white hover:text-red-400 text-base mb-2">GALLERY</a>
-  <a href="contact.html" class="block text-white hover:text-red-400 text-base">CONTACT</a>
-<a href="join.html" class="glass-button px-3 py-2 rounded glow-red block w-full text-center mt-4">JOIN NOW</a>
-
-
-
-  <!-- Mobile Search -->
-  <div class="flex items-center bg-gray-800 rounded overflow-hidden border border-red-500 w-full mt-4">
-    <input id="fighterSearchMobile" type="text" placeholder="Search Fighter..."
-      class="px-3 py-2 bg-gray-800 text-white text-sm focus:outline-none flex-1"
-      onkeypress="if(event.key === 'Enter'){ searchFighterMobile(); }">
-    <button onclick="searchFighterMobile()" 
-      class="px-3 py-2 bg-red-500 text-white text-sm hover:bg-red-600">
-      <i class="fas fa-search"></i>
+<!-- Mobile Menu Overlay -->
+<div id="mobileMenu" class="hidden mobile-menu-overlay md:hidden">
+  <div class="flex justify-end p-4">
+    <button class="text-white text-2xl" id="closeMenu">
+      <i class="fas fa-times"></i>
     </button>
+  </div>
+  
+  <div class="px-6 pb-6 text-center">
+    <!-- Links -->
+    <a href="index.html" class="block text-white hover:text-red-400 text-lg mb-4 py-2">HOME</a>
+    <a href="about.html" class="block text-white hover:text-red-400 text-lg mb-4 py-2">ABOUT</a>
+    <a href="programs.html" class="block text-white hover:text-red-400 text-lg mb-4 py-2">PROGRAMS</a>
+
+    <!-- SCW Dropdown -->
+    <div class="relative flex flex-col items-center mb-4">
+      <div class="flex items-center">
+        <a href="SCW.html" class="text-white hover:text-red-400 text-lg">SCW EVENT</a>
+        <button class="text-white hover:text-red-400 text-sm focus:outline-none px-2" id="scwToggleMobile">▼</button>
+      </div>
+      <div id="scwDropdownMobile" class="hidden bg-black bg-opacity-90 text-white mt-2 rounded shadow-lg w-64 z-50">
+        <a href="upcoming-events.html" class="block px-4 py-3 hover:bg-red-500 text-base">Events</a>
+        <a href="fighter-id.html" class="block px-4 py-3 hover:bg-red-500 text-base">Fighter Details</a>
+        <a href="results.html" class="block px-4 py-3 hover:bg-red-500 text-base">Results</a>
+      </div>
+    </div>
+
+    <a href="gallery.html" class="block text-white hover:text-red-400 text-lg mb-4 py-2">GALLERY</a>
+    <a href="contact.html" class="block text-white hover:text-red-400 text-lg mb-6 py-2">CONTACT</a>
+    
+    <a href="join.html" class="glass-button px-6 py-3 rounded glow-red block w-full max-w-xs mx-auto text-center mb-6 text-base font-semibold">JOIN NOW</a>
+
+    <!-- Mobile Search -->
+    <div class="flex items-center bg-gray-800 rounded overflow-hidden border border-red-500 w-full max-w-xs mx-auto">
+      <input id="fighterSearchMobile" type="text" placeholder="Search Fighter..."
+        class="px-3 py-3 bg-gray-800 text-white text-base focus:outline-none flex-1"
+        onkeypress="if(event.key === 'Enter'){ searchFighterMobile(); }">
+      <button onclick="searchFighterMobile()" 
+        class="px-4 py-3 bg-red-500 text-white text-base hover:bg-red-600">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -490,7 +532,7 @@
 
 <!-- About Section -->
 <section class="section-padding max-w-7xl mx-auto text-center" data-aos="fade-up">
-  <h2 class="fiery-heading mb-8 lg:mb-12">INTRODUCTION</h2>
+  <h2 class="responsive-heading text-yellow-400 mb-8 lg:mb-12 text-center">INTRODUCTION</h2>
 
   <p class="text-gray-300 max-w-6xl mx-auto leading-relaxed mb-8 lg:mb-12 responsive-text">
     Welcome to Shoorveer Academy! Founded on February 17, 2021, by <strong>Mangwana Manish Kumar</strong>,
@@ -926,9 +968,29 @@
 
   ];
 
-  // Mobile menu toggle
-  document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('hidden');
+ // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const menuIcon = document.getElementById('menuIcon');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = document.getElementById('closeMenu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    // Switch between bars and times icon
+    if (mobileMenu.classList.contains('hidden')) {
+      menuIcon.classList.remove('fa-times');
+      menuIcon.classList.add('fa-bars');
+    } else {
+      menuIcon.classList.remove('fa-bars');
+      menuIcon.classList.add('fa-times');
+    }
+  });
+
+  // Close button inside mobile menu
+  closeMenu.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    menuIcon.classList.remove('fa-times');
+    menuIcon.classList.add('fa-bars');
   });
 
   // SCW dropdown desktop
@@ -947,14 +1009,17 @@
   document.addEventListener('click', (e) => {
     const desktopDrop = document.getElementById('scwDropdownDesktop');
     const mobileDrop = document.getElementById('scwDropdownMobile');
-    if (!desktopDrop.contains(e.target) && !document.getElementById('scwToggleDesktop').contains(e.target)) {
+    const desktopToggle = document.getElementById('scwToggleDesktop');
+    const mobileToggle = document.getElementById('scwToggleMobile');
+
+    if (!desktopDrop.contains(e.target) && !desktopToggle.contains(e.target)) {
       desktopDrop.classList.add('hidden');
     }
-    if (!mobileDrop.contains(e.target) && !document.getElementById('scwToggleMobile').contains(e.target)) {
+    if (!mobileDrop.contains(e.target) && !mobileToggle.contains(e.target)) {
       mobileDrop.classList.add('hidden');
     }
   });
-  
+
   function searchFighter() {
     const query = document.getElementById('fighterSearch').value.trim().toLowerCase();
     performSearch(query);
