@@ -93,225 +93,28 @@
     .animate-fade-in {
       animation: fade-in 1s ease-out;
     }
-
-    /* Hero Section Styles */
-    .hero-section {
-  background-image: url('images/scw-background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-    .hero-bg-pattern {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        radial-gradient(circle at 25% 25%, rgba(255, 69, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
-        linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.02) 49%, rgba(255, 255, 255, 0.02) 51%, transparent 52%);
-      animation: heroPattern 20s linear infinite;
-    }
-
-    @keyframes heroPattern {
-      0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.1); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(45deg, #ff4500, #ff6b35, #ff8c42, #ffa500);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientShift 3s ease-in-out infinite;
-      text-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 2rem;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      line-height: 1.6;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .combat-icons {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .combat-icon {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      background: rgba(255, 69, 0, 0.1);
-      border: 2px solid rgba(255, 69, 0, 0.3);
-      border-radius: 15px;
-      transition: all 0.3s ease;
-      min-width: 120px;
-    }
-
-    .combat-icon:hover {
-      transform: translateY(-10px) scale(1.05);
-      background: rgba(255, 69, 0, 0.2);
-      border-color: rgba(255, 69, 0, 0.6);
-      box-shadow: 0 10px 25px rgba(255, 69, 0, 0.3);
-    }
-
-    .combat-icon i {
-      font-size: 2.5rem;
-      color: #ff4500;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
-    }
-
-    .combat-icon span {
-      font-weight: 700;
-      color: #ffffff;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .hero-accent {
-      position: absolute;
-      top: 20%;
-      right: -10%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(255, 69, 0, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .hero-accent:before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, rgba(139, 0, 0, 0.2) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 4s ease-in-out infinite reverse;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-    }
-
-    .telangana-badge {
-      display: inline-block;
-      background: linear-gradient(45deg, #ff4500, #8b0000);
-      color: white;
-      padding: 0.5rem 1.5rem;
-      border-radius: 25px;
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
-      animation: badgePulse 2s ease-in-out infinite;
-    }
-
-    @keyframes badgePulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4); }
-      50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(255, 69, 0, 0.6); }
-    }
-
-    /* Additional Enhancement Styles */
-    .hero-subtitle strong {
-      color: #ff6b35;
-      font-weight: 800;
-      text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
-    }
-
-    .hero-content {
-      animation: fadeInUp 1.5s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .combat-icon i {
-      animation: iconFloat 3s ease-in-out infinite;
-    }
-
-    @keyframes iconFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-    }
-
-    /* Glowing border effect for hero section */
-    .hero-section::before {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(139, 0, 0, 0.4), rgba(255, 69, 0, 0.3));
-  z-index: 1;
-}
-
-    @keyframes borderGlow {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
-
     /* Mobile menu improvements */
-    #mobileMenu {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
+#mobileMenu {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
 
-    /* Mobile menu overlay adjustments */
-    .mobile-menu-overlay {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      max-height: 80vh;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 9999;
-      overflow-y: auto;
-      padding: 20px 0;
-      border-radius: 0 0 12px 12px;
-    }
 
+/* Mobile menu overlay adjustments */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 60px; /* Push below navbar */
+  left: 0;
+  width: 100%;
+  max-height: 80vh; /* Instead of full screen */
+  background: rgba(0, 0, 0, 0.7); /* Transparent look */
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 20px 0;
+  border-radius: 0 0 12px 12px; /* Rounded bottom for nicer look */
+}
+
+    
     /* Navigation button improvements for mobile */
     @media (max-width: 640px) {
       .nav-buttons-container {
@@ -324,20 +127,45 @@
         max-width: 280px;
         margin: 0 auto 16px auto;
       }
-
-      .combat-icons {
-        gap: 1rem;
-      }
-
-      .combat-icon {
-        min-width: 100px;
-        padding: 0.8rem;
-      }
-
-      .hero-accent {
-        display: none;
-      }
     }
+    /* Boxing Theme Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 5s infinite;
+}
+
+/* Boxing Glow Effects */
+.glow-red {
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 50, 50, 0.7);
+}
+.glow-gold {
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), inset 0 0 10px rgba(255, 255, 0, 0.3);
+}
+
+/* Boxing Ring Glow */
+.ring-glow {
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+  mix-blend-mode: overlay;
+}
+
+/* Button & Icon Tweaks */
+.combat-icon i {
+  transition: all 0.3s ease;
+}
+.combat-icon:hover i {
+  filter: brightness(1.3) drop-shadow(0 0 10px currentColor);
+}
+
+/* Section transitions */
+.hero-section {
+  background: radial-gradient(circle at center, rgba(255, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 90%);
+  position: relative;
+  overflow: hidden;
+}
+
   </style>
 </head>
 <body>
@@ -442,10 +270,9 @@
             bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-400
             drop-shadow-md [text-shadow:_0_0_8px_rgba(255,165,0,0.8),_0_0_15px_rgba(255,100,0,0.6)]
             border-4 border-yellow-200 border-opacity-50 p-2">
-      SHOORVEER CAGE WARS
+      SCW OFFICIALS
   </h1>
 </header>
-
 <!-- Navigation Buttons -->
 <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 py-8 px-4">
   <a href="officials.html" 
@@ -476,43 +303,54 @@
   </a>
 </div>
 
-<!-- Hero Content Section -->
-<section class="hero-section">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-accent"></div>
+<!-- Hero Section -->
+<section class="relative flex flex-col items-center justify-center text-center text-white py-24 px-6 overflow-hidden">
   
-  <div class="hero-content">
-    <div class="telangana-badge">
-      <i class="fas fa-map-marker-alt mr-2"></i>
-      Telangana's Premier Fighting League
+  <!-- Animated Background -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black via-red-800/70 to-black animate-pulse-slow"></div>
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-mosaic.png')] opacity-30"></div>
+  <div class="absolute top-0 left-0 w-full h-full ring-glow"></div>
+  
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-3xl">
+    <div class="inline-block bg-red-600/80 px-4 py-2 mb-4 rounded-full text-sm uppercase tracking-wider font-semibold shadow-lg border border-yellow-400 glow-gold">
+      <i class="fas fa-map-marker-alt mr-2"></i> Telangana's Premier Fighting League
     </div>
-    
-    <h2 class="hero-title">
-      Welcome to the Arena
+
+    <h2 class="text-5xl md:text-7xl font-extrabold uppercase tracking-widest text-yellow-400 drop-shadow-xl mb-4">
+      Welcome to the <span class="text-white glow-red">Arena</span>
     </h2>
-    
-    <p class="hero-subtitle">
-      Welcome to Telangana's toughest fight night league - <strong>Shoorveer Cage Wars (SCW)</strong>.
-      <br>
-      Shoorveer Cage Wars is Telangana's elite Kickboxing, Grappling & MMA platform, designed to build real fighters, recognize talent, and promote state-level champions.
+
+    <p class="text-gray-200 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+      Step into <strong>Shoorveer Cage Wars (SCW)</strong> — Telangana’s ultimate stage for <span class="text-red-400 font-semibold">Kickboxing</span>,
+      <span class="text-yellow-400 font-semibold">Grappling</span>, and <span class="text-green-400 font-semibold">MMA</span>.
+      <br>Only the toughest rise. Only the brave fight.
     </p>
-    
-    <div class="combat-icons">
-      <div class="combat-icon">
-        <i class="fas fa-fist-raised"></i>
-        <span>Kickboxing</span>
+
+    <!-- Combat Icons -->
+    <div class="flex flex-wrap justify-center gap-6 mt-6">
+      <div class="combat-icon hover:scale-110 transform transition-all">
+        <i class="fas fa-fist-raised text-4xl text-red-500 drop-shadow-lg"></i>
+        <p class="text-sm mt-2">Kickboxing</p>
       </div>
-      <div class="combat-icon">
-        <i class="fas fa-hand-rock"></i>
-        <span>Grappling</span>
+      <div class="combat-icon hover:scale-110 transform transition-all">
+        <i class="fas fa-hand-rock text-4xl text-yellow-400 drop-shadow-lg"></i>
+        <p class="text-sm mt-2">Grappling</p>
       </div>
-      <div class="combat-icon">
-        <i class="fas fa-shield-alt"></i>
-        <span>MMA</span>
+      <div class="combat-icon hover:scale-110 transform transition-all">
+        <i class="fas fa-shield-alt text-4xl text-green-400 drop-shadow-lg"></i>
+        <p class="text-sm mt-2">MMA</p>
       </div>
     </div>
+
+    <a href="join.html" 
+       class="mt-10 inline-block bg-gradient-to-r from-red-600 to-yellow-500 hover:from-yellow-600 hover:to-red-700
+              text-black font-bold py-3 px-10 rounded-full text-lg shadow-2xl transition-all transform hover:scale-105 border-2 border-black">
+      Join the Fight
+    </a>
   </div>
 </section>
+
 
 <img src="images/scwlogo.jpeg" alt="Scw Logo" class="mx-auto w-full max-w-2xl sm:max-w-md md:max-w-2xl lg:max-w-4xl">
 
