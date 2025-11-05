@@ -267,15 +267,7 @@ html {
     font-size: 0.85rem;
   }
 }
-/* Navbar container */
-  .navbar {
-    background-color: #222;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-  }
+
 
   /* Logo */
   .logo {
@@ -283,44 +275,9 @@ html {
     font-weight: bold;
   }
 
-  /* Menu items */
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-  }
-  .nav-links li {
-    cursor: pointer;
-  }
+  
 
-  /* Hamburger icon */
-  .hamburger {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  /* Mobile styles */
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background-color: #222;
-      flex-direction: column;
-      width: 200px;
-      padding: 10px 0;
-    }
-
-    .nav-links.show {
-      display: flex;
-    }
-
-    .hamburger {
-      display: block;
-    }
-  }
+  
   /* Additional styles for mobile stats layout */
     .stats {
       display: flex;
@@ -365,17 +322,4 @@ html {
   border-radius: 0 0 12px 12px; /* Rounded bottom for nicer look */
 }
 
-    
-    /* Navigation button improvements for mobile */
-    @media (max-width: 640px) {
-      .nav-buttons-container {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      
-      .nav-button {
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto 16px auto;
-      }
-    }
+   
