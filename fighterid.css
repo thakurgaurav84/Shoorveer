@@ -322,4 +322,6 @@ html {
   border-radius: 0 0 12px 12px; /* Rounded bottom for nicer look */
 }
 
-   
+   {
+    .link-word { color: blue; text-decoration: underline; cursor: pointer; }
+   }
